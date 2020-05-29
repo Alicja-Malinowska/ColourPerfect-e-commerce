@@ -56,29 +56,48 @@
     color: #ffffff;
 }
 
-    @media (max-width: 1199px) {
+#hero {
+    background-image: url("/media/img/hero.jpg");
+    background-size: cover;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    color: #080808;
+}
 
-        .nav-form {
-            width: 100%;
-            text-align: right;
-        }
+.image-text {
+    
+    background-color: rgba(255,255,255, .7);
+    padding: 1rem;
+}
 
-        input[type=search] {
-            width: 130px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-        }
+.image-text > h1 {
+    font-family: 'Lobster', cursive;
+}
 
-        .form-inline .form-control {
-            width: 130px;
-        }
+@media (max-width: 1199px) {
 
-        .form-inline {
-            display: block;
-        }
-
-        /* When the input field gets focus, change its width to 100% */
-        input[type=search]:focus {
-            width: 80%;
-        }
+    .nav-form {
+        width: 100%;
+        text-align: right;
     }
+
+    input[type=search] {
+        width: 130px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    .form-inline .form-control {
+        width: 130px;
+    }
+
+    .form-inline {
+        display: block;
+    }
+
+    /* When the input field gets focus, change its width to 100% */
+    input[type=search]:focus {
+        width: 80%;
+    }
+}
