@@ -1,5 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+footer {
+    background-color: #fc4f6f;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    
+}
+
+footer, footer a {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+footer a:hover {
+    color: #e6e6e6;
+    text-decoration: none;
+}
+
+footer .fab,  footer .fas{
+
+    padding-right: .7rem;
+}
+
+footer p {
+    margin: .5rem 0;
+}
 .accent-colour {
     color: #fc4f6f;
 }
@@ -74,6 +101,8 @@
 .image-text > h1 {
     font-family: 'Lobster', cursive;
 }
+
+
 
 @media (max-width: 1199px) {
 
