@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.accent-colour {
+    color: #fc4f6f;
+}
+
+/*logo styles*/
+.lip-bottom {
+    fill: #95ffaa;
+}
+
+.lip-up {
+    fill: #fc4f6f;
+}
+
+.lipstick-middle {
+    fill: #54f7f0;
+}
+
+.lipstick-colour {
+    fill: #e399ff;
+}
+
+.lipstick-base {
+    fill: #ffd500;
+}
+
+.navbar-light .navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 2rem;
+    color: #595959;
+}
+
+/**/
+
+.form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.nav-icons {
+    vertical-align: middle;
+}
+
+.nav-icons:hover {
+    color: #c90327;
+}
+
+.nav-btn {
+    border: solid #fc4f6f 1px;
+}
+
+.nav-btn:hover {
+    background-color: #c90327;
+    color: #ffffff;
+}
+
+    @media (max-width: 1199px) {
+
+        .nav-form {
+            width: 100%;
+            text-align: right;
+        }
+
+        input[type=search] {
+            width: 130px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        .form-inline .form-control {
+            width: 130px;
+        }
+
+        .form-inline {
+            display: block;
+        }
+
+        /* When the input field gets focus, change its width to 100% */
+        input[type=search]:focus {
+            width: 80%;
+        }
+    }
