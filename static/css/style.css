@@ -2,8 +2,6 @@
 
 footer {
     background-color: #fc4f6f;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     padding: 1rem 0;
     
@@ -78,7 +76,7 @@ footer p {
     border: solid #fc4f6f 1px;
 }
 
-.nav-btn:hover {
+.nav-btn:hover, a.badge-light:hover {
     background-color: #c90327;
     color: #ffffff;
 }
@@ -100,6 +98,11 @@ footer p {
 
 .image-text > h1 {
     font-family: 'Lobster', cursive;
+}
+
+.badge {
+    background-color: #fc4f6f;
+    font-size: 1.5rem;
 }
 
 
