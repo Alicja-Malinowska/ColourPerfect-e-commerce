@@ -76,9 +76,16 @@ footer p {
     border: solid #fc4f6f 1px;
 }
 
-.nav-btn:hover, a.badge-light:hover {
+.nav-btn:hover, a.badge-light:hover, .btn-primary:hover {
     background-color: #c90327;
     color: #ffffff;
+    border-color: #c90327;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #fc4f6f;
+    border-color: #fc4f6f;
 }
 
 #hero {
@@ -105,7 +112,18 @@ footer p {
     font-size: 1.5rem;
 }
 
+.dot {
+    height: 2rem;
+    width: 2rem;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
 
+.product-icon {
+    position: absolute;
+    right: 1rem;
+}
 
 @media (max-width: 1199px) {
 
@@ -132,4 +150,15 @@ footer p {
     input[type=search]:focus {
         width: 80%;
     }
+
+
+    
+}
+
+@media (min-width: 1200px) {
+    .collapse.dont-collapse-sm {
+        display: block;
+        height: auto !important;
+        visibility: visible;
+      }
 }
