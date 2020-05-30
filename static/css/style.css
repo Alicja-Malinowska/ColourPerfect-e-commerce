@@ -125,6 +125,12 @@ footer p {
     right: 1rem;
 }
 
+#quantity, .quantity-button {
+    width: 2rem;
+    text-align: center;
+    padding: 1px;
+}
+
 @media (max-width: 1199px) {
 
     .nav-form {

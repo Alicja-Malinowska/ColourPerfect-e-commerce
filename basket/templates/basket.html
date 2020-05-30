@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row text-center">
+        <div class="col-12">
+            <h1>Your Basket</h1>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12 col-xl-6">
+            <h2>Total €xx</h2>
+        </div>
+        <div class="col-12 col-xl-6">
+            <a href="" class="btn btn-primary">Checkout</a>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-4">
+            <img src="/media/img/spring.jpg" alt="..." class="img-thumbnail">
+        </div>
+        <div class="col-4">
+            <p>Product name</p>
+            <p><span class="dot"></span><span>Colour name</span></p>
+        </div>
+        <div class="col-4">
+            <!--THIS ELEMENT SHOULD BE EXTRACTED BECAUSE IT REPEATS - ALSO IN PRODUCT VIEW
+            ALSO IT MIGHT BE THE CASE THAT THE BUTTONS WOULD HAVE TO BE SUMIT BUTTONS INSTEAD TO SEND INFO TO BACKEND-->
+            <form>
+                <button type="button" class="quantity-button btn btn-primary">-</button>
+                <input type="text" name="quantities" id="quantity" value="0" readonly>
+                <button type="button" class="quantity-button btn btn-primary">+</button>
+                <span>€ xx</span>
+            </form>
+            
+        </div>
+    </div>
+
+    <hr>
+    <div class="row text-right">
+        <div class="col-12">
+            <p><span>TOTAL</span>
+                <span>€ XX</span></p>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12">
+            <a href="" class="btn btn-primary">Checkout</a>
+        </div>
+    </div>
+</div>
