@@ -1,9 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
 <div id="hero">
     <div class="image-text">
         <h1>ColourPerfect</h1>
         <h2>Find your perfect colour match makeup.<br> Look fabulous!</h2>
     </div>
 </div>
+{% if user.is_authenticated %}
+<h3>Welcome, {{ user.first_name }} !</h3>
+
+{% endif %}
 
 <section id="suggestions">
     <div class="container">
@@ -14,7 +22,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="" class="card-img-top" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Product name</h5>
                                 <a href="#" class="btn btn-primary">Go</a>
@@ -47,3 +55,6 @@
     </div>
 
 </section>
+
+{% include "allauth/account/login.html" %}
+{% endblock %}

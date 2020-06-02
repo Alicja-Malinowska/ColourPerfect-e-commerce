@@ -89,7 +89,7 @@ footer p {
 }
 
 #hero {
-    background-image: url("/media/img/hero.jpg");
+    background-image: url("/static/img/hero.jpg");
     background-size: cover;
     height: 40vh;
     position: relative;

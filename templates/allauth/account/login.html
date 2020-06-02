@@ -1,0 +1,54 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Log In" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-12 text-center">
+    <h1>{% trans "Log In" %}</h1>
+  </div>
+  </div>
+  {% get_providers as socialaccount_providers %}
+
+  {% if socialaccount_providers %}
+  <div class="row">
+    
+    <div class="col-12 col-xl-7">
+      <form class="login" method="POST" action="{% url 'account_login' %}">
+        <div class="form-group"></div>
+        {% csrf_token %}
+        {{ form|crispy }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        <button class="primaryAction btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+      </form>
+
+      <p class="py-3">{% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}" >sign up</a> first.{% endblocktrans %}</p>
+    </div>
+
+    <div class="col-12 col-xl-5 align-self-center text-center">
+      <div class="socialaccount_ballot">
+
+        <ul class="socialaccount_providers list-unstyled">
+          {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </ul>
+
+
+      </div>
+
+      {% include "socialaccount/snippets/login_extra.html" %}
+
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+{% endblock %}
