@@ -1,22 +1,25 @@
 from colour import Color
 
 
-def colour_match(hex_val):
-''' takes a hex colour value as a string and returns the 
-beauty type (season) based on different tresholds of saturation 
-and lightness and thair combinations'''
+def assign_season(hex_val):
+
+
+    ''' takes a hex colour value as a string and returns the
+    beauty type (season), also as a string,
+    based on different tresholds of saturation
+    and lightness and thair combinations'''
 
     c = Color(hex_val)
     s = c.hsl[1]
     l = c.hsl[2]
-    
+
     if s <= 0.25:
-        if l > 0.3 :
+        if l > 0.3:
             return "summer"
         else:
             return "winter"
     elif s >= 0.75:
-        if l <= 0.30 :
+        if l <= 0.30:
             return "winter"
         elif l <= 0.60:
             return "autumn"
@@ -30,10 +33,25 @@ and lightness and thair combinations'''
         elif l <= 0.5:
             return "autumn"
         elif l <= 0.7:
-            return "spring" 
+            return "spring"
         else:
             return "summer"
 
-print(colour_match("#ffcc00"))
-    
-    
+
+def match_colours(obj):
+    ''' takes an object, goes through its colours, and
+    sorts them, depending to which season they belong
+    '''
+    new_prod_colors = {
+        "spring": [],
+        "summer": [],
+        "autumn": [],
+        "winter": []
+    }
+
+    for colour in obj["product_colors"]:
+        season = assign_season(colour["hex_value"])
+        new_prod_colors[season].append(colour)
+
+    return new_prod_colors
+
