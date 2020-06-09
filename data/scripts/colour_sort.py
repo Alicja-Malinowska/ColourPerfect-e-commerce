@@ -3,6 +3,7 @@ import os
 import json
 from colour_conv import match_colours
 
+#this script was only used once to alter product_color in products.json, so that the colours are assigned to a season before adding the data to the databse
 
 def adjust_colours(filepath):
 
@@ -14,7 +15,7 @@ def adjust_colours(filepath):
 
     for product in products:
         if product["product_type"] in product_types_with_colours:
-            product["product_colors"] = [match_colours(product)]
+            product["product_colors"] = match_colours(product)
 
 
     with open(filepath, 'w') as fp:
