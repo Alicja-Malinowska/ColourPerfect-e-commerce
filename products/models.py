@@ -24,9 +24,18 @@ class Colour(models.Model):
     def __str__(self):
         return self.hex_value
 
+class Brand(models.Model):
+    name = models.CharField(max_length=254, null=True)
+    display_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_display_name(self):
+        return self.display_name
 
 class Product(models.Model):
-    brand = models.CharField(max_length=254, null=True)
+    brand = models.ManyToManyField(Brand)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     image_link = models.URLField(max_length=1024, null=True, blank=True)
