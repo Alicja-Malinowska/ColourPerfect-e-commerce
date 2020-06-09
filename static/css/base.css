@@ -102,6 +102,11 @@ a.badge-light:hover,
     border-color: #c90327;
 }
 
+.dropdown-menu{
+    max-height:70vh;
+    overflow-y:auto;
+ }
+
 .btn-primary {
     color: #fff;
     background-color: #fc4f6f;
