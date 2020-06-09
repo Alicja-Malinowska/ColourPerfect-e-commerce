@@ -26982,7 +26982,7 @@
   },
   {
     "id": 507,
-    "brand": null,
+    "brand": "saint_cosmetics",
     "name": "Saint Cosmetics Bronzer",
     "price": "30.96",
     "price_sign": null,
@@ -27400,7 +27400,7 @@
   },
   {
     "id": 494,
-    "brand": null,
+    "brand": "fake_bake",
     "name": "Fake Bake Beauty Bronzer",
     "price": "21.0",
     "price_sign": null,
@@ -27549,7 +27549,7 @@
   },
   {
     "id": 490,
-    "brand": null,
+    "brand": "earth_lab",
     "name": "Earth Lab Loose Mineral Bronzer",
     "price": "24.0",
     "price_sign": null,
@@ -28046,7 +28046,7 @@
   },
   {
     "id": 475,
-    "brand": null,
+    "brand": "fake_bake",
     "name": "Fake Bake Blush Legal Sunburn",
     "price": "15.99",
     "price_sign": null,
@@ -28252,7 +28252,7 @@
   },
   {
     "id": 469,
-    "brand": null,
+    "brand": "saint_cosmetics",
     "name": "Saint Cosmetics Blush",
     "price": "28.96",
     "price_sign": null,
@@ -30143,7 +30143,7 @@
   },
   {
     "id": 416,
-    "brand": null,
+    "brand": "dalish",
     "name": "DaLish Lip Cheek Balm",
     "price": "15.0",
     "price_sign": null,
@@ -30785,7 +30785,7 @@
   },
   {
     "id": 401,
-    "brand": null,
+    "brand": "bonne_bell",
     "name": "Bonne Bell Lip Liner",
     "price": "4.99",
     "price_sign": null,
@@ -32683,7 +32683,7 @@
   },
   {
     "id": 347,
-    "brand": null,
+    "brand": "dalish",
     "name": "DaLish Silk to Matte Foundation",
     "price": "44.0",
     "price_sign": null,
@@ -36917,7 +36917,7 @@
   },
   {
     "id": 227,
-    "brand": null,
+    "brand": "earth_lab",
     "name": "Earth Lab Vegan Mineral Eye Pencil",
     "price": "18.0",
     "price_sign": null,
@@ -37220,7 +37220,7 @@
   },
   {
     "id": 210,
-    "brand": null,
+    "brand": "physicians formula",
     "name": "Pysicians Formula Eye Booster Cushion Liquid Liner + Serum Ultra Black",
     "price": "15.99",
     "price_sign": null,
@@ -45250,7 +45250,7 @@
   },
   {
     "id": 21,
-    "brand": null,
+    "brand": "earth_lab",
     "name": "Earth Lab Raw Mascara",
     "price": "24.0",
     "price_sign": null,
@@ -45785,7 +45785,7 @@
   },
   {
     "id": 2,
-    "brand": null,
+    "brand": "l'oreal",
     "name": "L' Oreal Paris Voluminous Mascara",
     "price": "9.99",
     "price_sign": null,

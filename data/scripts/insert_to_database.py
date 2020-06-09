@@ -1,4 +1,4 @@
-from products.models import Category, Colour, Product
+
 from django.core.wsgi import get_wsgi_application
 import os
 import json
@@ -9,6 +9,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'colour_perfect.settings')
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 application = get_wsgi_application()
 
+from products.models import Category, Colour, Product, Brand
+
 if __name__ == '__main__':
 
     product_types_with_colours = [
@@ -18,10 +20,11 @@ if __name__ == '__main__':
         ''' creates category, product and colour categories using products.json file in a way 
         that product objects have foreign keys of category and colour objects'''
         category = Category.objects.get_or_create(
-            name=obj['product_type'], display_name=obj['product_type'].replace('_', ' ').title())
-        product = Product.objects.get_or_create(
-            brand=obj['brand'], name=obj["name"], price=obj['price'], image_link=obj['image_link'], description=obj['description'])
+            name=obj['product_type'], display_name=obj['product_type'].replace('_', ' ').capitalize())
+        brand = Brand.objects.get_or_create(name=obj['brand'], display_name=obj['brand'].replace('_', ' ').capitalize())
+        product = Product.objects.get_or_create(name=obj["name"], price=obj['price'], image_link=obj['image_link'], description=obj['description'])
         product[0].category.add(category[0])
+        product[0].brand.add(brand[0])
         for season in obj['product_colors'][0]:
 
             for col_obj in obj['product_colors'][0][season]:
@@ -29,7 +32,7 @@ if __name__ == '__main__':
                     hex_value=col_obj['hex_value'], name=col_obj['colour_name'], season=season)
                 product[0].product_colors.add(colour[0])
 
-    filepath = 'products/fixtures/products.json'
+    filepath = 'data/products.json'
     with open(filepath, 'r', encoding='utf-8',
               errors='ignore') as fp:
         products = json.load(fp)
