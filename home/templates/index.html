@@ -16,22 +16,35 @@
 <section id="suggestions">
     <div class="container">
         <h2 class="text-center">Perfect picks for...</h2>
-        <div class="row">
-            <div class="col12 col-xl-6">
-                <p class="text-center">Season</p>
+        
+        <div class="row card-deck">
+            {% for season, values in suggestions.items %}
+            <div class="col-12">
+                
+                <p class="text-center">{{season}}</p>
+            
                 <div class="row">
-                    <div class="col-4">
-                        <div class="card">
-                            <img src="" class="card-img-top" alt="">
-                            <div class="card-body">
-                                <h5 class="card-title">Product name</h5>
-                                <a href="#" class="btn btn-primary">Go</a>
-                            </div>
+                    {% for prod_col in values %}
+                    
+                    <div class="col-12 col-md-4">
+                        <a href="">
+                        <div class="card h-100" title="{{ prod_col.0.name }}">
+                            <span class="dot product-icon" style="background-color: {{ prod_col.1.hex_value }};" title="{{ prod_col.1.name }}"></span>
+                            <div><img src="{{prod_col.0.image_link}}" class="card-img-top" alt="Product image"></div>
+                            
+                            
                         </div>
+                        </a>
                     </div>
+                
+                    {% endfor %}
+
+                    
                 </div>
             </div>
+            {% endfor %}
         </div>
+       
     </div>
 </section>
 
@@ -39,9 +52,16 @@
     <div class="container">
         <h2 class="text-center">Categories</h2>
         <div class="row">
+            {% for category in categories %}
+            <div class="col-4 col-xl-2">
             <a href="">
-                <div class="card"></div>
+                <div class="card h-100">
+                    <img src="/static/img/{{category.name}}.jpg" class="card-img-top" alt="Product image">
+                    <p class="text-center">{{ category.display_name }}</p></div>
+                
             </a>
+        </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -49,8 +69,10 @@
 <section id="brands">
     <div class="container">
         <h2 class="text-center">Brands</h2>
-        <div class="row">
-            <a href="#" class="badge badge-light">Brand</a>
+        <div class="row justify-content-center">
+            {% for brand in brands %}
+            <a href="#" class="badge badge-light m-1">{{brand.display_name}}</a>
+            {% endfor %}
         </div>
     </div>
 
