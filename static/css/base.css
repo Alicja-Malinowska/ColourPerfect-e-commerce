@@ -101,6 +101,10 @@ a.badge-light:hover,
     color: #ffffff;
     border-color: #c90327;
 }
+.dropdown-menu{
+    max-height:70vh;
+    overflow-y:auto;
+ }
 
 .btn-primary {
     color: #fff;
@@ -135,14 +139,14 @@ a.badge-light:hover,
 .dot {
     height: 2rem;
     width: 2rem;
-    background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
 }
 
 .product-icon {
     position: absolute;
-    right: 1rem;
+    right: 0.5rem;
+    top: 0.5rem;
 }
 
 #quantity,

@@ -58,3 +58,4 @@ def match_colours(obj):
 
     return new_prod_colors
 
+print(assign_season('#FACFD0'))
