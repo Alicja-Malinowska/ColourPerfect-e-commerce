@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from products.models import Product
 # Create your views here.
 def product(request, id):
+    '''displays a single product, together with its colours sorted according to season they belong to'''
 
     SEASONS = ['Spring', 'Summer', 'Autumn', 'Winter']
     product = get_object_or_404(Product, pk=id)
@@ -11,6 +12,7 @@ def product(request, id):
 
     colours = {}
     
+    #if there are any colours assigned to the product
     if all_colours:
         for season in SEASONS:
             season_colours = []
@@ -19,6 +21,7 @@ def product(request, id):
                     season_colours.append(colour)
             colours[season] = season_colours
 
+    # check if colours dictionary is not empty
     has_colours = bool(colours)
 
     context = {
