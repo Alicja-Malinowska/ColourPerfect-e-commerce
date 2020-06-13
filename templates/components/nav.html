@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
     <!--The svg was taken from https://www.flaticon.com/, colours changed by me-->
-    <a class="navbar-brand" href="#"><svg height="50" viewBox="0 0 128 128" width="50"
+    <a class="navbar-brand" href="{% url 'home' %}"><svg height="50" viewBox="0 0 128 128" width="50"
         xmlns="http://www.w3.org/2000/svg">
         <g>
             <path d="m48 89.177h32v37.07h-32z" class="lipstick-base" />
@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

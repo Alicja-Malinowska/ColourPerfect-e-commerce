@@ -1,46 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+
 <div class="container">
     <div class="row">
         <div class="col-12 d-xl-none text-center">
             <!--THIS IS REPEATED SO LATER EXTRACT AND INCLUDE-->
-            <h1 class="">Product name</h1>
-            <a href="" class="badge badge-light">brand</a>
-            <a href="" class="badge badge-light">category</a>
+            {% include "components/product-top.html" %}
         </div>
         <div class="col-12 col-xl-6">
-            <img src="/media/img/summer.jpg" class="img-fluid" alt="Responsive image">
+            <img src="{{ product.image_link }}" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col-12 col-xl-6">
             <div class="d-none d-xl-block text-center">
-                <h1>Product name</h1>
-                <a href="" class="badge badge-light">brand</a>
-                <a href="" class="badge badge-light">category</a>
+                {% include "components/product-top.html" %}
             </div>
             <p>Best colours for:</p>
+            {% if has_colours %}
             <table>
+                {% for season, shades in colours.items %}
                 <tr>
-                    <td>Spring</td>
-                    <td><span class="dot"></span></td>
-                    <td><span class="dot"></span></td>
+                    <td>{{ season }}</td>
+                    <td>
+                    {% for shade in shades %}
+                    <span class="dot" style="background-color: {{ shade.hex_value }};" title="{{ shade.name }}"></span>
+                    {% empty %}
+                    <span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose a colour anyway! :)</span>
+                    {% endfor %}
+                </td>
                 </tr>
-
-                <tr>
-                    <td>Summer</td>
-                    <td><span class="dot"></span></td>
-                    <td><span class="dot"></span></td>
-                </tr>
-
-                <tr>
-                    <td>Autumn</td>
-                    <td><span class="dot"></span></td>
-                    <td><span class="dot"></span></td>
-                </tr>
-
-                <tr>
-                    <td>Winter</td>
-                    <td><span class="dot"></span></td>
-                    <td><span class="dot"></span></td>
-                </tr>
+                {% endfor %}
             </table>
+            {% else %}
+            <p>It looks like this product doesn't have different colours. It might be that it's just clear or available in only one standard colour - check out the description!</p>
+        {% endif %}
         </div>
     </div>
     <div class="row">
@@ -65,12 +59,15 @@
             </p>
             <div class="collapse dont-collapse-sm" id="description">
                 <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident.
+                    {% if product.description == "" %}
+                    <p>No description available for this product, sorry!</p>
+                    {% else %}
+                    {{ product.description }}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
     
 </div>
+{% endblock %}
