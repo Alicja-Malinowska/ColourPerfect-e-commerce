@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+
 <div class="container">
     <h1 class="text-center">Find your beauty type!</h1>
     <p>
@@ -21,34 +26,25 @@
         beauty.
     </p>
     <div>
-        <form action="">
-            <p>Question</p>
+        
+        <form action="{% url 'results' %}" method='POST'>
+            {% csrf_token %}
+            {% for question, answers in questions.items %}
+            <p>{{question}}</p>
+            {% for answer in answers %}
             <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer1" name="answer" value="answer1">
-                <label class="form-check-label" for="answer1">
-                    Answer1
+                <input class="form-check-input" type="radio" id="{{answer|slugify}}" name="{{question}}" value="{{answer}}">
+                <label class="form-check-label" for="{{answer}}">
+                    {{answer}}
                 </label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer2" name="answer" value="answer2">
-                <label class="form-check-label" for="answer2">
-                    Answer2
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer3" name="answer" value="answer3">
-                <label class="form-check-label" for="answer3">
-                    Answer3
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="answer4" name="answer" value="answer4">
-                <label class="form-check-label" for="answer4">
-                    Answer4
-                </label>
-            </div>
+            {% endfor %}
+            {% endfor %}
             <button type="submit" class="btn btn-primary">Submit</button>
-
+            
         </form>
+
     </div>
 </div>
+
+{% endblock %}
