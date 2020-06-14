@@ -2,72 +2,78 @@
 {% load static %}
 
 {% block content%}
-
-<div class="container">
-    <div class="row">
-        <div class="col-12 d-xl-none text-center">
-            <!--THIS IS REPEATED SO LATER EXTRACT AND INCLUDE-->
-            {% include "components/product-top.html" %}
-        </div>
-        <div class="col-12 col-xl-6">
-            <img src="{{ product.image_link }}" class="img-fluid" alt="Responsive image">
-        </div>
-        <div class="col-12 col-xl-6">
-            <div class="d-none d-xl-block text-center">
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-xl-none text-center">
+                <!--THIS IS REPEATED SO LATER EXTRACT AND INCLUDE-->
                 {% include "components/product-top.html" %}
             </div>
-            <p>Best colours for:</p>
-            {% if has_colours %}
-            <table>
-                {% for season, shades in colours.items %}
-                <tr>
-                    <td>{{ season }}</td>
-                    <td>
-                    {% for shade in shades %}
-                    <span class="dot" style="background-color: {{ shade.hex_value }};" title="{{ shade.name }}"></span>
-                    {% empty %}
-                    <span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose a colour anyway! :)</span>
+            <div class="col-12 col-xl-6">
+                <img src="{{ product.image_link }}" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-12 col-xl-6">
+                <div class="d-none d-xl-block text-center">
+                    {% include "components/product-top.html" %}
+                </div>
+                <p>Best colours for:</p>
+                {% if has_colours %}
+                <table>
+                    {% for season, shades in colours.items %}
+                    <tr>
+                        <td>{{ season }}</td>
+                        <td class="colours">
+                            {% for shade in shades %}
+                            <input type="radio" id="{{shade.hex_value}}" name="colour" value="{{shade.hex_value}}">
+                            <label for="{{shade.hex_value}}"><span class="dot" style="background-color: {{ shade.hex_value }};"
+                                title="{{ shade.name }}"></span></label>
+    
+                            {% empty %}
+                            <span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose
+                                a colour anyway! :)</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
                     {% endfor %}
-                </td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <p>It looks like this product doesn't have different colours. It might be that it's just clear or available in only one standard colour - check out the description!</p>
-        {% endif %}
+                </table>
+                {% else %}
+                <p>It looks like this product doesn't have different colours. It might be that it's just clear or
+                    available in only one standard colour - check out the description!</p>
+                {% endif %}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-        <form>
-            <button type="button" class="quantity-button">-</button>
-            <input type="text" name="quantitys" id="quantity" value="0" readonly>
-            <button type="button" class="quantity-button">+</button>
+        <div class="row">
+            <div class="col-12 text-center">
 
-            <input type="submit" value="Add to basket" id="submit">
-        </form>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p>
-                <p>Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        <i class="fas fa-chevron-down"></i>
-                    </a></p>
+                <button type="button" class="quantity-button">-</button>
+                <input type="text" name="quantity" id="quantity" value="0" readonly>
+                <button type="button" class="quantity-button">+</button>
 
-            </p>
-            <div class="collapse dont-collapse-sm" id="description">
-                <div class="card card-body">
-                    {% if product.description == "" %}
-                    <p>No description available for this product, sorry!</p>
-                    {% else %}
-                    {{ product.description }}
-                    {% endif %}
+                <input type="submit" value="Add to basket" id="submit">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    <p>Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            <i class="fas fa-chevron-down"></i>
+                        </a></p>
+
+                </p>
+                <div class="collapse dont-collapse-sm" id="description">
+                    <div class="card card-body">
+                        {% if product.description == "" %}
+                        <p>No description available for this product, sorry!</p>
+                        {% else %}
+                        {{ product.description }}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-    
-</div>
+</form>
 {% endblock %}
