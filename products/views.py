@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from products.models import Product
 from helpers.seasons import SEASONS
 from helpers.category_brand import categories, brands
@@ -39,3 +40,25 @@ def product(request, id):
     }
 
     return render(request, 'product.html', context)
+
+def search(request, q_type, query):
+
+    products = None
+
+    if q_type == 'category':
+        products = Product.objects.filter(category__name=query)
+    elif q_type == 'brand':
+        products = Product.objects.filter(brand__name=query)
+    elif q_type == 'search':
+        query = request.GET['phrase']
+        queries = Q(name__icontains=query) | Q(description__icontains=query)
+        products = Product.objects.filter(queries)
+
+    context = {
+        'categories': categories,
+        'brands': brands,
+        'products': products,
+
+    }
+
+    return render(request, 'search.html', context)

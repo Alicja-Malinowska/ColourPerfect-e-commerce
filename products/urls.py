@@ -1,6 +1,8 @@
 from django.urls import path
-from products.views import product
+from products.views import product, search
 
 urlpatterns = [
-    path('<id>', product, name='product')
+    path('<q_type>/<query>', search, name="search" ),
+    path('<id>', product, name='product'),
+    
 ]
