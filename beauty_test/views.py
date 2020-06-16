@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from beauty_test.test_questions import QUESTIONS
 from helpers.seasons import SEASONS
+from helpers.category_brand import categories, brands
 
 
 # Create your views here.
@@ -9,7 +10,9 @@ from helpers.seasons import SEASONS
 def questions(request):
     '''renders all the questions'''
     context = {
-        'questions': QUESTIONS
+        'questions': QUESTIONS,
+        'categories': categories,
+        'brands': brands,
     }
 
     return render(request, 'beauty-test.html', context)
@@ -29,6 +32,8 @@ def results(request):
     result = most_occurances[1]
     
     context = {
-        'result': result
+        'result': result,
+        'categories': categories,
+        'brands': brands,
     }
     return render(request, 'test-result.html', context)

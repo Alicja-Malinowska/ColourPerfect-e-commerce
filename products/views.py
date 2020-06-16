@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from products.models import Product
 from helpers.seasons import SEASONS
+from helpers.category_brand import categories, brands
 
 # Create your views here.
 def product(request, id):
@@ -32,6 +33,8 @@ def product(request, id):
         'category': category,
         'seasons': SEASONS,
         'has_colours': has_colours,
+        'categories': categories,
+        'brands': brands,
 
     }
 
