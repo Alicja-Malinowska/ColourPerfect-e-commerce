@@ -1,12 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+
 <div class="container">
-    <h1 class="text-center">You are a /season/!</h1>
+    <h1 class="text-center">You are a {{result}}!</h1>
     <div class="text-center">
-        <img src="/media/img/summer.jpg" class="img-fluid" alt="Responsive image">
+        <img src="/static/img/{{result|lower}}.jpg" class="img-fluid" alt="Responsive image">
     </div>
     <div class="row">
         <div class="col-12 col-xl-6">
             <h2>Description</h2>
             <p>
+                {% if result == "Spring" %}
                 Spring women have these same chromatic characteristics, so you work by repetition, by harmony.
 
                 It is the most varied palette, both as a type of women and as colors: we will find both beige /
@@ -15,14 +21,16 @@
 
                 What sets them apart from summer, but also from autumn women, is the fact that they hold up strong
                 colors very well, thanks to their typically radiant complexion.
-            </p>
-            <p class="d-none">Summer women typically have delicate colors: they can be blondes, but also with light brown hair.
+
+                {% elif result == "Summer" %}
+                Summer women typically have delicate colors: they can be blondes, but also with light brown hair.
 
                 Pastel, powdery and mother-of-pearl shades suit them very well.
 
                 On the other hand, colors that are too vivid and aggressive, especially in warm and orange shades,
-                are not good at all on them.</p>
-            <p class="d-none">
+                are not good at all on them.
+
+                {% elif result == "Autumn" %}
                 Even the autumn palette is quite heterogeneous: we go from brunettes like Madalina Ghenea to blondes
                 like Nicole Richie, passing by redhead like Julia Roberts.
 
@@ -32,8 +40,8 @@
 
                 WARNING! Brown hair does not mean an autumn: if you do not like beige, if the shades of green make
                 you uncomfortable and orange is your enemy, then you are not part of this group!
-            </p>
-            <p class="d-none">
+
+                {% else %}
                 It is the most widespread season, at least in our parts and in the Mediterranean basin in general.
 
                 It includes the olive-skin and black hair women (Salma Hayek), but also those with lighter skin and
@@ -43,28 +51,48 @@
                 medium-low intensity. It’s easy to put it in the autumn group for her brown hair, but as I said
                 “brown hair does not mean autumn”; so stay focused on his porcelain skin and the fact that orange
                 and beige are her enemies.
+
+                {% endif %}
             </p>
         </div>
         <div class="col-12 col-xl-6">
             <h2>Best colours for you</h2>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+            {% for colour in colours %}
+            <span class="dot" title="{{ colour.name }}" style="background-color: {{ colour.hex_value }};"></span>
+            {% endfor %}
         </div>
     </div>
-<div class="row">
-<div class="col-12">
-<h2>Products you might like</h2>
-</div>
-<div class="col-4">
-<img src="/media/img/spring.jpg" alt="..." class="img-thumbnail">
-<a href="" class="px-2 nav-icons accent-colour product-icon" title="Add to wishlist"><i class="fas fa-heart"></i></a>
-<p>Product name</p>
-<p>€xx</p>
+    <div class="row">
+        <div class="col-12">
+            <h2>Products you might like</h2>
+        </div>
+    </div>
+    <div class="row card-deck">
+        {% for product in products %}
+        
+        <div class="col-4">
+            <a href="{% url 'product' id=product.0.pk %}">
+            <div class="card h-100">
+                <img src="{{ product.0.image_link }}" alt="..." class="card-img-top">
+                <a href="" class="px-2 nav-icons accent-colour product-icon" title="Add to wishlist"><i
+                        class="fas fa-heart"></i></a>
+            </div>
+            </a>
+        </div>
+        
+        
+        <div class="col-4 order-last">
+            <div>
+                <p>{{ product.0.name }}</br>
+                    in <span class="dot" title="{{ product.1.name }}"
+                        style="background-color: {{ product.1.hex_value }};"></span> </p>
+                <p>€{{ product.0.price }}</p>
+
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
 </div>
 
-</div>
-</div>
+{% endblock %}

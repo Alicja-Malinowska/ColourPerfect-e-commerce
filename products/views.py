@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from products.models import Product
+from helpers.seasons import SEASONS
+from helpers.category_brand import categories, brands
+
 # Create your views here.
 def product(request, id):
     '''displays a single product, together with its colours sorted according to season they belong to'''
 
-    SEASONS = ['Spring', 'Summer', 'Autumn', 'Winter']
     product = get_object_or_404(Product, pk=id)
     all_colours = product.product_colors.all()
     brand = product.brand.all()
@@ -31,6 +33,8 @@ def product(request, id):
         'category': category,
         'seasons': SEASONS,
         'has_colours': has_colours,
+        'categories': categories,
+        'brands': brands,
 
     }
 
