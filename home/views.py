@@ -16,7 +16,7 @@ def home(request):
     # (product object, matching colour object)
     for season in SEASONS:
         
-        suggestions[season] = get_products(season, 'description')
+        suggestions[season] = get_products(season, '?')
     
     
     context = {
