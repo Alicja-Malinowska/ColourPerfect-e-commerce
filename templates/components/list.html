@@ -1,12 +1,18 @@
 
-{% for product in products %}
-<div class="card-deck">
-    <div class="card">
+<div class="container">
+<div class="card-deck row">
+  {% for product in products %}
+  <div class="col-6 col-md-4 col-xl-3">
+    <a href="{% url 'product' id=product.pk %}">
+    <div class="card h-100">
       <img class="card-img-top" src="{{ product.image_link }}" alt="Product image">
       <div class="card-body">
         <h5 class="card-title">{{ product.name }}</h5>
         <p class="card-text">€{{ product.price }}</p>
       </div>
     </div>
+  </a>
   </div>
-{% endfor %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,10 +1,14 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 from products.models import Product
 from helpers.seasons import SEASONS
 from helpers.category_brand import categories, brands
 
 # Create your views here.
+
+
 def product(request, id):
     '''displays a single product, together with its colours sorted according to season they belong to'''
 
@@ -14,8 +18,8 @@ def product(request, id):
     category = product.category.all()
 
     colours = {}
-    
-    #if there are any colours assigned to the product
+
+    # if there are any colours assigned to the product
     if all_colours:
         for season in SEASONS:
             season_colours = []
@@ -41,7 +45,9 @@ def product(request, id):
 
     return render(request, 'product.html', context)
 
+
 def search(request, q_type, query):
+    '''get requested products by search term, category or brand'''
 
     products = None
 
@@ -50,7 +56,11 @@ def search(request, q_type, query):
     elif q_type == 'brand':
         products = Product.objects.filter(brand__name=query)
     elif q_type == 'search':
-        query = request.GET['phrase']
+        query = request.GET['phrase'].strip()
+        if not query:
+            messages.error(request,
+                           ("Please type a phrase you want to search for"))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         queries = Q(name__icontains=query) | Q(description__icontains=query)
         products = Product.objects.filter(queries)
 
