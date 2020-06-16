@@ -1,5 +1,5 @@
 
-questions = {
+QUESTIONS = {
     "What is the natural colour of your hair?": {'Light to medium blond with warm undertones or light ginger': ['spring'],
     'Light to medium blond with cold undertones': ['summer'], 'Brown to black with warm undertones or dark ginger': ['autumn'], 
     'Brown to black with cold undertones': ['winter']},
