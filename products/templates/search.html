@@ -3,5 +3,12 @@
 
 {% block content%}
 
+{% if searched == 'category' %}
+<p>Products in category: {{ query|title }}</p>
+{% elif  searched == 'brand' %}
+<p>Products by {{ query|title }}</p>
+{% elif searched == 'search' %}
+<p>Search results for "{{ query }}"</p>
+{% endif %}
 {% include 'components/list.html' %}
 {% endblock %}

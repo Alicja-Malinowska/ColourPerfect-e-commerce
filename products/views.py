@@ -64,10 +64,15 @@ def search(request, q_type, query):
         queries = Q(name__icontains=query) | Q(description__icontains=query)
         products = Product.objects.filter(queries)
 
+    if not q_type == 'search':
+        query = query.replace('_', ' ')
+    
     context = {
         'categories': categories,
         'brands': brands,
         'products': products,
+        'searched': q_type,
+        'query': query
 
     }
 
