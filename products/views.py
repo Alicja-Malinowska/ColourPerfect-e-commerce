@@ -14,8 +14,8 @@ def product(request, id):
 
     product = get_object_or_404(Product, pk=id)
     all_colours = product.product_colors.all()
-    brand = product.brand.all()
-    category = product.category.all()
+    product_brand = product.brand
+    product_categories = product.category.all()
 
     colours = {}
 
@@ -34,8 +34,8 @@ def product(request, id):
     context = {
         'product': product,
         'colours': colours,
-        'brand': brand,
-        'category': category,
+        'product_brand': product_brand,
+        'product_categories': product_categories,
         'seasons': SEASONS,
         'has_colours': has_colours,
         'categories': categories,

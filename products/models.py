@@ -35,7 +35,8 @@ class Brand(models.Model):
         return self.display_name
 
 class Product(models.Model):
-    brand = models.ManyToManyField(Brand)
+    brand = models.ForeignKey('Brand', null=True,
+                                 on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     image_link = models.URLField(max_length=1024, null=True, blank=True)

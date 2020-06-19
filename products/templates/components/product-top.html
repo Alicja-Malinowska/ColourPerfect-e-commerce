@@ -1,8 +1,8 @@
 <h1 class="">{{ product.name }}</h1>
-{% for brand in brand %}
-<a href="" class="badge badge-light">{{ brand.display_name }}</a>
-{% endfor %}
 
-{% for category in category %}
+<a href="" class="badge badge-light">{{ product_brand.display_name }}</a>
+
+
+{% for category in product_categories %}
 <a href="" class="badge badge-light">{{ category.display_name }}</a>
 {% endfor %}
