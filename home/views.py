@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from products.models import Category, Brand, Product
 from helpers.get_products_and_colours import get_products
-from helpers.category_brand import categories, brands
 from helpers.seasons import SEASONS
 
 # Create your views here.
@@ -20,8 +19,6 @@ def home(request):
     
     
     context = {
-        'categories': categories,
-        'brands': brands,
         'seasons': SEASONS,
         'suggestions': suggestions,
         

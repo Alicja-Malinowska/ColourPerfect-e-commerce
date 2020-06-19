@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from beauty_test.test_questions import QUESTIONS
 from helpers.seasons import SEASONS
-from helpers.category_brand import categories, brands
 from helpers.get_products_and_colours import get_products
 from products.models import Colour
 
@@ -13,8 +12,6 @@ def questions(request):
     '''renders all the questions'''
     context = {
         'questions': QUESTIONS,
-        'categories': categories,
-        'brands': brands,
     }
 
     return render(request, 'beauty-test.html', context)
@@ -38,8 +35,6 @@ def results(request):
     
     context = {
         'result': result,
-        'categories': categories,
-        'brands': brands,
         'products': products,
         'colours': colours,
     }

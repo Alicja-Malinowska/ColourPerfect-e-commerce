@@ -4,7 +4,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from products.models import Product, Category, Brand
 from helpers.seasons import SEASONS
-from helpers.category_brand import categories, brands
 
 # Create your views here.
 
@@ -38,8 +37,7 @@ def product(request, id):
         'product_categories': product_categories,
         'seasons': SEASONS,
         'has_colours': has_colours,
-        'categories': categories,
-        'brands': brands,
+        
 
     }
 
@@ -79,8 +77,7 @@ def search(request, q_type, query):
         query = query.replace('_', ' ')
     
     context = {
-        'categories': categories,
-        'brands': brands,
+        
         'products': products,
         'searched': q_type,
         'query': query
