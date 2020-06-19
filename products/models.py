@@ -41,7 +41,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     image_link = models.URLField(max_length=1024, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    category = models.ManyToManyField(Category)
+    # this is a many to many field because there are rare occasions that the product has 2 categories (e.g. blush&lipstick)
+    category = models.ManyToManyField(Category)  
     product_colors = models.ManyToManyField(Colour)
 
 
