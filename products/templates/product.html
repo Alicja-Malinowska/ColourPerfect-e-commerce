@@ -45,9 +45,7 @@
         <div class="row">
             <div class="col-12 text-center">
 
-                <button type="button" class="quantity-button">-</button>
-                <input type="text" name="quantity" id="quantity" value="0" readonly>
-                <button type="button" class="quantity-button">+</button>
+                {% include "components/quantity.html" %}
 
                 <input type="submit" value="Add to basket" id="submit">
 
