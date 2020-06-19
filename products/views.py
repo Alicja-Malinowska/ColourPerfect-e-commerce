@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from products.models import Product
+from products.models import Product, Category, Brand
 from helpers.seasons import SEASONS
 from helpers.category_brand import categories, brands
 
@@ -52,9 +52,20 @@ def search(request, q_type, query):
     products = None
 
     if q_type == 'category':
-        products = Product.objects.filter(category__name=query)
+        if Category.objects.filter(name=query).exists():
+            products = Product.objects.filter(category__name=query)
+        else:
+            q_type = "none"
+            messages.error(request,
+                           ("This category does not exist."))
     elif q_type == 'brand':
-        products = Product.objects.filter(brand__name=query)
+        if Brand.objects.filter(name=query).exists():
+            products = Product.objects.filter(brand__name=query)
+        else:
+            q_type = "none"
+            messages.error(request,
+                           ("Currently we don't sell this brand's products."))
+
     elif q_type == 'search':
         query = request.GET['phrase'].strip()
         if not query:

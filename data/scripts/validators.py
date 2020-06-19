@@ -1,4 +1,5 @@
 import re
+from products.models import Category, Brand
 
 def is_hex_color(string):
 

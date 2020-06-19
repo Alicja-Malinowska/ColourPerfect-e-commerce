@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block content%}
-
+<div class="container">
+{% if searched == 'none' %}
+<p>Please select a category or brand from the drop down on the navigation bar. You can also find all brands and
+    categories at the bottom of the homepage.</p>
+{% else %}
 {% if searched == 'category' %}
 <p>Products in category: {{ query|title }}</p>
 {% elif  searched == 'brand' %}
@@ -11,4 +15,6 @@
 <p>Search results for "{{ query }}"</p>
 {% endif %}
 {% include 'components/list.html' %}
+{% endif %}
+</div>
 {% endblock %}
