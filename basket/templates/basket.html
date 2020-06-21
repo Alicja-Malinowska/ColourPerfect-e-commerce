@@ -11,35 +11,37 @@
     </div>
     <div class="row text-center">
         <div class="col-12 col-xl-6">
-            <h2>Total €xx</h2>
+            <h2>Total €{{ total }}</h2>
         </div>
         <div class="col-12 col-xl-6">
             <a href="" class="btn btn-primary">Checkout</a>
         </div>
     </div>
+    {% for product in products %}
     <div class="row no-gutters">
         <div class="col-4">
-            <img src="/media/img/spring.jpg" alt="..." class="img-thumbnail">
+            <img src="{{ product.prod_obj.image_link }}" alt="Product image" class="img-thumbnail">
         </div>
         <div class="col-4">
-            <p>Product name</p>
-            <p><span class="dot"></span><span>Colour name</span></p>
+            <p>{{ product.prod_obj.name }}</p>
+            <p><span class="dot" style="background-color: {{ product.colour.hex_value}};"></span><span>{{ product.colour.name }}</span></p>
         </div>
         <div class="col-4">
             
             <form>
                 {% include "components/quantity.html" %}
-                <span>€ xx</span>
+                <span>€{{ product.prod_obj.price }}</span>
             </form>
             
         </div>
     </div>
+    {% endfor %}
 
     <hr>
     <div class="row text-right">
         <div class="col-12">
             <p><span>TOTAL</span>
-                <span>€ XX</span></p>
+                <span>€ {{ total }}</span></p>
         </div>
     </div>
     <div class="row text-center">

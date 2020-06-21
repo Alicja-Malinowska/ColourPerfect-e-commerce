@@ -1,5 +1,5 @@
 from django.db import models
-from products.models import Product
+from products.models import Product, Colour
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -15,6 +15,6 @@ class BasketItem(models.Model):
     product = models.ForeignKey(Product, null=False, blank=False,
                                 on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
-    colour = models.CharField(max_length=7, null=True,
-                              blank=True)
+    colour = models.ForeignKey(Colour, null=True,
+                              blank=True, on_delete=models.CASCADE, editable=False)
     
