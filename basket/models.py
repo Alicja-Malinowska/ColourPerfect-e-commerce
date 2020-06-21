@@ -17,6 +17,4 @@ class BasketItem(models.Model):
     quantity = models.IntegerField(null=False, blank=False, default=0)
     colour = models.CharField(max_length=7, null=True,
                               blank=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2,
-                                         null=False, blank=False,
-                                         editable=False)
+    

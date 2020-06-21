@@ -3,11 +3,11 @@
 
 {% block content%}
 <div class="container">
-<form>
+<form action="{% url 'add_to_basket' product.id %}" method="POST">
+    {% csrf_token %}
     
         <div class="row">
             <div class="col-12 d-xl-none text-center">
-                <!--THIS IS REPEATED SO LATER EXTRACT AND INCLUDE-->
                 {% include "components/product-top.html" %}
             </div>
             <div class="col-12 col-xl-6">
@@ -49,6 +49,8 @@
                 {% include "components/quantity.html" %}
 
                 <input type="submit" value="Add to basket" id="submit">
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                <input type="hidden" name="has_colours" value="{{ has_colours }}">
 
             </div>
         </div>
