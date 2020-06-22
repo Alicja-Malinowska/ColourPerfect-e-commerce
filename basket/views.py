@@ -1,5 +1,5 @@
 from decimal import Decimal
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from basket.models import Basket, BasketItem, Colour
 from products.models import Product
@@ -10,22 +10,24 @@ from helpers.validators import is_hex_color, correct_quantity
 
 def basket(request):
 
+    basket_products = []
+    total = 0
+   
+
     if request.user.is_authenticated:
         basket_items = BasketItem.objects.filter(basket__owner=request.user)
-        basket_products = []
-        total = 0
+        
         for item in basket_items:
             basket_product = {}
             basket_product['prod_obj'] = item.product
             basket_product['colour'] = item.colour
             basket_product['quantity'] = item.quantity
+            basket_product['item_id'] = item.id
             basket_products.append(basket_product)
             prod_sum = Decimal(item.product.price) * item.quantity
             total += prod_sum
     else:
         basket = request.session.get('basket', {})
-        basket_products = []
-        total = 0
         for item_id in basket:
             basket_product = {}
             prod_obj = get_object_or_404(Product, pk=basket[item_id]['product'])
@@ -34,6 +36,7 @@ def basket(request):
                 basket_product['colour'] = get_object_or_404(
                     Colour, pk=basket[item_id]['colour'])
             basket_product['quantity'] = basket[item_id]['quantity']
+            basket_product['item_id'] = item_id
             basket_products.append(basket_product)
             prod_sum = Decimal(prod_obj.price) * basket[item_id]['quantity']
             total += prod_sum
@@ -132,6 +135,26 @@ def add_to_basket(request, product_id):
                              (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
 
         request.session['basket'] = basket
-        print(basket)
 
     return redirect(redirect_url)
+
+def adjust_quantity(request):
+
+    quantity = int(request.POST.get('quantity'))
+    item_id = request.POST.get('item_id')
+
+    if request.user.is_authenticated:
+        basket_item = BasketItem.objects.get(pk=item_id)
+        basket_item.quantity = quantity
+        basket_item.save()
+    else:
+        basket = request.session.get('basket', {})
+        basket[item_id]['quantity'] = quantity
+        request.session['basket'] = basket
+        
+    return redirect(reverse('basket'))
+
+
+
+
+    

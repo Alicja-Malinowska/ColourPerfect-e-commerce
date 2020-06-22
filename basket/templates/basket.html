@@ -19,18 +19,21 @@
     </div>
     {% for product in products %}
     <div class="row no-gutters">
-        <div class="col-4">
+        <div class="col-2">
             <img src="{{ product.prod_obj.image_link }}" alt="Product image" class="img-thumbnail">
         </div>
         <div class="col-4">
-            <p>{{ product.prod_obj.name }}</p>
-            <p><span class="dot" style="background-color: {{ product.colour.hex_value}};"></span><span>{{ product.colour.name }}</span></p>
+            <a href="{% url 'product' product.prod_obj.id %}">{{ product.prod_obj.name }}</a>
+            <p><span class="dot" style="background-color: {{ product.colour.hex_value }};"></span><span>{{ product.colour.name }}</span></p>
         </div>
         <div class="col-4">
             
-            <form>
+            <form id="basket-form" action="{% url 'adjust_quantity' %}" method="POST">
+                {% csrf_token %}
                 {% include "components/quantity.html" %}
                 <span>€{{ product.prod_obj.price }}</span>
+                <input type="hidden" name="item_id" value="{{ product.item_id }}">
+                <input type="submit" value="Update">
             </form>
             
         </div>
