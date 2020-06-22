@@ -32,7 +32,7 @@ def basket(request):
             basket_product = {}
             prod_obj = get_object_or_404(Product, pk=basket[item_id]['product'])
             basket_product['prod_obj'] = prod_obj
-            if not basket[item_id]['colour'] == None:
+            if basket[item_id]['colour']:
                 basket_product['colour'] = get_object_or_404(
                     Colour, pk=basket[item_id]['colour'])
             basket_product['quantity'] = basket[item_id]['quantity']
@@ -65,7 +65,7 @@ def add_to_basket(request, product_id):
     # validate if colour should have been chosen for the producst or not
     # and if the colour value is correct
     if request.POST.get('has_colours') == 'True':
-        if colour == None:
+        if not colour:
             messages.error(request,
                            ("Please choose a colour first."))
             return redirect(redirect_url)
@@ -77,7 +77,7 @@ def add_to_basket(request, product_id):
             messages.error(request,
                            ("This product is not available in this colour, please select a colour from the displayed ones"))
             return redirect(redirect_url)
-    elif request.POST.get('has_colours') == 'False' and not colour == None:
+    elif request.POST.get('has_colours') == 'False' and colour:
         messages.error(request,
                        ("There are no colour options for this product."))
         return redirect(redirect_url)
