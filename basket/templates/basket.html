@@ -38,6 +38,9 @@
             <a href="{% url 'delete' product.item_id %}">Delete</a>
         </div>
     </div>
+
+    {% empty %}
+    <p>There are no items in your basket. Browse our categories and brands, or search for products and put some perfect colours in your basket!</p>
     {% endfor %}
 
     <hr>
