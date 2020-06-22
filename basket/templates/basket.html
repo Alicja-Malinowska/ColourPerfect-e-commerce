@@ -35,7 +35,7 @@
                 <input type="hidden" name="item_id" value="{{ product.item_id }}">
                 <input type="submit" value="Update">
             </form>
-            
+            <a href="{% url 'delete' product.item_id %}">Delete</a>
         </div>
     </div>
     {% endfor %}

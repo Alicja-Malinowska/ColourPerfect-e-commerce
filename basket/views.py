@@ -154,6 +154,19 @@ def adjust_quantity(request):
         
     return redirect(reverse('basket'))
 
+def delete_item(request, item_id):
+
+    if request.user.is_authenticated:
+        BasketItem.objects.get(pk=item_id).delete()
+    else:
+        basket = request.session.get('basket', {})
+        basket.pop(item_id, None)
+        request.session['basket'] = basket
+    
+    return redirect(reverse('basket'))
+
+
+
 
 
 
