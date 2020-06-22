@@ -75,8 +75,8 @@
     <form class="form-inline my-2 my-lg-0" action="{% url 'search' q_type='search' query=' ' %}" method="GET">
         <input class="form-control mr-0" type="search" name="phrase" placeholder="Search" aria-label="Search">
         <button class="btn nav-btn accent-colour my-0" type="submit"><i class="fas fa-search"></i></button>
-        <a href="" class="px-2 nav-icons accent-colour"><i class="fas fa-shopping-cart fa-2x pt-1"></i></a>
-        <a href="" class="px-2 nav-icons accent-colour"><i class="fas fa-heart fa-2x pt-1"></i></a>
+        <a href="{% url 'basket' %}" class="px-2 nav-icons accent-colour" title="Basket"><i class="fas fa-shopping-cart fa-2x pt-1"></i></a>
+        <a href="" class="px-2 nav-icons accent-colour" title="Wishlist"><i class="fas fa-heart fa-2x pt-1"></i></a>
     </form>
 </div>
   </nav>

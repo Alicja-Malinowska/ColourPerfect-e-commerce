@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block content%}
-<form>
-    <div class="container">
+<div class="container">
+<form action="{% url 'add_to_basket' product.id %}" method="POST">
+    {% csrf_token %}
+    
         <div class="row">
             <div class="col-12 d-xl-none text-center">
-                <!--THIS IS REPEATED SO LATER EXTRACT AND INCLUDE-->
                 {% include "components/product-top.html" %}
             </div>
             <div class="col-12 col-xl-6">
@@ -45,11 +46,11 @@
         <div class="row">
             <div class="col-12 text-center">
 
-                <button type="button" class="quantity-button">-</button>
-                <input type="text" name="quantity" id="quantity" value="0" readonly>
-                <button type="button" class="quantity-button">+</button>
+                {% include "components/quantity.html" %}
 
                 <input type="submit" value="Add to basket" id="submit">
+                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                <input type="hidden" name="has_colours" value="{{ has_colours }}">
 
             </div>
         </div>
@@ -74,6 +75,8 @@
             </div>
         </div>
 
-    </div>
+    
 </form>
+
+</div>
 {% endblock %}
