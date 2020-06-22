@@ -53,7 +53,7 @@
         <div class="row">
             {% for category in categories %}
             <div class="col-4 col-xl-2">
-            <a href="">
+            <a href="{% url 'search' q_type='category' query=category %}">
                 <div class="card h-100">
                     <img src="/static/img/{{category.name}}.jpg" class="card-img-top" alt="Product image">
                     <p class="text-center">{{ category.display_name }}</p></div>
@@ -70,7 +70,7 @@
         <h2 class="text-center">Brands</h2>
         <div class="row justify-content-center">
             {% for brand in brands %}
-            <a href="#" class="badge badge-light m-1">{{brand.display_name}}</a>
+            <a href="{% url 'search' q_type='brand' query=brand %}" class="badge badge-light m-1">{{brand.display_name}}</a>
             {% endfor %}
         </div>
     </div>
