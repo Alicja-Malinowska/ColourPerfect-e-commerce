@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from checkout.forms import OrderForm
-from basket.models import BasketItem
+from basket.models import BasketItem, Basket
 
 
 def checkout(request):
@@ -20,6 +20,8 @@ def checkout(request):
     order_form = OrderForm()
     context = {
         'order_form': order_form,
+        'stripe_public_key': 'pk_test_51GxAydEp1b91VbQmNInfK1D24ng3hiRemTTYfTbRX6fupTqU9JnS3DgCyWJwDWVZqpOFbzZcvJzw6rWeLJmL187X00tXYGfZqb',
+        'client_secret': 'test client secret',
     }
 
     return render(request, 'checkout.html', context)
