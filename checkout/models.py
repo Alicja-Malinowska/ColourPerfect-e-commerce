@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from basket.models import BasketItem
+from products.models import Product, Colour
 
 # Create your models here.
 class Order(models.Model):
@@ -21,6 +21,11 @@ class Order(models.Model):
         
         return uuid.uuid1()
 
+    def save(self, *args, **kwargs):
+        if not self.order_number:
+            self.order_number = self._get_order_number()
+        super().save(*args, **kwargs)
+
 
     def __str__(self):
         return self.order_number
@@ -28,5 +33,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE)
-    item = models.ForeignKey(BasketItem, null=False, blank=False, on_delete=models.CASCADE)
-    item_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    product = models.ForeignKey(Product, null=False, blank=False,
+                                on_delete=models.CASCADE, default=None)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    colour = models.ForeignKey(Colour, null=True,
+                              blank=True, on_delete=models.CASCADE, editable=False)
