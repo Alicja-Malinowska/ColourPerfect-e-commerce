@@ -14,7 +14,7 @@
             <h2>Total €{{ total }}</h2>
         </div>
         <div class="col-12 col-xl-6">
-            <a href="" class="btn btn-primary">Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
         </div>
     </div>
     {% for product in products %}
@@ -52,7 +52,7 @@
     </div>
     <div class="row text-center">
         <div class="col-12">
-            <a href="" class="btn btn-primary">Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
         </div>
     </div>
 </div>
