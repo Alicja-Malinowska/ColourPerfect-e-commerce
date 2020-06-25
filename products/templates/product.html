@@ -48,12 +48,17 @@
 
                 {% include "components/quantity.html" %}
 
-                <input type="submit" value="Add to basket" id="submit">
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 <input type="hidden" name="has_colours" value="{{ has_colours }}">
+                <input type="submit" name="basket" value="Add to basket" id="submit">
+                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add" title="Add to wishlist"><i
+                    class="fas fa-heart"></i></button>
 
             </div>
+            <div>
+            </div>
         </div>
+    </form>
         <div class="row">
             <div class="col-12">
                 <p>
@@ -76,7 +81,7 @@
         </div>
 
     
-</form>
+
 
 </div>
 {% endblock %}

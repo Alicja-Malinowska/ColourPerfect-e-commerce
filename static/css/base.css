@@ -148,6 +148,12 @@ a.badge-light:hover,
 .product-icon {
     position: absolute;
     right: 0.5rem;
+    bottom: 0.5rem;
+}
+
+.wishlist-add {
+    position: absolute;
+    right: 0.5rem;
     top: 0.5rem;
 }
 
