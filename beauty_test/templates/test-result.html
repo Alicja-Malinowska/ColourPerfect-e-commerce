@@ -69,13 +69,17 @@
     </div>
     <div class="row card-deck">
         {% for product in products %}
-        
+
         <div class="col-4">
             <a href="{% url 'product' id=product.0.pk %}">
-            <div class="card h-100">
-                <img src="{{ product.0.image_link }}" alt="..." class="card-img-top">
-                <a href="" class="px-2 nav-icons accent-colour product-icon" title="Add to wishlist"><i
-                        class="fas fa-heart"></i></a>
+                <div class="card h-100">
+                    <img src="{{ product.0.image_link }}" alt="..." class="card-img-top">
+                    <form action="{% url 'add_to_wishlist' product_id=product.0.pk %}" method="POST">
+                        {% csrf_token %}
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <button type="submit" class="px-2 nav-icons accent-colour product-icon wishlist-add" title="Add to wishlist"><i
+                        class="fas fa-heart"></i></button>
+                    </form>
             </div>
             </a>
         </div>
