@@ -2,19 +2,25 @@
   <div class="card-deck row">
     {% for product in products %}
     <div class="col-6 col-md-4 col-xl-3">
-      <a href="{% url 'product' id=product.pk %}">
+      <a href="{% url 'product' id=product.0.pk %}">
         <div class="card h-100">
-          <img class="card-img-top" src="{{ product.image_link }}" alt="Product image">
+          <img class="card-img-top" src="{{ product.0.image_link }}" alt="Product image">
           <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">€{{ product.price }}</p>
+            <h5 class="card-title">{{ product.0.name }}</h5>
+            <p class="card-text">€{{ product.0.price }}</p>
           </div>
+          {% if searched %}
+          {% if product.1 %}
+          <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
+              class="fas fa-heart"></i></span>
+          {% endif %}
+          {% endif %}
         </div>
       </a>
     </div>
     {% empty %}
 
-    <p>No products found.</p>
-    {% endfor %}
-  </div>
-</div>
+          <p>No products found.</p>
+          {% endfor %}
+        </div>
+    </div>

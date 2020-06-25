@@ -30,8 +30,10 @@
                         <div class="card h-100" title="{{ prod_col.0.name }}">
                             <span class="dot product-icon" style="background-color: {{ prod_col.1.hex_value }};" title="{{ prod_col.1.name }}"></span>
                             <div><img src="{{prod_col.0.image_link}}" class="card-img-top" alt="Product image"></div>
-                            {% include 'components/add-to-wishlist.html' %}
-                            
+                            {% if prod_col.2 %}
+                            <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
+                                class="fas fa-heart"></i></span>
+                            {% endif %}
                             
                         </div>
                         </a>

@@ -30,7 +30,7 @@ def results(request):
     most_occurances = max([(result_list.count(season.lower()), season) for season in SEASONS])
     result = most_occurances[1]
 
-    products = get_products(result, '?')
+    products = get_products(result, '?', request)
     colours = Colour.objects.filter(season=result.lower()).order_by('?')[:12]
     
     context = {

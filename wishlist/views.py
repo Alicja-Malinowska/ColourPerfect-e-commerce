@@ -11,24 +11,24 @@ def wishlist(request):
     wishlist_items = WishlistItem.objects.filter(wishlist__owner=request.user)
     products = []
     for item in wishlist_items:
-        products.append(item.product)
+        products.append([item.product])# this is a list so that list.html template can be reused for both wishlist and search
 
     context = {
         'wishlist_items': wishlist_items,
         'products': products,
     }
 
+
     return render(request, 'wishlist.html', context)
 
 @login_required
 def add_to_wishlist(request, product_id):
-#   THIS MIGHT NEED TO BE EXTRACTED AND USED HERE AND IN BASKET AS AN IMPORT 
     product = get_object_or_404(Product, pk=product_id)
     all_colours = product.product_colors.all()
     redirect_url = request.POST.get('redirect_url') or request.session['redirect_url']
     colour = request.POST.get('colour') or request.session['colour']
     colour_obj = None
-    colour_name = 'clear or standard'
+    colour_name = 'no colour selected'
     colour_id = None
     if Colour.objects.filter(hex_value=colour).exists():
         colour_obj = Colour.objects.get(hex_value=colour)

@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from products.models import Product, Category, Brand
+from wishlist.models import WishlistItem
 from helpers.seasons import SEASONS
 
 # Create your views here.
@@ -47,18 +48,18 @@ def product(request, id):
 def search(request, q_type, query):
     '''get requested products by search term, category or brand'''
 
-    products = None
+    searched_products = None
 
     if q_type == 'category':
         if Category.objects.filter(name=query).exists():
-            products = Product.objects.filter(category__name=query)
+            searched_products = Product.objects.filter(category__name=query)
         else:
             q_type = "none"
             messages.error(request,
                            ("This category does not exist."))
     elif q_type == 'brand':
         if Brand.objects.filter(name=query).exists():
-            products = Product.objects.filter(brand__name=query)
+            searched_products = Product.objects.filter(brand__name=query)
         else:
             q_type = "none"
             messages.error(request,
@@ -71,7 +72,17 @@ def search(request, q_type, query):
                            ("Please type a phrase you want to search for"))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         queries = Q(name__icontains=query) | Q(description__icontains=query)
-        products = Product.objects.filter(queries)
+        searched_products = Product.objects.filter(queries)
+    
+    products = []
+    if searched_products:
+        for product in searched_products:
+            on_wishlist = False
+            if request.user.is_authenticated: 
+                on_wishlist = WishlistItem.objects.filter(wishlist__owner=request.user, product=product).exists()
+            products.append((product, on_wishlist))
+
+    
 
     if not q_type == 'search':
         query = query.replace('_', ' ')
