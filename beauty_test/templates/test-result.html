@@ -77,6 +77,7 @@
                     <form action="{% url 'add_to_wishlist' product_id=product.0.pk %}" method="POST">
                         {% csrf_token %}
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <input type="hidden" name="colour" value="{{ product.1.hex_value }}">
                     <button type="submit" class="px-2 nav-icons accent-colour product-icon wishlist-add" title="Add to wishlist"><i
                         class="fas fa-heart"></i></button>
                     </form>

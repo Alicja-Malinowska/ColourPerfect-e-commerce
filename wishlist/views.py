@@ -8,7 +8,17 @@ from wishlist.models import Wishlist, WishlistItem
 @login_required
 def wishlist(request):
 
-    return render(request, 'wishlist.html')
+    wishlist_items = WishlistItem.objects.filter(wishlist__owner=request.user)
+    products = []
+    for item in wishlist_items:
+        products.append(item.product)
+
+    context = {
+        'wishlist_items': wishlist_items,
+        'products': products,
+    }
+
+    return render(request, 'wishlist.html', context)
 
 @login_required
 def add_to_wishlist(request, product_id):
