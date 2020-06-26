@@ -9,13 +9,10 @@ from wishlist.models import Wishlist, WishlistItem
 def wishlist(request):
 
     wishlist_items = WishlistItem.objects.filter(wishlist__owner=request.user)
-    products = []
-    for item in wishlist_items:
-        products.append([item.product])# this is a list so that list.html template can be reused for both wishlist and search
 
     context = {
         'wishlist_items': wishlist_items,
-        'products': products,
+        
     }
 
 
@@ -39,9 +36,8 @@ def add_to_wishlist(request, product_id):
     wishlist_items = WishlistItem.objects.filter(wishlist=wishlist)
 
     if wishlist_items.filter(product__id=product.id, colour__hex_value=colour).exists():
-        wishlist_items.filter(product__id=product.id, colour__hex_value=colour).delete()
         messages.error(request,
-                             (f"{product.name} in colour: {colour_name} has been removed from your wishlist."))
+                             (f"{product.name} in colour: {colour_name} is already on your wishlist."))
         
     else:
         wishlist_item = WishlistItem(
@@ -53,10 +49,10 @@ def add_to_wishlist(request, product_id):
     return redirect(redirect_url)
 
 @login_required
-def delete_item(request, item_id):
+def delete_wishlist_item(request, item_id):
 
-    redirect_url = request.POST.get('redirect_url')
+
     WishlistItem.objects.get(pk=item_id).delete()
     
    
-    return redirect(redirect_url)
+    return redirect('wishlist')

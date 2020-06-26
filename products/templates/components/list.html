@@ -9,11 +9,9 @@
             <h5 class="card-title">{{ product.0.name }}</h5>
             <p class="card-text">€{{ product.0.price }}</p>
           </div>
-          {% if searched %}
           {% if product.1 %}
-          <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
+          <span class="px-2 nav-icons accent-colour top-right-icon" title="On your wishlist"><i
               class="fas fa-heart"></i></span>
-          {% endif %}
           {% endif %}
         </div>
       </a>

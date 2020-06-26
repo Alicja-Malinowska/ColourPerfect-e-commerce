@@ -4,6 +4,31 @@
 
 {% block content%}
 <div class="container">
-    {% include 'components/list.html' %}
+
+
+    <div class="container">
+        <div class="card-deck row">
+            {% for item in wishlist_items %}
+            <div class="col-6 col-md-4 col-xl-3">
+                <a href="{% url 'product' id=item.product.id %}">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="{{ item.product.image_link }}" alt="Product image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product.name }}</h5>
+                            <p class="card-text">€{{ item.product.price }}</p>
+                        </div>
+
+                        <a href="{% url 'delete_wishlist_item' item.pk %}"
+                            class="px-2 nav-icons accent-colour top-right-icon" title="Delete from wishlist"><i
+                                class="fas fa-times"></i></a>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+
+            <p>You haven't added anything to your wishlist yet.</p>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}
