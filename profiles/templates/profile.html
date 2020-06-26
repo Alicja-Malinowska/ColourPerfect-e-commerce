@@ -3,12 +3,27 @@
 
 {% block content%}
 <div class="container">
-    <p>Your details</p>
-    <hr>
-    <form class="mt-3" action="{% url 'profile' %}" method="POST">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-primary">Update details</button>
-    </form>
+    <h1>Your Account</h1>
+    <div class="row">
+        <div class="col-12 col-xl-6">
+            <p>Your details</p>
+            <hr>
+            <form class="mt-3" action="{% url 'profile' %}" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary">Update details</button>
+            </form>
+        </div>
+        <div class="col-12 col-xl-6">
+            <p>Your recent orders</p>
+            {% for order in recent_orders %}
+            <p>{{order.order_number}}</p>
+            <p>{{order.date}}</p>
+            {% for item in order.orderitems.all %}
+            <p>{{ item.product.name }}</p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

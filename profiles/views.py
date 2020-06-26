@@ -19,11 +19,11 @@ def profile(request):
     else:
         form = ProfileForm(instance=profile)
 
-    orders = profile.orders.all()
+    recent_orders = profile.orders.all().order_by('-date')[:3]
 
     context = {
         'form': form,
-        'orders': orders,
+        'recent_orders': recent_orders,
     }
 
     return render(request, 'profile.html', context)
