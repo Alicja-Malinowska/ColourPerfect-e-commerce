@@ -3,63 +3,92 @@
 
 {% block content%}
 <div class="container">
+
     <h1>About us</h1>
-    <div>
-        <p>ColourPerfect is a unique online makeup shop that offers colour matching products for your beauty type.
-            We sell a wide range of products of the most popular brands. Each product description comes with a
-            suggestion which shades are good for different beauty types!</p>
-        <p>
-            <p>Categories<a data-toggle="collapse" href="#categories" role="button" aria-expanded="false"
-                    aria-controls="categories">
-                    <i class="fas fa-chevron-down"></i>
-                </a></p>
+    <section id="about">
+        <div>
+            <p>ColourPerfect is a unique online makeup shop that offers colour matching products for your beauty type.
+                We sell a wide range of products of the most popular brands. Each product description comes with a
+                suggestion which shades are good for different beauty types!</p>
+            <p>
+                <p>Categories<a data-toggle="collapse" href="#categories" role="button" aria-expanded="false"
+                        aria-controls="categories">
+                        <i class="fas fa-chevron-down"></i>
+                    </a></p>
 
-        </p>
-        <div class="collapse" id="categories">
-            <div class="card card-body">
-                
-                {% include "components/categories.html" %}
-           
+            </p>
+            <div class="collapse" id="categories">
+                <div class="card card-body">
+
+                    {% include "components/categories.html" %}
+
+                </div>
+            </div>
+            <p>
+                <p>Brands<a data-toggle="collapse" href="#brands" role="button" aria-expanded="false"
+                        aria-controls="brands">
+                        <i class="fas fa-chevron-down"></i>
+                    </a></p>
+
+            </p>
+            <div class="collapse" id="brands">
+                <div class="card card-body">
+                    {% include "components/brands.html" %}
+                </div>
             </div>
         </div>
-        <p>
-            <p>Brands<a data-toggle="collapse" href="#brands" role="button" aria-expanded="false"
-                    aria-controls="brands">
-                    <i class="fas fa-chevron-down"></i>
-                </a></p>
-
-        </p>
-        <div class="collapse" id="brands">
-            <div class="card card-body">
-                {% include "components/brands.html" %}
+    </section>
+    <section id="beauty-types">
+        <div>
+            <h2>Beauty types</h2>
+            <p>
+                Do you remeber that time when you saw that perfect lipstick shade on your friend's lips, so you rushed
+                to
+                the shop to buy the exactly the same one, and when you did it turned out it did not look so perfect on
+                you? We have all been there, and trust us - there is nothing wrong with you! Your friend probably had a
+                different beauty type than you, and would not look great in a shade tha makes you look like a million
+                dollars! The key is to find out what your beauty type is and what colours will help you to highlight
+                your natural beauty. That being said, it does not mean that particular colours are definitely off limits
+                for you! It is rather about finding the right shade of the colour.
+            </p>
+            <p>
+                Take our test to find out which of the four beauty types you are and what colours are best for you!
+            </p>
+            <div class="text-center">
+                <a href="{% url 'questions' %}" class="btn btn-primary">Take the test!</a>
             </div>
         </div>
-    </div>
-    <div>
-        <h2>Beauty types</h2>
-        <p>
-            Do you remeber that time when you saw that perfect lipstick shade on your friend's lips, so you rushed
-            to
-            the shop to buy the exactly the same one, and when you did it turned out it did not look so perfect on
-            you? We have all been there, and trust us - there is nothing wrong with you! Your friend probably had a
-            different beauty type than you, and would not look great in a shade tha makes you look like a million
-            dollars! The key is to find out what your beauty type is and what colours will help you to highlight
-            your natural beauty. That being said, it does not mean that particular colours are definitely off limits
-            for you! It is rather about finding the right shade of the colour.
-        </p>
-        <p>
-            Take our test to find out which of the four beauty types you are and what colours are best for you!
-        </p>
+    </section>
+    <section id="delivery-returns">
+        <h2>Delivery</h2>
+
+        <p>Colour Perfect offers free delivery for all the products!</p>
+
+        <p>Please note that we deliver only in the Republic of Ireland.</p>
+
+        <h2>Returns</h2>
+
+        <p>You can return any unwanted items free of charge within 35 days for a refund or replacement. We are only able
+            to offer a replacement if the item is in stock. We are unable to exchange products.
+
+            If you change your mind about an unused item you’ve bought in the last 35 days, simply return it in its
+            packaging. We reserve the right to refuse an exchange or refund if goods are not returned in a saleable
+            condition or are damaged. If the item was faulty or damaged when delivered, an exchange or refund will be
+            offered.</p>
+
+        <p>If you would like to return any items please get in touch with our Customer Service!</p>
+
+    </section>
+
+    <section id="contact">
         <div class="text-center">
-            <a href="{% url 'questions' %}" class="btn btn-primary">Take the test!</a>
+            <h2>Contact</h2>
+            <p>If you have any questions do not hesitate to contact our Customer service!</p>
+            <a href="tel:+00111-222-333" aria-label="call us"><i class="fas fa-phone"></i>Customer Service:
+                +00111-222-333</a>
+            <p>Click the link below to find out about our delivery and returns policy!</p>
+            <a href=""><i class="fas fa-truck"></i>Delivery & Returns</a>
         </div>
-    </div>
-    <div class="text-center">
-        <h2>Contact</h2>
-        <p>If you have any questions do not hesitate to contact our Customer service!</p>
-        <a href="tel:+00111-222-333" aria-label="call us"><i class="fas fa-phone"></i>Customer Service: +00111-222-333</a>
-        <p>Click the link below to find out about our delivery and returns policy!</p>
-        <a href=""><i class="fas fa-truck"></i>Delivery & Returns</a>
-    </div>
+    </section>
 </div>
 {% endblock %}
