@@ -14,7 +14,6 @@ def basket(request):
 
 
 def add_to_basket(request, product_id):
-
     product = get_object_or_404(Product, pk=product_id)
     all_colours = product.product_colors.all()
     redirect_url = request.POST.get('redirect_url')
@@ -26,80 +25,86 @@ def add_to_basket(request, product_id):
         colour_obj = Colour.objects.get(hex_value=colour)
         colour_name = colour_obj.name
         colour_id = colour_obj.id
-
-    # validate if colour should have been chosen for the producst or not
-    # and if the colour value is correct
-    if request.POST.get('has_colours') == 'True':
-        if not colour:
-            messages.error(request,
-                           ("Please choose a colour first."))
-            return redirect(redirect_url)
-        elif not is_hex_color(colour):
-            messages.error(request,
-                           ("Invalid colour, please select a colour from the displayed ones"))
-            return redirect(redirect_url)
-        elif not all_colours.filter(hex_value=colour).exists():
-            messages.error(request,
-                           ("This product is not available in this colour, please select a colour from the displayed ones"))
-            return redirect(redirect_url)
-    elif request.POST.get('has_colours') == 'False' and colour:
-        messages.error(request,
-                       ("There are no colour options for this product."))
-        return redirect(redirect_url)
-
-    # valdidate quantity
-    try:
-        quantity = int(request.POST.get('quantity'))
-
-        if not correct_quantity(quantity):
-            messages.error(request,
-                           ("You can add 1-99 products to the basket."))
-            return redirect(redirect_url)
-    except:
-        messages.error(request,
-                       ("Quantity must be an integer."))
-        return redirect(redirect_url)
-
-    # for logged-in users save basket in the database
-    if request.user.is_authenticated:
-        basket = Basket.objects.get_or_create(owner=request.user)[0]
-        basket_items = BasketItem.objects.filter(basket=basket)
-
-        if basket_items.filter(product__id=product.id, colour__hex_value=colour).exists():
-            basket_item = BasketItem.objects.get(
-                product__id=product.id, colour__hex_value=colour)
-            basket_item.quantity += quantity
-            basket_item.save()
-            messages.success(request,
-                             (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
-
-        else:
-            basket_item = BasketItem(
-                basket=basket, product=product, quantity=quantity, colour=colour_obj)
-            basket_item.save()
-            messages.success(request,
-                             (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
-
-    # if no user is logged in use session to store basket items
+   
+    if 'wishlist' in request.POST:
+        request.session['redirect_url'] = redirect_url
+        request.session['colour'] = colour 
+        return redirect(reverse('add_to_wishlist', args=[product_id]))
     else:
-        basket = request.session.get('basket', {})
-        item_id = str(product_id) + str(colour_id)
-       
 
-        if item_id in list(basket.keys()):
-            basket[item_id]['quantity'] += quantity
-            messages.success(request,
-                             (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
+        # validate if colour should have been chosen for the producst or not
+        # and if the colour value is correct
+        if request.POST.get('has_colours') == 'True':
+            if not colour:
+                messages.error(request,
+                            ("Please choose a colour first."))
+                return redirect(redirect_url)
+            elif not is_hex_color(colour):
+                messages.error(request,
+                            ("Invalid colour, please select a colour from the displayed ones"))
+                return redirect(redirect_url)
+            elif not all_colours.filter(hex_value=colour).exists():
+                messages.error(request,
+                            ("This product is not available in this colour, please select a colour from the displayed ones"))
+                return redirect(redirect_url)
+        elif request.POST.get('has_colours') == 'False' and colour:
+            messages.error(request,
+                        ("There are no colour options for this product."))
+            return redirect(redirect_url)
+
+        # valdidate quantity
+        try:
+            quantity = int(request.POST.get('quantity'))
+
+            if not correct_quantity(quantity):
+                messages.error(request,
+                            ("You can add 1-99 products to the basket."))
+                return redirect(redirect_url)
+        except:
+            messages.error(request,
+                        ("Quantity must be an integer."))
+            return redirect(redirect_url)
+
+        # for logged-in users save basket in the database
+        if request.user.is_authenticated:
+            basket = Basket.objects.get_or_create(owner=request.user)[0]
+            basket_items = BasketItem.objects.filter(basket=basket)
+
+            if basket_items.filter(product__id=product.id, colour__hex_value=colour).exists():
+                basket_item = BasketItem.objects.get(
+                    product__id=product.id, colour__hex_value=colour)
+                basket_item.quantity += quantity
+                basket_item.save()
+                messages.success(request,
+                                (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
+
+            else:
+                basket_item = BasketItem(
+                    basket=basket, product=product, quantity=quantity, colour=colour_obj)
+                basket_item.save()
+                messages.success(request,
+                                (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
+
+        # if no user is logged in use session to store basket items
         else:
-            basket[item_id] = {
-                'product': product_id,
-                'quantity': quantity,
-                'colour': colour_id
-            }
-            messages.success(request,
-                             (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
+            basket = request.session.get('basket', {})
+            item_id = str(product_id) + str(colour_id)
+        
 
-        request.session['basket'] = basket
+            if item_id in list(basket.keys()):
+                basket[item_id]['quantity'] += quantity
+                messages.success(request,
+                                (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
+            else:
+                basket[item_id] = {
+                    'product': product_id,
+                    'quantity': quantity,
+                    'colour': colour_id
+                }
+                messages.success(request,
+                                (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
+
+            request.session['basket'] = basket
 
     return redirect(redirect_url)
 

@@ -68,29 +68,32 @@
         </div>
     </div>
     <div class="row card-deck">
-        {% for product in products %}
-        
+        {% for prod_col in products %}
+
         <div class="col-4">
-            <a href="{% url 'product' id=product.0.pk %}">
-            <div class="card h-100">
-                <img src="{{ product.0.image_link }}" alt="..." class="card-img-top">
-                <a href="" class="px-2 nav-icons accent-colour product-icon" title="Add to wishlist"><i
-                        class="fas fa-heart"></i></a>
-            </div>
+            <a href="{% url 'product' id=prod_col.0.pk %}">
+                <div class="card h-100">
+                    <img src="{{ prod_col.0.image_link }}" alt="..." class="card-img-top">
+                    {% if prod_col.2 %}
+                    <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
+                            class="fas fa-heart"></i></span>
+                    {% endif %}
+
+                </div>
             </a>
         </div>
-        
-        
+
+
         <div class="col-4 order-last">
             <div>
-                <p>{{ product.0.name }}</br>
-                    in <span class="dot" title="{{ product.1.name }}"
-                        style="background-color: {{ product.1.hex_value }};"></span> </p>
-                <p>€{{ product.0.price }}</p>
+                <p>{{ prod_colt.0.name }}</br>
+                    in <span class="dot" title="{{ prod_col.1.name }}"
+                        style="background-color: {{ prod_col.1.hex_value }};"></span> </p>
+                <p>€{{ prod_col.0.price }}</p>
 
             </div>
         </div>
-    
+
         {% endfor %}
     </div>
 </div>

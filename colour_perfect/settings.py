@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'beauty_test',
     'basket',
     'checkout',
+    'wishlist',
 
     'crispy_forms',
 ]
