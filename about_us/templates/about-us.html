@@ -1,3 +1,7 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
 <div class="container">
     <h1>About us</h1>
     <div>
@@ -13,7 +17,9 @@
         </p>
         <div class="collapse" id="categories">
             <div class="card card-body">
-                Categories component will go here.
+                
+                {% include "components/categories.html" %}
+           
             </div>
         </div>
         <p>
@@ -25,7 +31,7 @@
         </p>
         <div class="collapse" id="brands">
             <div class="card card-body">
-                Brands component will go here.
+                {% include "components/brands.html" %}
             </div>
         </div>
     </div>
@@ -45,7 +51,7 @@
             Take our test to find out which of the four beauty types you are and what colours are best for you!
         </p>
         <div class="text-center">
-            <a href="" class="btn btn-primary">Take the test!</a>
+            <a href="{% url 'questions' %}" class="btn btn-primary">Take the test!</a>
         </div>
     </div>
     <div class="text-center">
@@ -56,3 +62,4 @@
         <a href=""><i class="fas fa-truck"></i>Delivery & Returns</a>
     </div>
 </div>
+{% endblock %}
