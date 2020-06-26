@@ -21,6 +21,9 @@
                         <a href="{% url 'delete_wishlist_item' item.pk %}"
                             class="px-2 nav-icons accent-colour top-right-icon" title="Delete from wishlist"><i
                                 class="fas fa-times"></i></a>
+                        {% if item.colour %}
+                        <span class="dot product-icon" style="background-color: {{ item.colour.hex_value }};" title="{{ item.colour.name }}"></span>
+                        {% endif %}
                     </div>
                 </a>
             </div>
@@ -30,5 +33,7 @@
             {% endfor %}
         </div>
     </div>
+
+
 </div>
 {% endblock %}
