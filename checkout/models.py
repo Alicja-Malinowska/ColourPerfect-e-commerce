@@ -1,10 +1,14 @@
 import uuid
 from django.db import models
 from products.models import Product, Colour
+from profiles.models import Profile
 
 # Create your models here.
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
+                                     null=True, blank=True,
+                                     related_name='orders')
     first_name = models.CharField(max_length=50, null=False, blank=False)
     last_name = models.CharField(max_length=50, null=False, blank=False)
     email_address = models.EmailField(max_length=254, null=False, blank=False)
@@ -32,7 +36,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='orderitems')
     product = models.ForeignKey(Product, null=False, blank=False,
                                 on_delete=models.CASCADE, default=None)
     quantity = models.IntegerField(null=False, blank=False, default=0)
