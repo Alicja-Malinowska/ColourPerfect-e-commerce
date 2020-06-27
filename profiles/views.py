@@ -24,7 +24,18 @@ def profile(request):
 
     context = {
         'form': form,
-        'recent_orders': recent_orders,
+        'orders': recent_orders,
     }
 
     return render(request, 'profile.html', context)
+
+def order_history(request):
+    
+    profile = get_object_or_404(Profile, owner=request.user)
+    orders = profile.orders.all().order_by('-date')
+
+    context = {
+        'orders': orders,
+    }
+
+    return render(request, 'order-history.html', context)
