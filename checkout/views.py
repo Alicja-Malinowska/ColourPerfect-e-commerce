@@ -7,6 +7,7 @@ from basket.models import BasketItem, Basket
 from basket.contexts import basket_content
 from checkout.models import Order, OrderItem
 from products.models import Product, Colour
+from profiles.models import Profile
 
 
 def checkout(request):
@@ -100,9 +101,15 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email_address}.')
 
-    if request.user.is_authenticated and BasketItem.objects.filter(basket__owner=request.user).exists():
+    if request.user.is_authenticated:
+        
+        profile = Profile.objects.get(owner=request.user)
+        order.profile = profile
+        order.save()
+        
+        if BasketItem.objects.filter(basket__owner=request.user).exists():
 
-        BasketItem.objects.filter(basket__owner=request.user).delete()
+            BasketItem.objects.filter(basket__owner=request.user).delete()
 
     elif 'basket' in request.session:
 
