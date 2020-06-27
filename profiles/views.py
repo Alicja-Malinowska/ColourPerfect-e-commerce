@@ -20,6 +20,7 @@ def profile(request):
         form = ProfileForm(instance=profile)
 
     recent_orders = profile.orders.all().order_by('-date')[:3]
+    
 
     context = {
         'form': form,
