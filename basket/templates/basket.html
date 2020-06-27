@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load mathfilters %}
 {% block content%}
 
 <div class="container">
@@ -25,13 +25,14 @@
         <div class="col-4">
             <a href="{% url 'product' product.prod_obj.id %}">{{ product.prod_obj.name }}</a>
             <p><span class="dot" style="background-color: {{ product.colour.hex_value }};"></span><span>{{ product.colour.name }}</span></p>
+            <p>€{{ product.prod_obj.price }}</p>
         </div>
         <div class="col-4">
             
             <form id="basket-form" action="{% url 'adjust_quantity' %}" method="POST">
                 {% csrf_token %}
                 {% include "components/quantity.html" %}
-                <span>€{{ product.prod_obj.price }}</span>
+                <span>€{{ product.prod_obj.price|mul:product.quantity }}</span>
                 <input type="hidden" name="item_id" value="{{ product.item_id }}">
                 <input type="submit" value="Update">
             </form>
