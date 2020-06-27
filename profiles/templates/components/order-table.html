@@ -24,7 +24,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-2 offset-6">
-                            <p>Price</p>
+                                <p>Price</p>
                             </div>
                             <div class="col-2">
                                 <p>Quantity</p>
@@ -40,7 +40,9 @@
                             </div>
                             <div class="col-4">
                                 <a href="{% url 'product' item.product.id %}">{{ item.product.name }}</a>
-                                <p><span class="dot" style="background-color: {{ item.colour.hex_value }};"></span><span>{{ item.colour.name }}</span></p>
+                                <p><span class="dot"
+                                        style="background-color: {{ item.colour.hex_value }};"></span><span>{{ item.colour.name }}</span>
+                                </p>
                             </div>
                             <div class="col-2">
                                 <p>€{{ item.product.price }}</p>
@@ -53,11 +55,19 @@
                             </div>
                         </div>
                         {% endfor %}
-    
+
                     </div>
                 </div>
             </td>
         </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">
+                <p>You haven't ordered anything yet.</br>Browse our categories and brands or search for products and add
+                    some awesome colours to your basket!</p>
+            </td>
+        </tr>
+
         {% endfor %}
     </tbody>
 </table>
