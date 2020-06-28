@@ -11,7 +11,7 @@ Order total: €{{ order.total }}
 Delivery details:
 
 Name: {{ order.first_name }} {{ order.last_name }}
-Address: {{ street_address1 }} {{ street_address2 }}, {{ town_or_city }}, {{ postcode }}, {{ country }}
+Address: {{ order.street_address1 }} {{ order.street_address2 }}, {{ order.town_or_city }}, {{ order.postcode }}, {{ order.country }}
 Contact number: {{ order.phone_number }}
 
 Products ordered:
