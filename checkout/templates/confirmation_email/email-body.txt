@@ -1,0 +1,28 @@
+Hi {{ order.first_name }}!
+
+We hope you're ready to look like a million dollars because all those prefect colours you chose are on their way to you!
+
+Order details:
+
+Order number: {{ order.order_number }}
+Order date: {{ order.date }}
+Order total: €{{ order.total }}
+
+Delivery details:
+
+Name: {{ order.first_name }} {{ order.last_name }}
+Address: {{ street_address1 }} {{ street_address2 }}, {{ town_or_city }}, {{ postcode }}, {{ country }}
+Contact number: {{ order.phone_number }}
+
+Products ordered:
+
+{% for item in order.orderitems.all %}
+
+{{ item.quantity }} {{ item.product.name }}
+
+{% endfor %}
+
+Thank you for shopping with us. Come back soon for more fabulous colours!
+
+Best,
+ColourPerfect Team

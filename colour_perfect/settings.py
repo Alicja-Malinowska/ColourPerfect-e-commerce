@@ -173,3 +173,5 @@ STATICFILES_DIRS = (
 STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
+DEFAULT_FROM_EMAIL = 'sales@colourperfect.ie'
