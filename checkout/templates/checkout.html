@@ -24,6 +24,14 @@
         {{ order_form.town_or_city | as_crispy_field }}
         {{ order_form.postcode | as_crispy_field }}
         {{ order_form.country | as_crispy_field }}
+
+        {% if user.is_authenticated %}
+        <label for="save">Save the details</label>
+        <input type="checkbox" id="save" name="save" checked>
+        {% else %}
+        <p><a href="{% url 'account_login' %}">Login</a>to save the details or</p> 
+        <p><a href="{% url 'account_signup' %}">Create an account</a>to save your details and have access to your order history</p>
+        {% endif %}
     </fieldset>
 </div>
     <fieldset>
