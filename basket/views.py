@@ -75,14 +75,14 @@ def add_to_basket(request, product_id):
                     product__id=product.id, colour__hex_value=colour)
                 basket_item.quantity += quantity
                 basket_item.save()
-                messages.success(request,
+                messages.info(request,
                                 (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
 
             else:
                 basket_item = BasketItem(
                     basket=basket, product=product, quantity=quantity, colour=colour_obj)
                 basket_item.save()
-                messages.success(request,
+                messages.info(request,
                                 (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
 
         # if no user is logged in use session to store basket items
@@ -93,7 +93,7 @@ def add_to_basket(request, product_id):
 
             if item_id in list(basket.keys()):
                 basket[item_id]['quantity'] += quantity
-                messages.success(request,
+                messages.info(request,
                                 (f"{quantity} more {product.name} in colour: {colour_name} added to the basket."))
             else:
                 basket[item_id] = {
@@ -101,12 +101,12 @@ def add_to_basket(request, product_id):
                     'quantity': quantity,
                     'colour': colour_id
                 }
-                messages.success(request,
+                messages.info(request,
                                 (f"Added {quantity} {product.name} in colour: {colour_name} to the basket."))
 
             request.session['basket'] = basket
 
-    return redirect(redirect_url)
+    return redirect(redirect_url, product_id=product_id)
 
 def adjust_quantity(request):
 
@@ -115,23 +115,37 @@ def adjust_quantity(request):
 
     if request.user.is_authenticated:
         basket_item = BasketItem.objects.get(pk=item_id)
-        basket_item.quantity = quantity
-        basket_item.save()
+        if basket_item.quantity == quantity:
+            return redirect(reverse('basket'))
+        else:
+            basket_item.quantity = quantity
+            basket_item.save()
+            product_name = basket_item.product.name
     else:
         basket = request.session.get('basket', {})
-        basket[item_id]['quantity'] = quantity
-        request.session['basket'] = basket
+        if basket[item_id]['quantity'] == quantity:
+             return redirect(reverse('basket'))
+        else:
+            basket[item_id]['quantity'] = quantity
+            request.session['basket'] = basket
+            product_name = Product.objects.get(pk=basket[item_id]['product'])
         
+    messages.info(request, (f"Quantity of { product_name } changed to { quantity }"))
     return redirect(reverse('basket'))
 
 def delete_item(request, item_id):
 
     if request.user.is_authenticated:
-        BasketItem.objects.get(pk=item_id).delete()
+        item = BasketItem.objects.get(pk=item_id)
+        messages.info(request, (f"Deleted { item.product.name} from your basket."))
+        item.delete()
     else:
         basket = request.session.get('basket', {})
+        product = Product.objects.get(id=basket[item_id]['product'])
+        messages.info(request, (f"Deleted { product.name } from your basket."))
         basket.pop(item_id, None)
         request.session['basket'] = basket
+    
     
     return redirect(reverse('basket'))
 

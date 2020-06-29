@@ -36,3 +36,8 @@ $(".quantity-button").on("click", function () {
     $button.parent().find("#quantity").val(newVal);
 
 });
+
+/**
+ * Show toast messages
+ */
+$('.toast').toast('show');

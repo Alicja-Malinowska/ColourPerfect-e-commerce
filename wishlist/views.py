@@ -43,16 +43,16 @@ def add_to_wishlist(request, product_id):
         wishlist_item = WishlistItem(
                 wishlist=wishlist, product=product, colour=colour_obj)
         wishlist_item.save()
-        messages.success(request,
+        messages.warning(request,
                              (f"Added {product.name} in colour: {colour_name} to your wishlist."))
-    
+   
     return redirect(redirect_url)
 
 @login_required
 def delete_wishlist_item(request, item_id):
-
-
-    WishlistItem.objects.get(pk=item_id).delete()
+    item = WishlistItem.objects.get(pk=item_id)
+    messages.warning(request, (f"Deleted { item.product.name } from your wishlist."))
+    item.delete()
     
    
     return redirect('wishlist')

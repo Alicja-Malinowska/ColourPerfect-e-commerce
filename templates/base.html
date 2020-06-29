@@ -21,13 +21,22 @@
     {% include "components/nav.html" %}
 
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'components/toasts/error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'components/toasts/wishlist.html' %}
+                    {% elif level == 25 %}
+                        {% include 'components/toasts/success.html' %}
+                    {% else %}
+                        {% include 'components/toasts/basket.html' %}
+                    {% endif %}
+                {% endwith %}
             {% endfor %}
-    </ul>
+        </div>
     {% endif %}
-
 
     {% block content %}
     {% endblock %}
