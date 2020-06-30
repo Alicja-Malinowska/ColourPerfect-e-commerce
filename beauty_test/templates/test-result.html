@@ -75,8 +75,10 @@
                 <div class="card h-100">
                     <img src="{{ prod_col.0.image_link }}" alt="..." class="card-img-top">
                     {% if prod_col.2 %}
-                    <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
-                            class="fas fa-heart"></i></span>
+                    <a href="{% url 'wishlist' %}">
+                        <span class="px-2 nav-icons accent-colour top-right-icon on-wishlist"
+                            title="On your wishlist"><i class="fas fa-heart"></i></span>
+                    </a>
                     {% endif %}
 
                 </div>

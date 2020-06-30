@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extracss %}
-    <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
 
 {% block content%}
@@ -12,66 +12,77 @@
         <h2>Find your perfect colour match makeup.<br> Look fabulous!</h2>
     </div>
 </div>
-<div class="text-center my-2"><div class="mx-2 d-inline-block"><i class="fas fa-truck accent-colour mx-2"></i>FREE DELIVERY ON ALL ORDERS</div><hr class="separator"><div class="mx-2 d-inline-block"><i class="fas fa-question accent-colour mx-2"></i>FREE <a href="{% url 'questions' %}">Beauty type test</a></div><hr class="separator"><div class="mx-2 d-inline-block"><i class="fas fa-palette accent-colour mx-2"></i>Colour matching</div></div>
+<div class="text-center my-2">
+    <div class="mx-2 d-inline-block"><i class="fas fa-truck accent-colour mx-2"></i>FREE DELIVERY ON ALL ORDERS</div>
+    <hr class="separator">
+    <div class="mx-2 d-inline-block"><i class="fas fa-question accent-colour mx-2"></i>FREE <a
+            href="{% url 'questions' %}">Beauty type test</a></div>
+    <hr class="separator">
+    <div class="mx-2 d-inline-block"><i class="fas fa-palette accent-colour mx-2"></i>Colour matching</div>
+</div>
 <div class="text-center" id="welcome">
-{% if user.is_authenticated %}
-<h3 class="my-3 accent-colour">Welcome, {{ user.username }} !</h3>
-{% endif %}
+    {% if user.is_authenticated %}
+    <h3 class="my-3 accent-colour">Welcome, {{ user.username }} !</h3>
+    {% endif %}
 </div>
 
 <section id="suggestions" class="mb-5">
     <div class="container">
         <h2 class="text-center section-header">Perfect picks for...</h2>
-        
+
         <div class="row card-deck">
             {% for season, values in suggestions.items %}
             <div class="col-12 col-xl-6 mb-5">
-                
+
                 <p class="text-center font-weight-bold font-italic">{{season}}</p>
-            
+
                 <div class="row suggestions-row mb-2">
                     {% for prod_col in values %}
-                    
+
                     <div class="col-4">
                         <a href="{% url 'product' id=prod_col.0.pk %}">
-                        <div class="card h-100" title="{{ prod_col.0.name }}">
-                            <span class="dot product-icon" style="background-color: {{ prod_col.1.hex_value }};" title="{{ prod_col.1.name }}"></span>
-                            <div class="image-wrapper w-75"><img src="{{prod_col.0.image_link}}" class="card-img-top" alt="Product image"></div>
-                            {% if prod_col.2 %}
-                            <span class="px-2 nav-icons accent-colour wishlist-add" title="On your wishlist"><i
-                                class="fas fa-heart"></i></span>
-                            {% endif %}
-                            
-                        </div>
+                            <div class="card h-100" title="{{ prod_col.0.name }}">
+                                <span class="dot product-icon" style="background-color: {{ prod_col.1.hex_value }};"
+                                    title="{{ prod_col.1.name }}"></span>
+                                <div class="image-wrapper w-75"><img src="{{prod_col.0.image_link}}"
+                                        class="card-img-top" alt="Product image"></div>
+                                {% if prod_col.2 %}
+                                <a href="{% url 'wishlist' %}">
+                                    <span class="px-2 nav-icons accent-colour on-wishlist top-right-icon"
+                                        title="On your wishlist"><i class="fas fa-heart"></i></span>
+                                </a>
+                                {% endif %}
+
+                            </div>
                         </a>
                     </div>
-                
+
                     {% endfor %}
 
-                    
+
                 </div>
             </div>
             {% endfor %}
         </div>
-       
+
     </div>
 </section>
 
 <section id="categories" class="mb-5">
     <div class="container">
         <h2 class="text-center section-header">Categories</h2>
-       
-            {% include "components/categories.html" %}
-        
+
+        {% include "components/categories.html" %}
+
     </div>
 </section>
 
 <section id="brands" class="mb-5">
     <div class="container">
         <h2 class="text-center section-header">Brands</h2>
-      
-            {% include "components/brands.html" %}
-       
+
+        {% include "components/brands.html" %}
+
     </div>
 
 </section>
