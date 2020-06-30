@@ -132,27 +132,9 @@ a.badge-light:hover,
     font-size: 60%;
 }
 
-#hero {
-    background-image: url("/static/img/hero.jpg");
-    background-size: cover;
-    height: 40vh;
-    position: relative;
-    text-align: center;
-    color: #080808;
-}
-
-.image-text {
-
-    background-color: rgba(255, 255, 255, .7);
-    padding: 1rem;
-}
-
-.image-text>h1 {
-    font-family: 'Lobster', cursive;
-}
 
 .badge.brand-badge {
-    background-color: #fc4f6f;
+    background-color: rgba(252, 79, 111, .5);
     font-size: 1.5rem;
 }
 

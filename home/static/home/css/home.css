@@ -1,0 +1,35 @@
+#hero {
+    background-image: url("/static/img/hero.jpg");
+    background-size: cover;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    color: #080808;
+}
+
+.image-text {
+
+    background-color: rgba(255, 255, 255, .7);
+    padding: 1rem;
+}
+
+.image-text>h1 {
+    font-family: 'Lobster', cursive;
+}
+
+.suggestions-row {
+    height: calc(100% - 40px);
+}
+
+.separator {
+    width: 2vw;
+    border-top: 4px solid #bbb;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+
+.section-header {
+    margin: 4vh;
+}
