@@ -3057,7 +3057,7 @@
     "pk": 589,
     "fields": {
       "name": "Clinique Pop&trade; Oil Lip & Cheek Glow",
-      "price": null,
+      "price": 5,
       "image_link": "https://www.clinique.com/media/export/cms/products/181x209/clq_ZKJM01_181x209.png",
       "description": null,
       "brand": 151,
@@ -4670,7 +4670,7 @@
     "pk": 656,
     "fields": {
       "name": "Luxury Blushing Powder Posh",
-      "price": null,
+      "price": 5,
       "image_link": "http://imancosmetics.com/resources/uploads/product_colors/786cee296437aad03a74bba37a11f2a2.jpg",
       "description": "0.11oz (3g) Silky powder blush that provides true color with a natural looking, long-lasting finish. Made in China. ",
       "brand": 153,
@@ -4691,7 +4691,7 @@
     "pk": 657,
     "fields": {
       "name": "Perfect Eye Pencil Deception",
-      "price": null,
+      "price": 5,
       "image_link": "http://imancosmetics.com/resources/uploads/product_colors/EyeshadowPencil_Deception1.jpg",
       "description": "12 oz (3.4 g) Color your way to beautiful with New IMAN luxury eye shadow pencils. Long wearing eye shadow. Ease of a pencil. Made in China. ",
       "brand": 153,
@@ -4713,7 +4713,7 @@
     "pk": 658,
     "fields": {
       "name": "Luxury Moisturizing Lipstick IMAN Nude",
-      "price": null,
+      "price": 5,
       "image_link": "http://imancosmetics.com/resources/uploads/product_colors/d7bbcae0b6eff8013fda0a15280037c4.jpg",
       "description": "13oz (3.7g) Luscious creamy, semi-matte lip color for full coverage and a long-lasting smooth finish. Made in China. ",
       "brand": 153,
@@ -4749,7 +4749,7 @@
     "pk": 659,
     "fields": {
       "name": "Luxury Eye Shadow Bejeweled",
-      "price": null,
+      "price": 5,
       "image_link": "http://imancosmetics.com/resources/uploads/product_colors/EyeShadow_Bejeweled.jpg",
       "description": "0.05oz (1.42g) Silky, long-lasting crease-resistant formula crease resistant wear in true-color mattes, and low luster pearls. Made in China. ",
       "brand": 153,
