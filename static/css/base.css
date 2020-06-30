@@ -143,6 +143,7 @@ a.badge-light:hover,
     width: 2rem;
     border-radius: 50%;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .product-icon {
@@ -210,6 +211,22 @@ a.badge-light:hover,
     overflow-y: scroll;
     overflow-x: hidden;
     max-height: 20vh;
+}
+
+#mini-basket-content .dot {
+    margin-left: 2px;
+    height: 1.5rem;
+    width: 1.5rem;
+
+}
+
+.toast-icon {
+    margin-right: 5px;
+}
+
+.toast-header-text {
+    color: #000000;
+    font-size: 1rem;
 }
 
 

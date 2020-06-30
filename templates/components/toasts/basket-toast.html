@@ -2,7 +2,7 @@
 
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
     <div class="toast-header bg-light">
-        <i class="fas fa-shopping-cart fa-2x pt-1 accent-colour"></i>
+        <i class="fas fa-shopping-cart fa-2x pt-1 accent-colour toast-icon"></i>
         <strong class="mr-auto">Basket</strong>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-8">
         <a href="{% url 'product' product.prod_obj.id %}">{{ product.prod_obj.name }}</a>
-            <p>Colour:<span class="dot" style="background-color: {{ product.colour.hex_value }};" title="{{ product.colour.name }}"></span></p>
+            <p class="my-0">Colour:<span class="dot" style="background-color: {{ product.colour.hex_value }};" title="{{ product.colour.name }}"></span></p>
             <p>Quantity: {{ product.quantity }}</p> 
         </div>
         <div class="col-2">
@@ -32,9 +32,9 @@
     <p>Your basket is empty.</p>
     {% endfor %}
 </div>
-<div>
-    <p class="text-right">Total: {{ total }}</p>
-    <a href="{% url 'checkout' %}" class="btn btn-primary">Checkout</a>
+<div class="text-center border-top">
+    <p class="text-right font-weight-bold">Total: {{ total }}</p>
+    <a href="{% url 'checkout' %}" class="btn btn-primary mb-2">Checkout</a>
 </div>
 </div>
 </div>

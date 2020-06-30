@@ -27,11 +27,11 @@
                     {% if level == 40 %}
                         {% include 'components/toasts/error.html' %}
                     {% elif level == 30 %}
-                        {% include 'components/toasts/wishlist.html' %}
+                        {% include 'components/toasts/wishlist-toast.html' %}
                     {% elif level == 25 %}
                         {% include 'components/toasts/success.html' %}
                     {% else %}
-                        {% include 'components/toasts/basket.html' %}
+                        {% include 'components/toasts/basket-toast.html' %}
                     {% endif %}
                 {% endwith %}
             {% endfor %}
