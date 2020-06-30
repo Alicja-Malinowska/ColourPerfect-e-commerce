@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
 {% for brand in brands %}
-<a href="{% url 'search' q_type='brand' query=brand %}" class="badge badge-light m-1">{{brand.display_name}}</a>
+<a href="{% url 'search' q_type='brand' query=brand %}" class="badge badge-light m-1 brand-badge">{{brand.display_name}}</a>
 {% endfor %}
 </div>

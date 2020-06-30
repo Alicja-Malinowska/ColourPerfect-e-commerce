@@ -1,84 +1,97 @@
 <nav class="navbar navbar-expand-xl navbar-light bg-light">
     <!--The svg was taken from https://www.flaticon.com/, colours changed by me-->
     <a class="navbar-brand" href="{% url 'home' %}"><svg height="50" viewBox="0 0 128 128" width="50"
-        xmlns="http://www.w3.org/2000/svg">
-        <g>
-            <path d="m48 89.177h32v37.07h-32z" class="lipstick-base" />
-            <path d="m52.25 74.25h23.5v14.927h-23.5z" class="lipstick-under-colour" />
-            <path d="m73 74.25h-18v-25.05a3 3 0 0 1 4.088-2.8l12 4.67a3 3 0 0 1 1.912 2.8z"
-                class="lipstick-colour" />
-            <path d="m48 100.125h32v7.587h-32z" class="lipstick-middle" />
-            <path
-                d="m46.37 30.617a23.8 23.8 0 0 0 12.352 3.457h10.556a23.8 23.8 0 0 0 12.352-3.457 23.81 23.81 0 0 1 14.862-3.324l29.758 3.156-23.215-11.979a18.2 18.2 0 0 1 -3.642-2.48l-11.2-9.814a17.877 17.877 0 0 0 -17.8-3.384l-.405.145a17.565 17.565 0 0 1 -11.893.029l-.237-.084a18.265 18.265 0 0 0 -18.183 3.439l-11.066 9.671a18.271 18.271 0 0 1 -3.644 2.478l-23.215 11.979 29.758-3.156a23.81 23.81 0 0 1 14.862 3.324z"
-                class="lip-up" />
-            <path
-                d="m96.492 27.293a23.81 23.81 0 0 0 -14.862 3.324 23.8 23.8 0 0 1 -12.352 3.457h-10.556a23.8 23.8 0 0 1 -12.352-3.457 23.81 23.81 0 0 0 -14.862-3.324l-29.758 3.156 12.144 6.334a51.76 51.76 0 0 1 12.661 9.291l.851.852a51.741 51.741 0 0 0 27.594 14.353v-12.079a3 3 0 0 1 4.088-2.8l12 4.67a3 3 0 0 1 1.912 2.8v7.409a51.741 51.741 0 0 0 27.594-14.353l.851-.852a51.76 51.76 0 0 1 12.661-9.291l12.144-6.334z"
-                class="lip-bottom" />
-        </g>
-    </svg>ColourPerfect</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+            xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path d="m48 89.177h32v37.07h-32z" class="lipstick-base" />
+                <path d="m52.25 74.25h23.5v14.927h-23.5z" class="lipstick-under-colour" />
+                <path d="m73 74.25h-18v-25.05a3 3 0 0 1 4.088-2.8l12 4.67a3 3 0 0 1 1.912 2.8z"
+                    class="lipstick-colour" />
+                <path d="m48 100.125h32v7.587h-32z" class="lipstick-middle" />
+                <path
+                    d="m46.37 30.617a23.8 23.8 0 0 0 12.352 3.457h10.556a23.8 23.8 0 0 0 12.352-3.457 23.81 23.81 0 0 1 14.862-3.324l29.758 3.156-23.215-11.979a18.2 18.2 0 0 1 -3.642-2.48l-11.2-9.814a17.877 17.877 0 0 0 -17.8-3.384l-.405.145a17.565 17.565 0 0 1 -11.893.029l-.237-.084a18.265 18.265 0 0 0 -18.183 3.439l-11.066 9.671a18.271 18.271 0 0 1 -3.644 2.478l-23.215 11.979 29.758-3.156a23.81 23.81 0 0 1 14.862 3.324z"
+                    class="lip-up" />
+                <path
+                    d="m96.492 27.293a23.81 23.81 0 0 0 -14.862 3.324 23.8 23.8 0 0 1 -12.352 3.457h-10.556a23.8 23.8 0 0 1 -12.352-3.457 23.81 23.81 0 0 0 -14.862-3.324l-29.758 3.156 12.144 6.334a51.76 51.76 0 0 1 12.661 9.291l.851.852a51.741 51.741 0 0 0 27.594 14.353v-12.079a3 3 0 0 1 4.088-2.8l12 4.67a3 3 0 0 1 1.912 2.8v7.409a51.741 51.741 0 0 0 27.594-14.353l.851-.852a51.76 51.76 0 0 1 12.661-9.291l12.144-6.334z"
+                    class="lip-bottom" />
+            </g>
+        </svg>ColourPerfect</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for category in categories %}
-                <a class="dropdown-item" href="{% url 'search' q_type='category' query=category %}">{{category.display_name}}</a>
-                {% endfor %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for category in categories %}
+                    <a class="dropdown-item"
+                        href="{% url 'search' q_type='category' query=category %}">{{category.display_name}}</a>
+                    {% endfor %}
 
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Brands
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% for brand in brands %}
-                <a class="dropdown-item" href="{% url 'search' q_type='brand' query=brand %}">{{brand.display_name}}</a>
-                {% endfor %}
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'questions' %}">Beauty type test</a>
-        </li>
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-            <a class="nav-link" href="" data-toggle="modal" data-target="#exampleModal">Logout</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile' %}">Your account</a>
-        </li>
-        {% else %}
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-        </li>
-        {% endif %}
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'about_us' %}">About us</a>
-        </li>
-      </ul>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Brands
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for brand in brands %}
+                    <a class="dropdown-item"
+                        href="{% url 'search' q_type='brand' query=brand %}">{{brand.display_name}}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'questions' %}">Beauty type test</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="" data-toggle="modal" data-target="#exampleModal">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' %}">Your account</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about_us' %}">About us</a>
+            </li>
+        </ul>
     </div>
-    <div class="nav-form">
-    <form class="form-inline my-2 my-lg-0" action="{% url 'search' q_type='search' query=' ' %}" method="GET">
-        <input class="form-control mr-0" type="search" name="phrase" placeholder="Search" aria-label="Search">
-        <button class="btn nav-btn accent-colour my-0" type="submit"><i class="fas fa-search"></i></button>
-        <a href="{% url 'basket' %}" class="px-2 nav-icons accent-colour" title="Basket"><i class="fas fa-shopping-cart fa-2x pt-1"></i></a>
-        <a href="{% url 'wishlist' %}" class="px-2 nav-icons accent-colour" title="Wishlist"><i class="fas fa-heart fa-2x pt-1"></i></a>
-    </form>
-</div>
-  </nav>
+    <div id="nav-actions">
+        <form class="form-inline my-2 my-lg-0" id="search-form" action="{% url 'search' q_type='search' query=' ' %}"
+            method="GET">
+            <input class="form-control mr-0" type="search" name="phrase" placeholder="Search" aria-label="Search">
+            <button class="btn nav-btn accent-colour my-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+        <div id="lists">
+            <div id="basket">
+                <a href="{% url 'basket' %}" class="px-2 nav-icons accent-colour" title="Basket"><i
+                        class="fas fa-shopping-cart fa-2x pt-1"></i></a>
+                {% if total > 0 %}<span class="badge badge-light" id="total-badge">€{{ total }}</span>{% endif %}
+            </div>
+            <div id="wishlist">
+                <a href="{% url 'wishlist' %}" class="px-2 nav-icons accent-colour" title="Wishlist"><i
+                        class="fas fa-heart fa-2x pt-1"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-  {% include "allauth/account/logout.html" %}
+{% include "allauth/account/logout.html" %}

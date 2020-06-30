@@ -114,6 +114,24 @@ a.badge-light:hover,
     border-color: #fc4f6f;
 }
 
+#wishlist, #basket, #lists {
+    position: relative;
+    display: inline-block;
+}
+
+#search-form {
+    display: inline-block;
+}
+
+#total-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: solid 1px darkslategray;
+    padding: 1px;
+    font-size: 60%;
+}
+
 #hero {
     background-image: url("/static/img/hero.jpg");
     background-size: cover;
@@ -133,7 +151,7 @@ a.badge-light:hover,
     font-family: 'Lobster', cursive;
 }
 
-.badge {
+.badge.brand-badge {
     background-color: #fc4f6f;
     font-size: 1.5rem;
 }
@@ -216,7 +234,7 @@ a.badge-light:hover,
 
 @media (max-width: 1199px) {
 
-    .nav-form {
+    #nav-actions {
         width: 100%;
         text-align: right;
     }
@@ -231,9 +249,6 @@ a.badge-light:hover,
         width: 130px;
     }
 
-    .form-inline {
-        display: block;
-    }
 
     /* When the input field gets focus, change its width to 100% */
     input[type=search]:focus {
