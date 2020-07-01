@@ -3,18 +3,24 @@
 
 {% block content%}
 <div class="container">
-{% if searched == 'none' %}
-<p>Please select a category or brand from the drop down on the navigation bar. You can also find all brands and
-    categories at the bottom of the homepage.</p>
-{% else %}
-{% if searched == 'category' %}
-<p>Products in category: {{ query|title }}</p>
-{% elif  searched == 'brand' %}
-<p>Products by {{ query|title }}</p>
-{% elif searched == 'search' %}
-<p>Search results for "{{ query }}"</p>
-{% endif %}
-{% include 'components/list.html' %}
-{% endif %}
+    {% if searched == 'none' %}
+    <div class="replacement-message-wrapper text-center">
+        <div class="replacement-message">
+            <p class="shadow p-3 mb-5 bg-white rounded">Please select a category or brand from the drop down on the
+                navigation bar.</br>You can also find all brands and
+                categories at the bottom of the homepage.</p>
+        </div>
+    </div>
+    {% else %}
+    {% if searched == 'category' %}
+    <h3 class="text-center my-5">Products in category: <span
+            class="font-weight-bold font-italic">{{ query|title }}</span></h3>
+    {% elif  searched == 'brand' %}
+    <h3 class="text-center my-5">Products by <span class="font-weight-bold font-italic">{{ query|title }}</span></h3>
+    {% elif searched == 'search' %}
+    <h3 class="text-center my-5">Search results for <span class="font-weight-bold font-italic">"{{ query }}"</span></h3>
+    {% endif %}
+    {% include 'components/list.html' %}
+    {% endif %}
 </div>
 {% endblock %}

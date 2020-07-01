@@ -11,6 +11,10 @@ body {
     flex-direction: column;
 }
 
+a {
+    color: #fc4f6f;
+}
+
 .container {
     flex: 1 0 auto;
 }
@@ -87,8 +91,9 @@ footer p {
     vertical-align: middle;
 }
 
-.nav-icons:hover {
+.nav-icons:hover, a:hover {
     color: #c90327;
+    text-decoration: none;
 }
 
 .nav-btn {
@@ -114,7 +119,9 @@ a.badge-light:hover,
     border-color: #fc4f6f;
 }
 
-#wishlist, #basket, #lists {
+#wishlist,
+#basket,
+#lists {
     position: relative;
     display: inline-block;
 }
@@ -157,6 +164,55 @@ a.badge-light:hover,
     right: 0.5rem;
     top: 0.5rem;
 }
+
+.replacement-message-wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.replacement-message {
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 900;
+    height: 20vh;
+    
+}
+
+.card-body-price {
+    position: absolute;
+    bottom: 0;
+    color: #000000;
+}
+
+
+.card-body-title {
+    max-height: 120px;
+    height: 120px;
+    padding: 0.25rem;
+    position: absolute;
+    bottom: 24px;
+    font-size: 1rem;
+    display: table;
+}
+
+.card-body-title>h5 {
+    font-size: 1rem;
+    display: table-cell;
+    vertical-align: middle;
+    color: #000000;
+}
+
+.card-column {
+    height: 300px;
+}
+
+.card-body-price,
+.card-body-title {
+    width: 100%;
+    background-color: rgba(241, 210, 220, 0.7);
+}
+
 
 #quantity,
 .quantity-button {
@@ -249,7 +305,7 @@ a.badge-light:hover,
     }
 
 
-    /* When the input field gets focus, change its width to 100% */
+    /* When the input field gets focus, change its width to 80% */
     input[type=search]:focus {
         width: 80%;
     }
@@ -263,5 +319,13 @@ a.badge-light:hover,
         display: block;
         height: auto !important;
         visibility: visible;
+    }
+
+    .card-column {
+        height: 405px;
+    }
+
+    .card-body-title>h5 {
+        font-size: 1.25rem;
     }
 }
