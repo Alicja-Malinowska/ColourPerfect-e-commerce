@@ -8,3 +8,9 @@
     right: 0;
     bottom: 5vh;
 }
+
+@media (min-width: 576px) {
+    #product-details {
+        margin-left: 15px;
+    }
+}

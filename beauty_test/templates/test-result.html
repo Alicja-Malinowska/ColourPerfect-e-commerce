@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'beauty_test/css/beauty_test.css' %}">
+{% endblock %}
+
 {% block content%}
 
 <div class="container">
-    <h1 class="text-center">You are a {{result}}!</h1>
+    <h1 class="text-center my-4">You are {{result}}!</h1>
     <div class="text-center">
         <img src="/static/img/{{result|lower}}.jpg" class="img-fluid" alt="Responsive image">
     </div>
-    <div class="row">
-        <div class="col-12 col-xl-6">
+    <div class="row my-4">
+        <div class="col-12 col-xl-7">
             <h2>Description</h2>
             <p>
                 {% if result == "Spring" %}
@@ -55,15 +59,15 @@
                 {% endif %}
             </p>
         </div>
-        <div class="col-12 col-xl-6">
+        <div class="col-12 col-xl-5">
             <h2>Best colours for you</h2>
             {% for colour in colours %}
-            <span class="dot" title="{{ colour.name }}" style="background-color: {{ colour.hex_value }};"></span>
+            <span class="dot m-3" title="{{ colour.name }}" style="background-color: {{ colour.hex_value }};"></span>
             {% endfor %}
         </div>
     </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 mb-3">
             <h2>Products you might like</h2>
         </div>
     </div>
@@ -73,7 +77,7 @@
         <div class="col-4">
             <a href="{% url 'product' id=prod_col.0.pk %}">
                 <div class="card h-100">
-                    <img src="{{ prod_col.0.image_link }}" alt="..." class="card-img-top">
+                    <img src="{{ prod_col.0.image_link }}" alt="Product image" class="card-img-top">
                     {% if prod_col.2 %}
                     <a href="{% url 'wishlist' %}">
                         <span class="px-2 nav-icons accent-colour top-right-icon on-wishlist"
@@ -87,11 +91,10 @@
 
 
         <div class="col-4 order-last">
-            <div>
-                <p>{{ prod_colt.0.name }}</br>
-                    in <span class="dot" title="{{ prod_col.1.name }}"
-                        style="background-color: {{ prod_col.1.hex_value }};"></span> </p>
-                <p>€{{ prod_col.0.price }}</p>
+            <div id="product-details">
+                <p class="my-2"><span class="dot" title="{{ prod_col.1.name }}"
+                    style="background-color: {{ prod_col.1.hex_value }};"></span></p>
+                <p class="font-weight-bold mb-4">{{ prod_col.0.name|title }}</p>
 
             </div>
         </div>
