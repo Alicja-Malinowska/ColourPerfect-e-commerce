@@ -1,0 +1,10 @@
+#criteria {
+    list-style: none;
+    text-indent: -1em;
+}
+
+#test-img {
+    position:absolute;
+    right: 0;
+    bottom: 5vh;
+}
