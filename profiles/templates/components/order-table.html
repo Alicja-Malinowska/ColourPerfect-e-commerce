@@ -21,16 +21,16 @@
         <tr>
             <td colspan="3">
                 <div class="collapse" id="order{{order.order_number}}">
-                    <div class="container">
+                    <div class="container" id="order-details">
                         <div class="row">
                             <div class="col-2 offset-6">
-                                <p>Price</p>
+                                <p class="font-weight-bold">Price</p>
                             </div>
                             <div class="col-2">
-                                <p>Quantity</p>
+                                <p class="font-weight-bold">Quantity</p>
                             </div>
                             <div class="col-2">
-                                <p>Subtotal</p>
+                                <p class="font-weight-bold">Subtotal</p>
                             </div>
                         </div>
                         {% for item in order.orderitems.all %}
@@ -39,9 +39,9 @@
                                 <img src="{{ item.product.image_link }}" alt="Product image" class="img-thumbnail">
                             </div>
                             <div class="col-4">
-                                <a href="{% url 'product' item.product.id %}">{{ item.product.name }}</a>
-                                <p><span class="dot"
-                                        style="background-color: {{ item.colour.hex_value }};"></span><span>{{ item.colour.name }}</span>
+                                <a href="{% url 'product' item.product.id %}">{{ item.product.name|title }}</a>
+                                <p><span class="dot mr-2" id="history-dot"
+                                        style="background-color: {{ item.colour.hex_value }};"></span><span class="colour-name d-none d-md-inline">{{ item.colour.name }}</span>
                                 </p>
                             </div>
                             <div class="col-2">

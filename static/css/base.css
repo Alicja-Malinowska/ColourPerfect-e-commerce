@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+html {
+    overflow-y: scroll;
+}
 /* these settings make footer stick to the bottom */
 html,
 body {
@@ -269,7 +272,7 @@ a.badge-light:hover,
     max-height: 20vh;
 }
 
-#mini-basket-content .dot {
+#mini-basket-content .dot, #history-dot {
     margin-left: 2px;
     height: 1.5rem;
     width: 1.5rem;
@@ -285,6 +288,11 @@ a.badge-light:hover,
     font-size: 1rem;
 }
 
+
+
+#order-details {
+    font-size: 0.75rem;
+}
 
 
 @media (max-width: 1199px) {
@@ -327,5 +335,9 @@ a.badge-light:hover,
 
     .card-body-title>h5 {
         font-size: 1.25rem;
+    }
+
+    #order-details {
+        font-size: 1rem;
     }
 }
