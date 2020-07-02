@@ -25,7 +25,7 @@
                 <div class="d-none d-xl-block text-center">
                     {% include "components/product-top.html" %}
                 </div>
-                <p>Best colours for:</p>
+                <p class="font-italic"><u>Best colours for:</u></p>
                 {% if has_colours %}
                 <table>
                     {% for season, shades in colours.items %}
@@ -40,11 +40,13 @@
                                         style="background-color: {{ shade.hex_value }};"
                                         title="{{ shade.name }}"></span></label>
                             </div>
-                            {% empty %}
-                            <span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose
-                                a colour anyway! :)</span>
-                            {% endfor %}
+                            
+                            
                         </td>
+                        {% empty %}
+                        <td class="no-match ml-2 mb-2"><span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose
+                            a colour anyway! :)</span></td>
+                        {% endfor %}
                     </tr>
                     {% endfor %}
                 </table>
@@ -54,26 +56,26 @@
                 {% endif %}
             </div>
         </div>
-        <div class="row">
+        <div class="row my-4">
             <div class="col-12 text-center">
 
                 {% include "components/quantity.html" %}
 
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 <input type="hidden" name="has_colours" value="{{ has_colours }}">
-                <input type="submit" name="basket" value="Add to basket" id="submit">
-                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add"
-                    title="Add to wishlist"><i class="fas fa-heart"></i></button>
+                <input type="submit" name="basket" value="Add to basket" class="btn btn-primary" id="submit">
+                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add btn btn-light border ml-md-5 d-block d-md-inline-block mx-auto mt-3 mt-md-0"
+                    title="Add to wishlist"><i class="fas fa-heart"></i>Add to wishlist</button>
 
             </div>
             <div>
             </div>
         </div>
     </form>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-12">
             <p>
-                <p>Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
+                <p class="font-weight-bold">Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
                         aria-expanded="false" aria-controls="collapseExample">
                         <i class="fas fa-chevron-down"></i>
                     </a></p>
