@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-4">
                                 <a href="{% url 'product' item.product.id %}">{{ item.product.name|title }}</a>
-                                <p><span class="dot mr-2" id="history-dot"
+                                <p><span class="dot mr-2 small-dot" 
                                         style="background-color: {{ item.colour.hex_value }};"></span><span class="colour-name d-none d-md-inline">{{ item.colour.name }}</span>
                                 </p>
                             </div>

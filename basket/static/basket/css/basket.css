@@ -1,0 +1,18 @@
+.delete {
+    vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+
+    .subtotal {
+        width: 5rem;
+    }
+
+    #actions {
+        text-align: right;
+    }
+
+    .product-name {
+        font-size: 1.25rem;
+    }
+}

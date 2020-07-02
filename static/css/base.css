@@ -216,6 +216,9 @@ a.badge-light:hover,
     background-color: rgba(241, 210, 220, 0.7);
 }
 
+#quantity {
+    vertical-align: middle;
+}
 
 #quantity,
 .quantity-button {
@@ -272,7 +275,7 @@ a.badge-light:hover,
     max-height: 20vh;
 }
 
-#mini-basket-content .dot, #history-dot {
+#mini-basket-content .dot, .small-dot {
     margin-left: 2px;
     height: 1.5rem;
     width: 1.5rem;
@@ -290,7 +293,7 @@ a.badge-light:hover,
 
 
 
-#order-details {
+#order-details, .basket-items {
     font-size: 0.75rem;
 }
 
@@ -337,7 +340,7 @@ a.badge-light:hover,
         font-size: 1.25rem;
     }
 
-    #order-details {
+    #order-details, .basket-items {
         font-size: 1rem;
     }
 }
