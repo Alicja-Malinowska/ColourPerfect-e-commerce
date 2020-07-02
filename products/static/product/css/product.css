@@ -1,0 +1,69 @@
+/** Custom radio buttons (colour dots) */
+.colours input[type="radio"] {
+
+    opacity: 0;
+    position: fixed;
+    width: 0;
+
+}
+
+.colours label,
+.colours span {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.colours label {
+    padding: 2px;
+}
+
+
+.colours span:hover {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.colours input[type="radio"]:focus+label {
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 50%;
+}
+
+.colours input[type="radio"]:checked+label {
+    border: 2px solid rgb(134, 134, 134);
+    border-radius: 50%;
+}
+
+.colours {
+    height: 3rem;
+}
+
+.dot-wrapper {
+
+    width: 3rem;
+
+}
+
+/***/
+
+#product-image {
+    max-height: 19rem;
+}
+
+table {
+    display: block;
+}
+
+table td {
+    display: inline-block;
+}
+
+
+
+@media (min-width: 1200px) {
+    .image-wrapper {
+        margin-top: 6.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

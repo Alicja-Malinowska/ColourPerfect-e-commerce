@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'product/css/product.css' %}">
+{% endblock %}
+
 {% block content%}
 <div class="container">
-<form action="{% url 'add_to_basket' product.id %}" method="POST">
-    {% csrf_token %}
-    
+    <form action="{% url 'add_to_basket' product.id %}" method="POST">
+        {% csrf_token %}
+
         <div class="row">
             <div class="col-12 d-xl-none text-center">
                 {% include "components/product-top.html" %}
             </div>
-            <div class="col-12 col-xl-6">
-                <img src="{{ product.image_link }}" class="img-fluid" alt="Responsive image">
+            <div class="col-12 col-xl-6 text-center image-wrapper">
+
+                <img src="{{ product.image_link }}" class="img-fluid mt-3 mt-md-4 mt-xl-0" id="product-image"
+                    alt="Responsive image">
+
+
             </div>
             <div class="col-12 col-xl-6">
                 <div class="d-none d-xl-block text-center">
@@ -22,13 +30,16 @@
                 <table>
                     {% for season, shades in colours.items %}
                     <tr>
-                        <td>{{ season }}</td>
+                        <th>{{ season }}</th>
+                        {% for shade in shades %}
                         <td class="colours">
-                            {% for shade in shades %}
-                            <input type="radio" id="{{shade.hex_value}}" name="colour" value="{{shade.hex_value}}">
-                            <label for="{{shade.hex_value}}"><span class="dot" style="background-color: {{ shade.hex_value }};"
-                                title="{{ shade.name }}"></span></label>
-    
+                            
+                            <div class="d-inline-block text-center dot-wrapper">
+                                <input type="radio" id="{{shade.hex_value}}" name="colour" value="{{shade.hex_value}}">
+                                <label for="{{shade.hex_value}}"><span class="dot"
+                                        style="background-color: {{ shade.hex_value }};"
+                                        title="{{ shade.name }}"></span></label>
+                            </div>
                             {% empty %}
                             <span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose
                                 a colour anyway! :)</span>
@@ -51,36 +62,36 @@
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 <input type="hidden" name="has_colours" value="{{ has_colours }}">
                 <input type="submit" name="basket" value="Add to basket" id="submit">
-                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add" title="Add to wishlist"><i
-                    class="fas fa-heart"></i></button>
+                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add"
+                    title="Add to wishlist"><i class="fas fa-heart"></i></button>
 
             </div>
             <div>
             </div>
         </div>
     </form>
-        <div class="row">
-            <div class="col-12">
-                <p>
-                    <p>Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
-                            aria-expanded="false" aria-controls="collapseExample">
-                            <i class="fas fa-chevron-down"></i>
-                        </a></p>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <p>Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        <i class="fas fa-chevron-down"></i>
+                    </a></p>
 
-                </p>
-                <div class="collapse dont-collapse-sm" id="description">
-                    <div class="card card-body">
-                        {% if product.description == "" %}
-                        <p>No description available for this product, sorry!</p>
-                        {% else %}
-                        {{ product.description }}
-                        {% endif %}
-                    </div>
+            </p>
+            <div class="collapse dont-collapse-sm" id="description">
+                <div class="card card-body">
+                    {% if product.description == "" %}
+                    <p>No description available for this product, sorry!</p>
+                    {% else %}
+                    {{ product.description }}
+                    {% endif %}
                 </div>
             </div>
         </div>
+    </div>
 
-    
+
 
 
 </div>
