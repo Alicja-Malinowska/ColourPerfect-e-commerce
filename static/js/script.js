@@ -1,12 +1,24 @@
 /**
  * Highlights current tab on the navbar
+ * This solution comes from https://stackoverflow.com/questions/34394125/retain-selected-item-in-navbar-after-page-reload
  */
 $(document).ready(function () {
-    $(".nav-item").click(function () {
-        $(this).addClass("active");
-        $(".nav-item").not(this).removeClass("active");
+    $(".navbar-collapse li a").click(function () {
+        
+        var id = $(this).attr("id");
+        console.log(id)
+
+        $('#' + id).siblings().find(".active").removeClass("active");
+        $('#' + id).addClass("active");
+        localStorage.setItem("selectedolditem", id);
     });
 
+    var selectedolditem = localStorage.getItem('selectedolditem');
+
+    if (selectedolditem != null) {
+        $('#' + selectedolditem).siblings().find(".active").removeClass("active");
+        $('#' + selectedolditem).addClass("active");
+    }
 });
 
 
