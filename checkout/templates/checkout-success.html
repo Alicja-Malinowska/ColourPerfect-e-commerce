@@ -5,5 +5,18 @@
 
 
 {% block content%}
-<h1>Order placed</h1>
+<div class="container text-center">
+    <h1 class="my-5">Order placed</h1>
+    <p>All the fabulous colours are on their way to you!</p>
+    <p>Your order number is {{ order.order_number }}.</p>
+    {% if user.is_authenticated %}
+    <p>You can find the details of this and other orders in your <a href="{% url 'order_history' %}">order history</a></p>
+    {% else %}
+    <p><a href="{% url 'account_login' %}">Login</a> or
+        <a href="{% url 'account_signup' %}">Create an account</a> to see your order history.
+    </p>
+    {% endif %}
+
+</div>
+
 {% endblock %}

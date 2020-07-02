@@ -116,7 +116,7 @@ a.badge-light:hover,
 }
 
 .dropdown-menu {
-    max-height: 70vh;
+    max-height: 30vh;
     overflow-y: auto;
 }
 
@@ -259,7 +259,7 @@ a.badge-light:hover,
 }
 
 .toast-header-text {
-    color: #000000;
+    color: #ffffff;
     font-size: 1rem;
 }
 
@@ -268,6 +268,10 @@ a.badge-light:hover,
 #order-details, .basket-items {
     font-size: 0.75rem;
 }
+
+
+
+
 
 
 @media (max-width: 1199px) {

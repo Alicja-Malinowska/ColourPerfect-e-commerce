@@ -9,7 +9,7 @@
 <div class="container">
 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
     {% csrf_token %}
-    <div class="row">
+    <div class="row mt-xl-4">
     <fieldset class='col-12 col-xl-6'>
         <legend class="fieldset-label">Contact details</legend>
         {{ order_form.first_name | as_crispy_field }}
@@ -29,8 +29,8 @@
         <label for="save">Save the details</label>
         <input type="checkbox" id="save" name="save" checked>
         {% else %}
-        <p><a href="{% url 'account_login' %}">Login</a>to save the details or</p> 
-        <p><a href="{% url 'account_signup' %}">Create an account</a>to save your details and have access to your order history</p>
+        <p><a href="{% url 'account_login' %}">Login</a> to save the details or</p> 
+        <p><a href="{% url 'account_signup' %}">Create an account</a></p>
         {% endif %}
     </fieldset>
 </div>
@@ -43,12 +43,12 @@
         <div id="card-errors" role="alert"></div>
     </fieldset>
 
-    <div>                    
-        <a href="{% url 'basket' %}">
+    <div class="text-center">                    
+        <a class="px-2 nav-icons accent-colour wishlist-add btn btn-light border mr-1 mr-md-4" href="{% url 'basket' %}">
             <span>See your basket</span>
         </a>
-        <button id="submit-button">Confirm Order & Pay</button>
-        <p >
+        <button id="submit-button" class="btn btn-primary">Confirm Order & Pay</button>
+        <p class="mt-1 mb-4">
             <span>Your card will be charged <strong>€{{ total }}</strong></span>
         </p>
     </div>

@@ -125,8 +125,7 @@ def checkout(request):
 def checkout_success(request, order_number):
 
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Success - all the fabulous colours are on their way to you! \
-        Your order number is {order_number}. A confirmation \
+    messages.success(request, f'Payment received. A confirmation \
         email will be sent to {order.email_address}.')
 
     send_email(order)
