@@ -217,7 +217,7 @@ a.badge-light:hover,
 .card-body-price,
 .card-body-title {
     width: 100%;
-    background-color: rgba(241, 210, 220, 0.7);
+    background-color: rgba(240, 240, 240, 0.7);
 }
 
 #quantity {

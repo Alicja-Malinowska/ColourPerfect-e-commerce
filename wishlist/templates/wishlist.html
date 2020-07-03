@@ -4,32 +4,38 @@
 
 {% block content%}
 <div class="container">
-
-
+    <h1 class="text-center my-5">Your wishlist</h1>
     <div class="container">
         <div class="card-deck row">
             {% for item in wishlist_items %}
-            <div class="col-6 col-md-4 col-xl-3">
+            <div class="col-6 col-md-4 col-xl-3 card-column mb-4">
                 <a href="{% url 'product' id=item.product.id %}">
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ item.product.image_link }}" alt="Product image">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.product.name }}</h5>
+                        <div class="card-body card-body-title">
+                            <h5 class="card-title text-center">{{ item.product.name }}</h5>
+
+                        </div>
+                        <div class="card-body-price">
                             <p class="card-text">€{{ item.product.price }}</p>
                         </div>
-
                         <a href="{% url 'delete_wishlist_item' item.pk %}"
                             class="px-2 nav-icons accent-colour top-right-icon" title="Delete from wishlist"><i
                                 class="fas fa-times"></i></a>
                         {% if item.colour %}
-                        <span class="dot product-icon" style="background-color: {{ item.colour.hex_value }};" title="{{ item.colour.name }}"></span>
+                        <span class="dot product-icon" style="background-color: {{ item.colour.hex_value }};"
+                            title="{{ item.colour.name }}"></span>
                         {% endif %}
                     </div>
                 </a>
             </div>
             {% empty %}
+            <div class="replacement-message-wrapper text-center">
+                <div class="replacement-message shadow">
+                    <p>You haven't added anything to your wishlist yet.</p>
+                </div>
+            </div>
 
-            <p>You haven't added anything to your wishlist yet.</p>
             {% endfor %}
         </div>
     </div>
