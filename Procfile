@@ -1,0 +1,1 @@
+web: gunicorn colour_perfect.wsgi:application
