@@ -36,12 +36,15 @@
                         {% for item in order.orderitems.all %}
                         <div class="row">
                             <div class="col-2">
-                                <img src="{{ item.product.image_link }}" alt="Product image" class="img-thumbnail">
+                                <img src="{{ item.product.image_link }}"
+                                    onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
+                                    alt="Product image" class="img-thumbnail">
                             </div>
                             <div class="col-4">
                                 <a href="{% url 'product' item.product.id %}">{{ item.product.name|title }}</a>
-                                <p><span class="dot mr-2 small-dot" 
-                                        style="background-color: {{ item.colour.hex_value }};"></span><span class="colour-name d-none d-md-inline">{{ item.colour.name }}</span>
+                                <p><span class="dot mr-2 small-dot"
+                                        style="background-color: {{ item.colour.hex_value }};"></span><span
+                                        class="colour-name d-none d-md-inline">{{ item.colour.name }}</span>
                                 </p>
                             </div>
                             <div class="col-2">

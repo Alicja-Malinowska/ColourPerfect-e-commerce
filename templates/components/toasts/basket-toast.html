@@ -17,7 +17,7 @@
     {% for product in products %}
     <div class="row">
         <div class="col-2">
-            <img src="{{ product.prod_obj.image_link }}" alt="Product image" class="img-fluid">
+            <img src="{{ product.prod_obj.image_link }}" onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';" alt="Product image" class="img-fluid">
         </div>
         <div class="col-8">
         <a href="{% url 'product' product.prod_obj.id %}">{{ product.prod_obj.name }}</a>

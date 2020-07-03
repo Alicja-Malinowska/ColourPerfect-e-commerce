@@ -16,8 +16,9 @@
             </div>
             <div class="col-12 col-xl-6 text-center image-wrapper">
 
-                <img src="{{ product.image_link }}" class="img-fluid mt-3 mt-md-4 mt-xl-0" id="product-image"
-                    alt="Responsive image">
+                <img src="{{ product.image_link }}"
+                    onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
+                    class="img-fluid mt-3 mt-md-4 mt-xl-0" id="product-image" alt="Responsive image">
 
 
             </div>
@@ -33,19 +34,20 @@
                         <th>{{ season }}</th>
                         {% for shade in shades %}
                         <td class="colours">
-                            
+
                             <div class="d-inline-block text-center dot-wrapper">
                                 <input type="radio" id="{{shade.hex_value}}" name="colour" value="{{shade.hex_value}}">
                                 <label for="{{shade.hex_value}}"><span class="dot"
                                         style="background-color: {{ shade.hex_value }};"
                                         title="{{ shade.name }}"></span></label>
                             </div>
-                            
-                            
+
+
                         </td>
                         {% empty %}
-                        <td class="no-match ml-2 mb-2"><span>No perfect colour matches for {{ season }} :(<br> You can always be a rebel and choose
-                            a colour anyway! :)</span></td>
+                        <td class="no-match ml-2 mb-2"><span>No perfect colour matches for {{ season }} :(<br> You can
+                                always be a rebel and choose
+                                a colour anyway! :)</span></td>
                         {% endfor %}
                     </tr>
                     {% endfor %}
@@ -64,7 +66,8 @@
                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 <input type="hidden" name="has_colours" value="{{ has_colours }}">
                 <input type="submit" name="basket" value="Add to basket" class="btn btn-primary" id="submit">
-                <button type="submit" name="wishlist" class="px-2 nav-icons accent-colour wishlist-add btn btn-light border ml-md-5 d-block d-md-inline-block mx-auto mt-3 mt-md-0"
+                <button type="submit" name="wishlist"
+                    class="px-2 nav-icons accent-colour wishlist-add btn btn-light border ml-md-5 d-block d-md-inline-block mx-auto mt-3 mt-md-0"
                     title="Add to wishlist"><i class="fas fa-heart"></i>Add to wishlist</button>
 
             </div>
@@ -75,8 +78,8 @@
     <div class="row mb-5">
         <div class="col-12">
             <p>
-                <p class="font-weight-bold">Description <a class="d-xl-none" data-toggle="collapse" href="#description" role="button"
-                        aria-expanded="false" aria-controls="collapseExample">
+                <p class="font-weight-bold">Description <a class="d-xl-none" data-toggle="collapse" href="#description"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
                         <i class="fas fa-chevron-down"></i>
                     </a></p>
 

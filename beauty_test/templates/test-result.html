@@ -77,7 +77,9 @@
         <div class="col-4">
             <a href="{% url 'product' id=prod_col.0.pk %}">
                 <div class="card h-100">
-                    <img src="{{ prod_col.0.image_link }}" alt="Product image" class="card-img-top">
+                    <img src="{{ prod_col.0.image_link }}"
+                        onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
+                        alt="Product image" class="card-img-top">
                     {% if prod_col.2 %}
                     <a href="{% url 'wishlist' %}">
                         <span class="px-2 nav-icons accent-colour top-right-icon on-wishlist"
@@ -93,7 +95,7 @@
         <div class="col-4 order-last">
             <div id="product-details">
                 <p class="my-2"><span class="dot" title="{{ prod_col.1.name }}"
-                    style="background-color: {{ prod_col.1.hex_value }};"></span></p>
+                        style="background-color: {{ prod_col.1.hex_value }};"></span></p>
                 <p class="font-weight-bold mb-4">{{ prod_col.0.name|title }}</p>
 
             </div>

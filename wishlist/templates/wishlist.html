@@ -11,7 +11,9 @@
             <div class="col-6 col-md-4 col-xl-3 card-column mb-4">
                 <a href="{% url 'product' id=item.product.id %}">
                     <div class="card h-100">
-                        <img class="card-img-top" src="{{ item.product.image_link }}" alt="Product image">
+                        <img class="card-img-top" src="{{ item.product.image_link }}"
+                            onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
+                            alt="Product image">
                         <div class="card-body card-body-title">
                             <h5 class="card-title text-center">{{ item.product.name }}</h5>
 
