@@ -4,7 +4,7 @@
     <a href="{% url 'search' q_type='category' query=category %}">
         <div class="card h-100">
             <img src="{{ STATIC_URL }}img/{{ category.name }}.jpg" class="card-img-top" alt="Product image">
-            <p class="text-center font-weight-bold">{{ category.display_name }}</p>
+            <p class="text-center font-weight-bold">{{ category.display_name }}{{ STATIC_URL }}</p>
         </div>
     </a>
 </div>
