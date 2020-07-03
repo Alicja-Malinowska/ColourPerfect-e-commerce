@@ -10,7 +10,7 @@
 <div class="container">
     <h1 class="text-center my-4">You are {{result}}!</h1>
     <div class="text-center">
-        <img src="/static/img/{{result|lower}}.jpg" class="img-fluid" alt="Responsive image">
+        <img src="{{ STATIC_URL }}{{result|lower}}.jpg" class="img-fluid" alt="Responsive image">
     </div>
     <div class="row my-4">
         <div class="col-12 col-xl-7">

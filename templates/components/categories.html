@@ -3,10 +3,9 @@
 <div class="col-4 col-xl-2">
     <a href="{% url 'search' q_type='category' query=category %}">
         <div class="card h-100">
-            <img src="/static/img/{{category.name}}.jpg" class="card-img-top" alt="Product image">
+            <img src="{{ STATIC_URL }}{{ category.name }}.jpg" class="card-img-top" alt="Product image">
             <p class="text-center font-weight-bold">{{ category.display_name }}</p>
         </div>
-
     </a>
 </div>
 {% endfor %}
