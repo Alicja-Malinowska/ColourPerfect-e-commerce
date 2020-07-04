@@ -270,6 +270,15 @@ a.badge-light:hover,
     font-size: 0.75rem;
 }
 
+#account-details {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
 
 
 

@@ -19,13 +19,33 @@
             </form>
         </div>
         <div class="col-12 col-xl-6">
-            <p class="font-weight-bold">Your recent orders</p>
+            <div>
+                <p class="font-weight-bold">Your recent orders</p>
 
 
-            {% include 'components/order-table.html' %}
+                {% include 'components/order-table.html' %}
 
-            <div class="text-center mb-4">
-            <a href="{% url 'order_history' %}" class="btn btn-primary">Full order history</a>
+                <div class="text-center mb-4">
+                    <a href="{% url 'order_history' %}" class="btn btn-primary">Full order history</a>
+                </div>
+            </div>
+            <div class="mt-5">
+                <p class="font-weight-bold">Your account details</p>
+                <hr>
+                <table id="account-details">
+                    <tr>
+                        <td>Username:</td>
+                        <td class="font-weight-bold break-word">{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address:</td>
+                        <td class="font-weight-bold break-word">{{ user.email }}</td>
+                    </tr>
+                </table>
+                <div class="my-5 text-center">
+                    <a href="{% url 'account_change_password' %}" class="btn btn-primary">Change password</a>
+                    <a href="{% url 'account_email' %}" class="btn btn-primary">Manage your emails</a>
+                </div>
             </div>
         </div>
     </div>
