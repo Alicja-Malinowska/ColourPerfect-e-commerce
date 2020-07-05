@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 
 # Create your tests here.
-class TestBasketItemModel(TestCase):
+class TestBasketModels(TestCase):
     def test_basket_item_deleted_when_basket_deleted(self):
         user = get_user_model().objects.create_user(username='testuser', email='test@testing.com', password='password')
         basket = Basket(owner = user)
