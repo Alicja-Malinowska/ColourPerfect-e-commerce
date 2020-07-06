@@ -13,6 +13,7 @@ from helpers.send_email import send_email
 
 
 def checkout(request):
+    ''' render checkout form and complete order and payment with user provided details '''
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -80,6 +81,7 @@ def checkout(request):
             else:
                 basket = None
 
+            # if details were saved in profile, display them in the form
             if Profile.objects.filter(owner=request.user).exists():
                 profile = Profile.objects.get(owner=request.user)
 
@@ -123,6 +125,11 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    ''' confirm order&payment
+        send a confirmation email
+        save profile in order (for authenticated user)
+        delete basket items (for authenticated user) or
+        delte basket from session '''
 
     order = get_object_or_404(Order, order_number=order_number)
     messages.success(request, f'Payment received. A confirmation \
