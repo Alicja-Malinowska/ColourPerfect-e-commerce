@@ -17,7 +17,7 @@ class TestBasketViews(TestCase):
         Brand.objects.create(name = "test_brand", display_name = "Test Brand")
         product = Product.objects.create(brand = Brand.objects.get(name="test_brand"), name = "test_product", price = 5.00, image_link = 'www.test.com', description = "test desc")
         product.category.add(category)
-        product.save()
+
        
         
 
