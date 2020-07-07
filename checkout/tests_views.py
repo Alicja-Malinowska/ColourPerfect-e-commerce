@@ -69,12 +69,13 @@ class TestCheckoutViews(TestCase):
     def test_total_saved_in_created_order(self):
 
         product = Product.objects.get(name = "test_product")
-        item_id = str(product.id) + "None"
+        item_id = str(product.id) + "1"
+        colour = Colour.objects.get(hex_value = '#fbced7')
         basket = {}
         basket[item_id] = {
             'product': product.id,
             'quantity': 2,
-            'colour': None
+            'colour': colour.id
         }
         session = self.client.session
         session['basket'] = basket

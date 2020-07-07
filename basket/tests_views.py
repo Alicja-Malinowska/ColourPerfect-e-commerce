@@ -112,6 +112,24 @@ class TestBasketViews(TestCase):
         response = self.client.post(f"/basket/add/{ product.id }", {"redirect_url": f"/products/{ product.id }", "has_colours": "False", "quantity": "1" })
         
         self.assertEqual(self.client.session['basket'][item_id]['quantity'], 3)
+    
+
+    def test_redirect_to_add_to_wishlist_if_add_to_wishlist_button_clicked(self):
+
+        User = get_user_model()
+        user = User.objects.get(username='testuser')
+        logged_in = self.client.login(username='testuser', password='testpass')
+        basket = Basket.objects.create(owner = user)
+        product = Product.objects.get(name = "test_product")
+        basket_item = BasketItem(basket = basket, product = product, quantity = 1)
+        basket_item.save()
+        response = self.client.post(f"/basket/add/{ product.id }", {
+            "redirect_url": f"/products/{ product.id }", 
+            "has_colours": "False", 
+            "quantity": "1", 
+            "wishlist": "Add to wishlist"
+            })
+        self.assertRedirects(response, f"/wishlist/add/{ product.id }", fetch_redirect_response=False)
         
 
     def test_colour_not_chosen_error(self):
@@ -138,6 +156,7 @@ class TestBasketViews(TestCase):
         response = self.client.post("/basket/adjust", {"quantity": "2", "item_id": basket_item.id })
         
         self.assertEqual(BasketItem.objects.get(id=basket_item.id).quantity, 2)
+        self.assertRedirects(response, "/basket/")
     
     def test_adjust_quantity_user_not_authenticated(self):
 
@@ -156,6 +175,7 @@ class TestBasketViews(TestCase):
         response = self.client.post("/basket/adjust", {"quantity": "3", "item_id": item_id })
         
         self.assertEqual(self.client.session['basket'][item_id]['quantity'], 3)
+        self.assertRedirects(response, "/basket/")
 
     def test_delete_basket_item_user_authenticated(self):
         
@@ -203,5 +223,7 @@ class TestBasketViews(TestCase):
         response = self.client.get("/basket/delete/0")
         
         self.assertEqual(response.status_code, 404)
+    
+    
         
     
