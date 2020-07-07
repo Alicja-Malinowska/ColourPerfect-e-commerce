@@ -61,11 +61,42 @@ class TestCheckoutViews(TestCase):
         self.assertTemplateUsed(response, "checkout-success.html")
     
 
+    def test_display_error_message_if_form_is_not_valid(self):
+
+        response = self.client.post("/checkout/", {
+            'first_name': '',
+            'last_name': 'test last name',
+            'email_address': 'test@gmail.com',
+            'phone_number': '123 456 789',
+            'street_address1': 'test street 1',
+            'street_address2': '',
+            'town_or_city': 'test city',
+            'postcode': '',
+            'country': 'test country'
+            })
+        
+        m = response.cookies.get('messages', '')
+        self.assertTrue("There is an error in your form" in m.output())
+        
+
+
+
     def test_stay_in_basket_view_if_basket_empty(self):
 
         response = self.client.get("/checkout/")
         self.assertRedirects(response, "/basket/")
     
+    def test_stay_in_basket_view_if_basket_empty_user_authenticated(self):
+
+        User = get_user_model()
+        user = User.objects.get(username='testuser')
+        logged_in = self.client.login(username='testuser', password='testpass')
+        basket = BasketItem.objects.filter(basket__owner=user)
+        basket.delete()
+        response = self.client.get("/checkout/")
+        
+        self.assertRedirects(response, "/basket/")
+
     def test_total_saved_in_created_order(self):
 
         product = Product.objects.get(name = "test_product")
