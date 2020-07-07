@@ -158,7 +158,38 @@ class TestBasketViews(TestCase):
         self.assertEqual(BasketItem.objects.get(id=basket_item.id).quantity, 2)
         self.assertRedirects(response, "/basket/")
     
+    def test_adjust_quantity_user_authenticated_same_quantity(self):
+
+        User = get_user_model()
+        user = User.objects.get(username='testuser')
+        logged_in = self.client.login(username='testuser', password='testpass')
+        basket = Basket.objects.create(owner = user)
+        product = Product.objects.get(name = "test_product")
+        basket_item = BasketItem(basket = basket, product = product, quantity = 2)
+        basket_item.save()
+        response = self.client.post("/basket/adjust", {"quantity": "2", "item_id": basket_item.id })
+        
+        self.assertRedirects(response, "/basket/")
+    
     def test_adjust_quantity_user_not_authenticated(self):
+
+        product = Product.objects.get(name = "test_product")
+        item_id = str(product.id) + "None"
+        basket = {}
+        basket[item_id] = {
+            'product': product.id,
+            'quantity': 3,
+            'colour': None
+        }
+        session = self.client.session
+        session['basket'] = basket
+        session.save()
+        
+        response = self.client.post("/basket/adjust", {"quantity": "3", "item_id": item_id })
+        
+        self.assertRedirects(response, "/basket/")
+
+    def test_adjust_quantity_user_not_authenticated_same_quantity(self):
 
         product = Product.objects.get(name = "test_product")
         item_id = str(product.id) + "None"
@@ -176,6 +207,7 @@ class TestBasketViews(TestCase):
         
         self.assertEqual(self.client.session['basket'][item_id]['quantity'], 3)
         self.assertRedirects(response, "/basket/")
+
 
     def test_delete_basket_item_user_authenticated(self):
         
