@@ -27,6 +27,23 @@ class TestCheckoutModels(TestCase):
         self.assertEqual(order.date.day, datetime.now().day)
         self.assertEqual(order.total, 0)
 
+    def test_order_string_method_returns_order_number(self):
+
+        order = Order(
+            first_name = 'test name',
+            last_name = 'test last name',
+            email_address = 'test@gmail.com',
+            phone_number = '123 456 789',
+            street_address1 = 'test street 1',
+            street_address2 = '',
+            town_or_city = 'test city',
+            postcode = '',
+            country = 'test country')
+
+        order.save()
+
+        self.assertEqual(str(order), str(order.order_number))
+
     def test_create_correct_order_item(self):
 
        
