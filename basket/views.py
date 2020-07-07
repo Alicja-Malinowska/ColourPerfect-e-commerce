@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
+from django.http import Http404
 from basket.models import Basket, BasketItem, Colour
 from products.models import Product
 from helpers.validators import is_hex_color, correct_quantity
@@ -8,12 +9,14 @@ from helpers.validators import is_hex_color, correct_quantity
 # Create your views here.
 
 def basket(request):
-
+    ''' render basket page '''
     
     return render(request, 'basket.html')
 
 
 def add_to_basket(request, product_id):
+    ''' add item to the basket, if user is logged in, save it in the database, otherwise save it in session '''
+
     product = get_object_or_404(Product, pk=product_id)
     all_colours = product.product_colors.all()
     redirect_url = request.POST.get('redirect_url')
@@ -21,18 +24,21 @@ def add_to_basket(request, product_id):
     colour_obj = None
     colour_name = 'clear or standard'
     colour_id = None
+
+    # if product has colour, get it
     if Colour.objects.filter(hex_value=colour).exists():
         colour_obj = Colour.objects.get(hex_value=colour)
         colour_name = colour_obj.name
         colour_id = colour_obj.id
    
+    # if 'add to wishlist' button was clicked, redirect to add_to_wishlist view
     if 'wishlist' in request.POST:
         request.session['redirect_url'] = redirect_url
         request.session['colour'] = colour 
         return redirect(reverse('add_to_wishlist', args=[product_id]))
     else:
 
-        # validate if colour should have been chosen for the producst or not
+        # validate if colour should have been chosen for the product or not
         # and if the colour value is correct
         if request.POST.get('has_colours') == 'True':
             if not colour:
@@ -109,6 +115,7 @@ def add_to_basket(request, product_id):
     return redirect(redirect_url, product_id=product_id)
 
 def adjust_quantity(request):
+    ''' change quantity of the basket item '''
 
     quantity = int(request.POST.get('quantity'))
     item_id = request.POST.get('item_id')
@@ -136,15 +143,19 @@ def adjust_quantity(request):
 def delete_item(request, item_id):
 
     if request.user.is_authenticated:
-        item = BasketItem.objects.get(pk=item_id)
+        
+        item = get_object_or_404(BasketItem, pk=item_id)
         messages.info(request, (f"Deleted { item.product.name} from your basket."))
         item.delete()
     else:
         basket = request.session.get('basket', {})
-        product = Product.objects.get(id=basket[item_id]['product'])
-        messages.info(request, (f"Deleted { product.name } from your basket."))
-        basket.pop(item_id, None)
-        request.session['basket'] = basket
+        if item_id in basket.keys():
+            product = Product.objects.get(id=basket[item_id]['product'])
+            messages.info(request, (f"Deleted { product.name } from your basket."))
+            basket.pop(item_id, None)
+            request.session['basket'] = basket
+        else:
+            raise Http404()
     
     
     return redirect(reverse('basket'))

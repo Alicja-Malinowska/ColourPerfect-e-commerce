@@ -7,6 +7,7 @@ from wishlist.models import Wishlist, WishlistItem
 # Create your views here.
 @login_required
 def wishlist(request):
+    ''' show all the items added to wishlist by user'''
 
     wishlist_items = WishlistItem.objects.filter(wishlist__owner=request.user)
 
@@ -20,6 +21,9 @@ def wishlist(request):
 
 @login_required
 def add_to_wishlist(request, product_id):
+    ''' add new item to the wishlist 
+    or inform user that the item is already on the wishlist'''
+
     product = get_object_or_404(Product, pk=product_id)
     all_colours = product.product_colors.all()
     redirect_url = request.POST.get('redirect_url') or request.session['redirect_url']
@@ -50,7 +54,8 @@ def add_to_wishlist(request, product_id):
 
 @login_required
 def delete_wishlist_item(request, item_id):
-    item = WishlistItem.objects.get(pk=item_id)
+   
+    item = get_object_or_404(WishlistItem, pk=item_id)
     messages.warning(request, (f"Deleted { item.product.name } from your wishlist."))
     item.delete()
     

@@ -19,7 +19,7 @@ def product(request, id):
 
     colours = {}
 
-    # if there are any colours assigned to the product
+    # if there are any colours assigned to the product put them in colours dictionary sorted by season
     if all_colours:
         for season in SEASONS:
             season_colours = []
