@@ -72,6 +72,7 @@ def checkout(request):
         else:
             messages.error(
                 request, 'There is an error in your form, please check your data')
+            return redirect(reverse('checkout'))
 
     else:
 
