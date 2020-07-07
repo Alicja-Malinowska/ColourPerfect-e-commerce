@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from profiles.models import Profile
 
 
-class TestProductsViews(TestCase):
+class TestProfilesViews(TestCase):
 
     def setUp(self):
         username = 'testuser'
