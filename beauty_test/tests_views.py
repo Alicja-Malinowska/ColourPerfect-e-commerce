@@ -18,7 +18,7 @@ class TestBeautyTestViews(TestCase):
     
     def test_get_correct_test_result(self):
 
-        response = self.client.post("/test/results", {
+        response = self.client.post("/test/results", {'csrfmiddlewaretoken' : '123abcd',
             'What is the natural colour of your hair?': ['Light to medium blond with warm undertones or light ginger'], 
             'What is the colour of your eyes?': ['Light and vivid blue, green or amber'], 
             'Look at your veins, what colour are they?': ['Green'], 
