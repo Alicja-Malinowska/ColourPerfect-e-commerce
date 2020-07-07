@@ -32,7 +32,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return self.order_number
+        return str(self.order_number)
 
 
 class OrderItem(models.Model):
