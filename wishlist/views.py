@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.conf import settings
 from products.models import Product, Colour
 from wishlist.models import Wishlist, WishlistItem
 
@@ -40,14 +41,16 @@ def add_to_wishlist(request, product_id):
     wishlist_items = WishlistItem.objects.filter(wishlist=wishlist)
 
     if wishlist_items.filter(product__id=product.id, colour__hex_value=colour).exists():
-        messages.error(request,
+        messages.add_message(request,
+                                settings.WISHLIST_MESSAGE,
                              (f"{product.name} in colour: {colour_name} is already on your wishlist."))
         
     else:
         wishlist_item = WishlistItem(
                 wishlist=wishlist, product=product, colour=colour_obj)
         wishlist_item.save()
-        messages.warning(request,
+        messages.add_message(request,
+                                settings.WISHLIST_MESSAGE,
                              (f"Added {product.name} in colour: {colour_name} to your wishlist."))
    
     return redirect(redirect_url)
@@ -56,7 +59,8 @@ def add_to_wishlist(request, product_id):
 def delete_wishlist_item(request, item_id):
    
     item = get_object_or_404(WishlistItem, pk=item_id)
-    messages.warning(request, (f"Deleted { item.product.name } from your wishlist."))
+    messages.add_message(request,
+                                settings.WISHLIST_MESSAGE, (f"Deleted { item.product.name } from your wishlist."))
     item.delete()
     
    

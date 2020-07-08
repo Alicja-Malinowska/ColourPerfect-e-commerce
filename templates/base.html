@@ -27,12 +27,14 @@
                 {% with message.level as level %}
                     {% if level == 40 %}
                         {% include 'components/toasts/error.html' %}
-                    {% elif level == 30 %}
+                    {% elif level == 70 %}
                         {% include 'components/toasts/wishlist-toast.html' %}
                     {% elif level == 25 %}
                         {% include 'components/toasts/success.html' %}
-                    {% else %}
+                    {% elif level == 60 %}
                         {% include 'components/toasts/basket-toast.html' %}
+                    {% else %}
+                        {% include 'components/toasts/message.html' %}
                     {% endif %}
                 {% endwith %}
             {% endfor %}
