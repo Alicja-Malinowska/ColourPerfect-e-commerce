@@ -18,5 +18,18 @@ class TestProductsModels(TestCase):
         self.assertEqual(product.product_colors.all()[0].hex_value, "#ffffff")
         self.assertEqual(product.category.all()[0].name, "test_category")
         self.assertEqual(product.brand.name, "test_brand")
+    
+    def test_category_method_returns_display_name(self):
+
+        category = Category.objects.create(name = "test_category", display_name = "Test Category")
+
+        self.assertEqual(category.get_display_name(), "Test Category")
+    
+
+    def test_brand_method_returns_display_name(self):
+
+        brand = Brand.objects.create(name = "test_brand", display_name = "Test Brand")
+
+        self.assertEqual(brand.get_display_name(), "Test Brand")
         
 
