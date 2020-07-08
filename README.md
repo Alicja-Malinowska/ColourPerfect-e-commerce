@@ -45,3 +45,21 @@ The idea of colour matching to different beauty types comes from the four season
 Having this knowledge, I looked into different colour representations (e.g hex, rgb, hsl) to see which would be the best to use in an algorithm that can determine which beauty type is a match for given colour. In a simplified version warm colours are for warm types (spring and autumn) and blue colours are for cold types (winter and summer). However, this is a big simplification, since, for example, blue is considered a cold colour, however some shades can have warmer undertones and look much better on warm beauty types (e.g. marine blue is recommended for the autumn types). For this reason, dividing colours in a simple way, such that those that have bigger red value are warm and those with bigger blue value are cold, would not be sufficient and would return incorrect results, even additionally differentiate lighter colours from darker shades. Therefore, I looked into hsl values and how the colours change when one of the three values is changed. I used [the w3schools hsl page](https://www.w3schools.com/html/html_colors_hsl.asp#:~:text=HSL%20Color%20Values&text=Hue%20is%20a%20degree%20on,100%25%20is%20the%20full%20color.) for that. I noticed that hue value is not a criterion, for the similar reasons why division to cold and warm colours was not sufficient. However, saturation and lightness seemed to be the key values that could be used to determine which of the four categories a colour belongs to. After a bit of experimentation, I noticed that if saturation is very low, the colours are less vivid and would only match winter or summer, depending on their lightness. If the saturations is very high, still the darkest colours would be right for winter, and the lightest - for summer, but the majority of shades will be a match for autumn (darker) and spring (lighter). Based on these observation, I built a simple algorithm that assigns a given colour to one of the 4 seasons, based on its s and l values. 
 
 This is not based on any scientific research, and the colour matching is only a guidance. The treshold values were set by me, based on my experimentation and observations, not any existing formulas, as there aren't any - to the best of my knowledge. As the colour matching is only a suggestion, the algorithm seems to be good enough to suggest suitable colours, and should be sufficient for this project. 
+
+### Wireframes
+
+Wireframes for the homepage: 
+
+![mobile](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wireframes/mobile-home.png)
+![tablet](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wireframes/tablet-home.png)
+![desktop](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wireframes/desktop-home.png)
+
+All the wireframes can be found in the [wirefreames folder](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/wireframes).
+
+#### Differences between wireframes and the application
+
+* Navbar links and buttons - in wireframes login/logout and register/your account are navigation links, however in the project these actions are available in user drop down menu situated next to the basket and wishlist. This is a better solution because it allows to keep all the actions connected to the user's account in one place and the navigation links are only connected to the specific content pages.
+
+* Navbar layout - in wireframes this is spanned across two rows in desktop view, however eventually I chose to have everything in one row as there was enough space to do this and there was no need to make the navbar take more space. In the mobile view, the basket is in the bottom row together with search field(this expands when clicked on), wishlist button and user account drop-down. Again, the space was enough so I decided this was a better user experience where all those actions are next to each other. 
+
+* Beauty test - all the questions are displayed at once, instead one by one, with next button, like in the wireframes. There are only 5 questions, and the top content is not as big as expected so it felt like a better user experience to display all the questions at once. 
