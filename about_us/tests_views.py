@@ -9,6 +9,6 @@ class TestAboutUsViews(TestCase):
         self.assertTemplateUsed(response, "about-us.html")
     
     def test_get_delivery_section(self):
-        response = self.client.get("/about/#delivery-returns")
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "about-us.html")
+        response = self.client.get("/about/delivery")
+        self.assertRedirects(response, "/about/#delivery-returns")
+    
