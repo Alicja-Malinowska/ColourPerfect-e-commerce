@@ -287,3 +287,8 @@ Manual testing is complementary to the unit tests.
 * If an item is added to the wishlist or deleted from it, a message confirming this appears
 * Items displayed on the wishlist are clickable links and take user to the product's page
 * If an item was added to the wishlist with a colour, the colour is displayed in the bottom right corner
+
+## Browser support
+
+* The website was tested and works properly on: Chrome v77, Chrome v77 on Android, Opera v63, Firefox and Edge
+* There are some issues on IE11. Homepage does not render properly. Some elements overlap and the footer is not at the bottom of the page. Cards height is longer than expected. Also, the questions on the beauty test page are squeezed to the middle. I tried to use autoprefixer on the css files, however it did not help and the issue persists. I tried to look for the root problem, however I could not find it. I suscpect that there might be some boostrap classes that do not work as expected with IE, however IE inspect functions do not allow for in-depth analysis (unlike Chrom Dev tools). For this reason, and also because IE is no longer recommended to use, I decided not to ivestigate further, as it would bring little value. 
