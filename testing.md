@@ -1,4 +1,4 @@
-This document explains how the project was tested. Please see full [README.md file](        LINK!!!!!!!!!!!!!    ).
+This document explains how the project was tested. Please see full [README.md file](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/README.md).
 
 # Automated testing
 
