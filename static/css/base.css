@@ -12,6 +12,7 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    padding-top: 10rem;
 }
 
 a {
@@ -319,6 +320,11 @@ a.badge-light:hover,
 }
 
 @media (min-width: 1200px) {
+
+    body {
+        padding-top: 7rem;
+    }
+
     .collapse.dont-collapse-sm {
         display: block;
         height: auto !important;
