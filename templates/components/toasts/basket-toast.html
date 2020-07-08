@@ -21,7 +21,9 @@
         </div>
         <div class="col-8">
         <a href="{% url 'product' product.prod_obj.id %}">{{ product.prod_obj.name }}</a>
+        {% if product.colour %}
             <p class="my-0">Colour:<span class="dot" style="background-color: {{ product.colour.hex_value }};" title="{{ product.colour.name }}"></span></p>
+        {% endif %}
             <p>Quantity: {{ product.quantity }}</p> 
         </div>
         <div class="col-2">

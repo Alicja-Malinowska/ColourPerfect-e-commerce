@@ -40,11 +40,11 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Brands
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                     {% for brand in brands %}
                     <a class="dropdown-item"
                         href="{% url 'search' q_type='brand' query=brand %}">{{brand.display_name}}</a>

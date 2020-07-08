@@ -29,12 +29,14 @@
         </div>
         <div class="col-4 pl-4 pl-md-5">
             <a href="{% url 'product' product.prod_obj.id %}" class="product-name">{{ product.prod_obj.name }}</a>
+            {% if product.colour %}
             <p class="mt-xl-4"><span class="dot small-dot mr-2" style="background-color: {{ product.colour.hex_value }};"></span><span class="colour-name d-none d-md-inline">{{ product.colour.name }}</span></p>
+            {% endif %}
             <p class="mt-xl-4">€{{ product.prod_obj.price }}</p>
         </div>
-        <div class="col-6" id="actions">
+        <div class="col-6 actions">
             
-            <form class="d-inline-block" id="basket-form" action="{% url 'adjust_quantity' %}" method="POST">
+            <form class="d-inline-block" action="{% url 'adjust_quantity' %}" method="POST">
                 {% csrf_token %}
                 {% include "components/quantity.html" %}
                 <div class="d-inline-block subtotal">

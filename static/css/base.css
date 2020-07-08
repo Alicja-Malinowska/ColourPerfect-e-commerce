@@ -222,11 +222,11 @@ a.badge-light:hover,
     background-color: rgba(240, 240, 240, 0.7);
 }
 
-#quantity {
+.quantity {
     vertical-align: middle;
 }
 
-#quantity,
+.quantity,
 .quantity-button {
     width: 2rem;
     text-align: center;
@@ -267,7 +267,7 @@ a.badge-light:hover,
 
 
 
-#order-details, .basket-items {
+.order-details, .basket-items {
     font-size: 0.75rem;
 }
 
@@ -339,7 +339,7 @@ a.badge-light:hover,
         font-size: 1.25rem;
     }
 
-    #order-details, .basket-items {
+    .order-details, .basket-items {
         font-size: 1rem;
     }
 }

@@ -28,7 +28,7 @@ $(document).ready(function () {
 $(".quantity-button").on("click", function () {
 
     var $button = $(this);
-    var oldValue = $button.parent().find("#quantity").val();
+    var oldValue = $button.parent().find(".quantity").val();
 
     if ($button.text() == "+") {
         if (oldValue < 99) {
@@ -45,7 +45,7 @@ $(".quantity-button").on("click", function () {
         }
     }
 
-    $button.parent().find("#quantity").val(newVal);
+    $button.parent().find(".quantity").val(newVal);
 
 });
 

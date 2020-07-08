@@ -40,13 +40,15 @@
                     {% for prod_col in values %}
 
                     <div class="col-4">
-                        <a href="{% url 'product' id=prod_col.0.pk %}">
+                        
                             <div class="card h-100" title="{{ prod_col.0.name }}">
+                                <a href="{% url 'product' id=prod_col.0.pk %}">
                                 <span class="dot product-icon" style="background-color: {{ prod_col.1.hex_value }};"
                                     title="{{ prod_col.1.name }}"></span>
                                 <div class="image-wrapper w-75"><img src="{{prod_col.0.image_link}}"
                                         onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
                                         class="card-img-top" alt="Product image"></div>
+                                    </a>
                                 {% if prod_col.2 %}
                                 <a href="{% url 'wishlist' %}">
                                     <span class="px-2 nav-icons accent-colour on-wishlist top-right-icon"
@@ -55,7 +57,7 @@
                                 {% endif %}
 
                             </div>
-                        </a>
+                        
                     </div>
 
                     {% endfor %}

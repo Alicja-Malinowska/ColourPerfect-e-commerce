@@ -2,26 +2,26 @@
   <div class="card-deck row">
     {% for product in products %}
     <div class="col-6 col-md-4 col-xl-3 mb-3 card-column">
-      <a href="{% url 'product' id=product.0.pk %}">
-        <div class="card h-100">
-          <img class="card-img-top" src="{{ product.0.image_link }}"
-            onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';" alt="Product image">
-          <div class="card-body card-body-title">
 
-            <h5 class="card-title text-center">{{ product.0.name|title }}</h5>
+      <div class="card h-100">
+        <a href="{% url 'product' id=product.0.pk %}">
+        <img class="card-img-top" src="{{ product.0.image_link }}"
+          onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';" alt="Product image">
+        <div class="card-body card-body-title">
 
-
-          </div>
-          <div class="card-body-price">
-            <p class="card-text">€{{ product.0.price }}</p>
-          </div>
-          {% if product.1 %}
-          <a href="{% url 'wishlist' %}"> <span class="px-2 nav-icons accent-colour top-right-icon"
-              title="On your wishlist"><i class="fas fa-heart"></i></span></a>
-
-          {% endif %}
+          <h5 class="card-title text-center">{{ product.0.name|title }}</h5>
         </div>
-      </a>
+        <div class="card-body-price">
+          <p class="card-text">€{{ product.0.price }}</p>
+        </div>
+        </a>
+        {% if product.1 %}
+        <a href="{% url 'wishlist' %}"> <span class="px-2 nav-icons accent-colour top-right-icon"
+            title="On your wishlist"><i class="fas fa-heart"></i></span></a>
+
+        {% endif %}
+      </div>
+
     </div>
     {% empty %}
     <div class="replacement-message-wrapper text-center">

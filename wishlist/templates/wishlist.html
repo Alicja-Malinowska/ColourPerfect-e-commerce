@@ -9,8 +9,8 @@
         <div class="card-deck row">
             {% for item in wishlist_items %}
             <div class="col-6 col-md-4 col-xl-3 card-column mb-4">
-                <a href="{% url 'product' id=item.product.id %}">
-                    <div class="card h-100">
+                <div class="card h-100">
+                    <a href="{% url 'product' id=item.product.id %}">
                         <img class="card-img-top" src="{{ item.product.image_link }}"
                             onerror="this.onerror=null;this.src='{{ STATIC_URL }}img/broken-img-url.png';"
                             alt="Product image">
@@ -21,15 +21,17 @@
                         <div class="card-body-price">
                             <p class="card-text">€{{ item.product.price }}</p>
                         </div>
-                        <a href="{% url 'delete_wishlist_item' item.pk %}"
-                            class="px-2 nav-icons accent-colour top-right-icon" title="Delete from wishlist"><i
-                                class="fas fa-times"></i></a>
+
                         {% if item.colour %}
                         <span class="dot product-icon" style="background-color: {{ item.colour.hex_value }};"
                             title="{{ item.colour.name }}"></span>
                         {% endif %}
-                    </div>
-                </a>
+                    </a>
+                    <a href="{% url 'delete_wishlist_item' item.pk %}"
+                        class="px-2 nav-icons accent-colour top-right-icon" title="Delete from wishlist"><i
+                            class="fas fa-times"></i></a>
+                </div>
+
             </div>
             {% empty %}
             <div class="replacement-message-wrapper text-center">
