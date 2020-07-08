@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from profiles.models import Profile
@@ -17,6 +17,7 @@ def profile(request):
             messages.success(request, ('Your details have been saved'))
         else:
             messages.error(request, ('An error occured, please check your form.'))
+            return redirect(reverse('profile'))
                            
     else:
         form = ProfileForm(instance=profile)
