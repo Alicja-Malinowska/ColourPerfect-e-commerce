@@ -292,3 +292,12 @@ Manual testing is complementary to the unit tests.
 
 * The website was tested and works properly on: Chrome v77, Chrome v77 on Android, Opera v63, Firefox and Edge
 * There are some issues on IE11. Homepage does not render properly. Some elements overlap and the footer is not at the bottom of the page. Cards height is longer than expected. Also, the questions on the beauty test page are squeezed to the middle. I tried to use autoprefixer on the css files, however it did not help and the issue persists. I tried to look for the root problem, however I could not find it. I suscpect that there might be some boostrap classes that do not work as expected with IE, however IE inspect functions do not allow for in-depth analysis (unlike Chrom Dev tools). For this reason, and also because IE is no longer recommended to use, I decided not to ivestigate further, as it would bring little value. 
+
+## Responsive design
+
+* The website was tested using Google Chrome Developer Tools to check how it looks like in case of different width and height by choosing 'Responsive' option and resizing the window. Using Chrom Dev Tools, it was also tested how the website looks on: Galaxy S5, Pixel 2, Pixel 2XL, iPhone 5/6/7/8/X, iPad and iPad Pro. In all these views the website is responsive and shows content properly.
+* The website was also tested on the following devices: Samsung Galaxy A3, Asus laptop 15", Dell laptop 13.3", a 24" monitor. On all of this devices the website is responsive and shows content properly. 
+* On mobiles and tablets the navbar collapses into a 'hamburger menu' and can be expanded to reveal the items by clicking/touching it, on desktop it contains the visisble list of all the items
+* Items on all pages align in the way that use the optimal space and are big/small enough to create a good user experience, regardless a device used
+
+
