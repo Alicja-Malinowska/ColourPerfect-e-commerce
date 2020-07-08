@@ -8,31 +8,31 @@ This document explains how the project was tested. Please see full [README.md fi
 
 * [W3 CSS validator](https://jigsaw.w3.org/css-validator/) was used to check all the CSS files. No errors were found. 
 
-### Unit tests
+## Unit tests
 
 There is a total of 69 unit tests and they all pass. 
 
 Additional, complementary manual test were conducted for each app and described in 'Manual testing' part of this document. 
 
-#### About us app
+### About us app
 
 The coverage for the about us app is 86%. All the python files written by me within the about us app have 100% coverage.
 
-##### Views
+#### Views
 
 Features tested:
 
 * correct template is rendered for about us view
 * delivery view takes user to the delivery section of the about page
 
-#### Basket app
+### Basket app
 
 The coverage for the basket app is 96%. All the python files written by me within the basket app have 100% coverage except for the views.py file with 89% coverage.
 
 The code that is not covered is validation for colour and quantity. The not covered validation is only needed if the user interacts with the website skipping its frontend, for example puts invalid colour (not hex) in the post request. Hower, with frontend this is impossible because the user chooses from displayed colours and, since it's a POST request, this is not sent via URL. For these reasons I thought testing this part was redundant. 
 
 
-##### Models
+#### Models
 
 Features tested:
 
@@ -40,7 +40,7 @@ Features tested:
 * basket item created correctly
 * basket item deleted if basket object being its foreign key is deleted
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -59,11 +59,11 @@ Features tested:
 
 
 
-#### Beauty test app
+### Beauty test app
 
 The coverage for the beauty test app is 94%. All the python files written by me within the beauty test app have 100% coverage.
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -74,11 +74,11 @@ Features tested:
 
 
 
-#### Checkout app
+### Checkout app
 
 The coverage for the checkout app is 99%. All the python files written by me within the checkout app have 100% coverage.
 
-##### Models
+#### Models
 
 Features tested:
 
@@ -86,14 +86,14 @@ Features tested:
 * order string method returns order number as a string
 * create an order item with correctly assigned order, product and colour
 
-##### Forms
+#### Forms
 
 Features tested:
 
 * form is valid if all the required fields are filled
 * form is not valid and returns an error if not all the required fields are filled
 
-##### Views
+#### Views
 
 * correct templates are rendered for checkout and checkout success views
 * checkout view returns stripe details
@@ -106,11 +106,11 @@ Features tested:
 
 
 
-#### Home app
+### Home app
 
 The coverage for the home app is 94%. All the python files written by me within the home app have 100% coverage.
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -119,11 +119,11 @@ Features tested:
 
 
 
-#### Products app
+### Products app
 
 The coverage for the products app is 99%. All the python files written by me within the product app have 100% coverage.
 
-##### Models
+#### Models
 
 Features tested:
 
@@ -131,7 +131,7 @@ Features tested:
 * create a product object with correct many to many fields and foreign keys
 * brand and category 'get_display_name' methods return the display name
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -146,24 +146,24 @@ Features tested:
 
 
 
-#### Profiles app
+### Profiles app
 
 The coverage for the profiles app is 98%. All the python files written by me within the profile app have 100% coverage.
 
-##### Models
+#### Models
 
 Features tested:
 
 * profile is created when user object is created
 
-##### Forms
+#### Forms
 
 Features tested:
 
 * form is valid when created with all the mandatory fields
 * if form is empty an error message appears
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -174,18 +174,18 @@ Features tested:
 * orders query set passed in the context by order history view
 * error message displayed if form is not valid
 
-#### Wishlist app
+### Wishlist app
 
 The coverage for the wishlist app is 98%. All the python files written by me within the wishlist app have 100% coverage.
 
-##### Models
+#### Models
 
 Features tested:
 
 * created wishlist item object has correct wishlist. product and colour foreign keys
 * when wishlist is deleted, wishlist items belonging to it are deleted as well
 
-##### Views
+#### Views
 
 Features tested:
 
@@ -195,3 +195,95 @@ Features tested:
 * if wishlist item exists already - message informing about it is displayed
 * item correctly deleted from wishlist 
 * 404 raised if an item that doesn't exists is attempted to be deleted
+
+# Manual testing
+
+## Features testing
+
+Manual testing is complementary to the unit tests. 
+
+### Fixed Navbar
+
+
+* All the links in the navbar work properly and take a user where it was intended
+* The navbar is collapsed on mobile devices and the side bar shows when the hamburger menu is clicked
+* When scrolling down the navbar is visible for user all the time
+* When an item is added to the basket, a badge with basket total appears, the total updates every time new item is added or and item is deleted from the basket
+* If user us not authenticated the links in the profile drop-down are for login and registration, and if user is authenticated - account view and logout
+* When search box is clicked on mobile view, it gets wider
+  
+### Footer
+
+* Delivery&Returns link takes a user to the Delivery section of the About us page
+* Customer service number link dials the number
+* Social links work and take a user to the social pages
+
+### About us app
+
+* Collapsed divs expand when clicked
+* Brands and categories displayed in alphabetical order
+* 'Take the test' buttons takes user to the beauty test questions page
+* Contact links work properly
+
+### Basket app
+
+* If the basket is empty, a message appears informing user about it
+* When an item is added to the basket, a message appears informing what was added, and contents of basket are displayed in a pop-up, together with checkout button
+* If an item that is already in the basket is added again, a message says how many more items were added
+* When item quantity is updated in the basket or item is deleted, a message appears informing about it and showing basket contents
+* When product name is clicked, user is taken to the product's page
+
+### Beauty test app
+
+* All questions are correctly rendered in the template
+* Correct image and description are rendered for user's result
+* 12 random colours matching the season result are rendered
+* 3 random suggested products are rendered together with colours matching the result season
+* A hear icon appears in the top right corner of a product if it is on user's wishlist
+* If the product image link is broken, a default image (saying that the product image is currently unavailable) is rendered instead
+
+
+### Checkout 
+
+* If the details were previously saved in the profile, the order form is pre-filled with them
+* If test card number is entered (4242 4242 4242 4242) and a date in the future, the payment succeeds (this was checked on Stripe Dashbord -> Developers -> Events)
+* 'See your basket' button takes user back to their basket
+* User is informed if invalid card number, expiration date or post code were entered
+* A success message informing that payment was successful and confirmation email was sent, appears when the payment was made, order created and user redirected to the success page
+* Confirmation email is sent with order details
+* Order number and link to order history is displayed on success page for authenticated user
+* If user is not authenticated and checks out as a guest, login and registration links appear below order form (instead of 'save details' checkbox) and later, on the success page (instead of the link to order history)
+
+
+### Home app
+
+* Suggested products are random and change after every refresh
+* If suggested product is on user's wishlist, a heart icon is displayed in the top right corner
+* All categories and brands are displayed in alphabetical order
+* When suggested product is clickes, user is taken to the product's page
+* When category name or brand name is clicked, user is taken to the sreach view with all the products in the category or by the brand are displayed
+
+### Products app
+
+* If product image is broken, a replacement image appears with the shop's logo and information that the image is currently unavailable
+* When a product on search page is clicked, the product page opens
+* If there are no matching products for the typed search phrase, information 'no products found' appears
+* Product brand and product categories are displayed as buttons on product page, and when clicked - take a user to the search page for the category/brand
+* Product colours are radio buttons and when selected and submitted, correct colour is passed
+* Product quantity input is set to one, the + and - button allow to increase and decrease amount only in range 1-99, user cannot type in the input
+* 'Add to basket' and 'Add to wishlist' buttons work properly and trigger expected views
+
+### Profiles app
+
+* Recent orders displayed on the profile page, after clicking on each, they expand and show order details
+* 'Full order history' button takes a user to the order history page
+* 'Change password' button takes a user to change password page or set password page (this comes form django allauth)
+* Username and email address are displayed on the profile page
+* If a user has no order history, an information about it is displayed
+
+### Wishlist app
+
+* If there are no items on the user's wishlist, an information about it is displayed on the page
+* If an item is added to the wishlist or deleted from it, a message confirming this appears
+* Items displayed on the wishlist are clickable links and take user to the product's page
+* If an item was added to the wishlist with a colour, the colour is displayed in the bottom right corner
