@@ -112,6 +112,14 @@ User can also change their password and manage their emails from their profile v
 * When suggested product card is clicked, user is taken to the product page
 * All categories and brands are displayed in alphabetical order for easy access - when clicked they take user to products filtered by the category or brand
 
+# Product page
+
+* From this page product can be added to the wishlist or to the basket
+* If a product has colours, they are displayed as the best colours for the matching season
+* If there are no matching colours for a season there is a message informing about that and encouraging user to choose a colour anyway.
+* If a product has no colours, or no description, an information is displayed
+* If a product is added to the basket, a pop up appears with an information what was added, and with 'mini basket' view from where user can go straight to checkout
+
 
 #### Search page
 
@@ -181,5 +189,38 @@ User can also change their password and manage their emails from their profile v
 * If an item was added with colour, the colour is displayed in the bottom right corner
 * If an item is clicked, user os taken to the product page
 * Wishlist items can be deleted by clicking the x icon in the top right corner
+
+### Features Left to Implement
+
+* Admin view that would allow to add products using the application frontend - right now objects can be added using Django admin view, but this is not non-technical user friendly. Also, in this case Colour model should have a method that would use the assingn_season function to find which season it belongs to, and then the season field value would be created automatically. 
+
+* More ways to browse products - for example sorting options, searching only by name or description, price etc. 
+
+## Information Architecture
+
+### Data
+
+The dataset comes from https://makeup-api.herokuapp.com/ and the json file was taken from [Kaggle](https://www.kaggle.com/oftomorrow/herokuapp-makeup-products). The data needed to be changed before being added to the database - the colours needed to be sorted into 4 seasons. I wrote scripts that take care of assigning different colours to different season based on their HSL values, and then sort existing colours in the json file. Next, the data was added to the database using chunks of data from the json file, in a way that categories and colours are foreign keys in the products objects. These scripts can be found in the [data](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/data) folder. Then, fixtures were created.
+
+### Database 
+
+SQLite (development) and PostgreSQL (production) databases were used, as with many relationships between the objects, relational database was a suitable choice. Django database-abstraction API was used to interact with the database.
+
+I tried to depict relationships between the objects in the below graphic:
+
+![information-structure](https://imgur.com/ZPqtfXg) 
+
+
+* Although not authenticated user can use the core functionality of the website, many models depend on User model (this is a Django model not created by me).
+* User can have one Basket, one Wishlist and one Profile (User is a foreign key in Basket, Wishlist and Profile)
+* Basket can have many Basket Items (Basket is a foreign key in a Basket Item)
+* Wishlist can have many Wishlist Items (Wishlist is a foreign key in a Wishlist Item)
+* Profile can have many Orders (Profile is a foreign key in Order if it is created for an authenticated user)
+* Order can have many Order Items (Order is a foreign key in Order Item)
+* Product is independent from User, however Basket, Wishlist and Order Item have Product as a foreign key
+* Colour is a foreign key for Basket, Wishlist and Order Item, and has many to many relationship to Product (product can have many colours and many products can have the same colour)
+* Category has many to many relationship to Product - many products can have the same categories, and one product can have many categories (although this is rare in the dataset)
+* Brand is a foreign key for Product - a product can have one brand
+
 
 
