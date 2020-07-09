@@ -23,7 +23,7 @@ class TestCheckoutModels(TestCase):
             country = 'test country')
 
         order.save()
-        assert re.match(r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$', str(order.order_number))
+        assert re.match(r'^[0-9a-fA-F]{8}[0-9a-fA-F]{4}[0-9a-fA-F]{4}[0-9a-fA-F]{4}[0-9a-fA-F]{12}$', str(order.order_number))
         self.assertEqual(order.date.day, datetime.now().day)
         self.assertEqual(order.total, 0)
 
