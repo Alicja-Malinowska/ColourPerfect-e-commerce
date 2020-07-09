@@ -269,3 +269,115 @@ For the detailed information about models and their fields please see models fil
 
 Please see the separate [testing.md document](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/testing.md)
 
+## Deployment
+
+This project was developed using the [Visual Studio Code IDE](https://code.visualstudio.com/), committed to Git and pushed to GitHub, and is hosted on Heroku platform, with static files being hosted using AWS. 
+
+
+### How to run this project locally
+
+In order to run this project you will need:
+
+* [Python3](https://www.python.org/download/releases/3.0/) installed
+* [PIP](https://pypi.org/project/pip/) installed
+* [Git](https://git-scm.com/) installed
+
+To clone this project from GitHub:
+
+1. Follow [this link](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce) to the Project GitHub repository.
+2. Under the repository name, click "Clone or download".
+3. In the Clone with HTTPs section, copy the clone URL for the repository.
+4. In your local IDE open terminal.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type git clone, and then paste the URL you copied in Step 3.
+
+  ```
+  https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce.git
+  ```
+7. Press Enter. Your local clone will be created.
+
+   More about cloning can be found on this [GitHub Help page](https://help.github.com/en/articles/cloning-a-repository).
+
+Next steps:
+
+1. Create a virtual environment so that installations are done only for the project rather than globally. This process will depend on IDE you use. For VS Code intructions can be found on this [Python Enviroments page](https://code.visualstudio.com/docs/python/environments).
+
+2. Use requirements.txt file to install all dependencies.
+
+```
+  pip install -r requirements.txt
+```
+
+3. Create environment variables:
+
+  * DJANGO_SECRET - read more about [Django SECRECT_KEY](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-SECRET_KEY)
+  * STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY - read more in [Stripe Docs](https://stripe.com/docs/keys)
+  * DEVELOPMENT = set this to 'True'
+
+
+### Heroku deployment
+
+If you would like to share this app with the world, Heroku platform is one option to do it.
+
+1. Create an account on Heroku and next, create a new app.
+2. Go to 'Resouces' tab in Heroku and look for 'Heorku Postgres' in the 'Ad-ons' section, and add it to your project.
+3. Make sure you have dj-database-url installed (this helps with database connection), gunicorn (WSGI HTTP Server), and Psycopg, a PostgreSQL database adapter - this should come from requirements.txt file. 
+6. Change a default database in settings.py using your Postrgres database URL that can be found on Heroku in Settings/Config Vars. Note that this URL should not be exposed publicly, so make sure not to commit your changes to Git while the URL is in your settings.py file.
+7. You can now run migrations and get the data from the fixtures to the new database. Make sure to load makeup fixture last, as it depends on the other 3 fixtures.
+```
+python manage.py migrate
+```
+```
+python manage.py loaddata <fixture_name>
+```
+8. Create a superuser by running the following command in your terminal:
+```
+python manage.py createsuperuser
+```
+9. You can now remove your Postgres URL database, and get it from an environment variable 'DATABASE_URL', as this is already saved on Heroku. For development, use the SQLite as a default database. 
+11. Note that the Procfile file is essential for the deployment to be successful. 
+12. The static files are not hosted on Heroku, therefore collecting static needs to be disabled in Heroku before deployment.
+For this you will need [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli). Login to Heroku and use the following command:
+```
+heroku config:set DISABLE_COLLECTSTATIC=1 --app <app_name>
+```
+13. Add your Heroku app address to ALLOWED_HOSTS in your settings.py file. 
+14. Set config vars in Settings on Heroku. You will need to add there your DJANGO_SECRET, STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY. 
+4. To see deployment options, go to 'Deploy' tab in your project on Heroku.
+5. One of the options is to use Heroku CLI, you can also connect to GitHub to automatically deploy everytime you push to GitHub.
+6. You will need to login into Heroku using terminal
+
+```
+heroku login
+```
+7. After all your changes are added and commited in git deploy your app by pushing it to heroku.
+
+```
+git push heroku master
+```
+8. You can see your app by clicking 'Open app' on Heroku platform.
+
+### Hosting static files with AWS
+
+1. In order to be able to use AWS stoarge, you need to have an AWS account, you can create on [their website](https://aws.amazon.com/). 
+2. Once you have logged in, go to the Management Console and look for S3, and create a bucket with public access. 
+3. In your bucket's properties click 'Static website hosting' and choose 'Use this bucket to host a website' option. 
+4. In permissions tab, add CORS conficuration, and generate bucket policy.
+5. In Access Control List click 'Everyone' in Public access section and check 'list objects', then save. 
+6. Go to another AWS service - IAM, and create a group, next create a policy and attach it to the group. 
+7. Create a user and add it to the group, next download the CVS file with user's credentials. In this file you will find Access key ID ad Secret access key - save these as config variables on Heroku. 
+8. Next, set up another variable on Heroku called 'USE_AWS' and set it to True - this ensures that settings.py uses S3 configurations when the project is deployed to Heroku. At this point, you can also delete COLLECT_STATIC variable. 
+
+9. To connect Django to your S3 bucket, you need to have boto3 and django-storages installed - you should have this installed from requirements.txt. 
+10. Note that 'storages' need to be in installed app in settings.py file. 
+11. In settings.py change AWS_STORAGE_BUCKET_NAME to your bucket name and AWS_S3_REGION_NAME to your region. Region codes can be found on [AWS Docs website](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+
+### Sending emails
+
+To send emails from the application, you need to connect it to your email account (e.g. Gmail). You need to set two more conf variables on Heroku:
+
+* EMAIL_HOST_USER - set it to your email address
+* EMAIL_HOST_PASSWORD - set it to your app password generated by your email provider (please note this is NOT your email account password)
+
+
+
