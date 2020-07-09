@@ -113,7 +113,7 @@ User can also change their password and manage their emails from their profile v
 * When suggested product card is clicked, user is taken to the product page
 * All categories and brands are displayed in alphabetical order for easy access - when clicked they take user to products filtered by the category or brand
 
-# Product page
+#### Product page
 
 * From this page product can be added to the wishlist or to the basket
 * If a product has colours, they are displayed as the best colours for the matching season
