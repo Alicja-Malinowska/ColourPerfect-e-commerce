@@ -27,8 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = 'DEVELOPMENT' in os.environ
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
+
 
 ALLOWED_HOSTS = ['colourperfect.herokuapp.com', '127.0.0.1']
 
@@ -61,8 +61,10 @@ INSTALLED_APPS = [
     'storages'
 ]
 
-
-SITE_ID = 5
+if 'DEVELOPMENT' in os.environ:
+    SITE_ID = 1
+else: 
+    SITE_ID = 5
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
