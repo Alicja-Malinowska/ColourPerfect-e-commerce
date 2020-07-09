@@ -208,7 +208,7 @@ SQLite (development) and PostgreSQL (production) databases were used, as with ma
 
 I tried to depict relationships between the objects in the below graphic:
 
-![information-structure](https://imgur.com/ZPqtfXg) 
+![information-structure](https://i.imgur.com/ZPqtfXg.jpg) 
 
 
 * Although not authenticated user can use the core functionality of the website, many models depend on User model (this is a Django model not created by me).
