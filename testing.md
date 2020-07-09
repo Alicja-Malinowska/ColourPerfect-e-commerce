@@ -202,6 +202,44 @@ Features tested:
 
 Manual testing is complementary to the unit tests. 
 
+### Login&Authentication system
+
+Django Allauth was used to implement login and authentication functionality. Unit tests were not conducted on this part, as the code must have been tested before releasing the application set. Instead, this functionality was tested manually to ensure that everything works as expected in this project.
+
+* **Registration**
+
+  **Tests*
+
+  * Submit registration form without completing it, omitting some required fields, or typing incorrect email (e.g. without '@')
+  * Submit registration form with existing username or email address
+  * Submit valid registration form
+  * Click verification link in the account confirmation email
+
+  **Results*
+
+  * If required data is missing or it's incorrect, form does not submit and displays an error informing user what went wrong
+  * If the username or email address exists in the database, the form does not submit and a message informing about it is displayed, similarly - if the passwords do not match
+  * On submission of the valid form, user is informed that they need to verify their account and that email was sent to them with the verification link
+  * On submission of the valid form, an email with verification link is sent
+  * When verification link is clicked in the email, a confirmation page is displayed, and registration is complete when 'confirm' buttons is clicked; success message is displayed
+  * User is automatically logged in when registration is successful
+
+* **Login**
+
+  **Tests*
+
+  * Try to login with incorrect password and/or inexistent login
+  * Try to login with empty form
+  * Try to login with correct login and password
+  * Click 'Forgot password' link
+
+  **Results*
+
+  * An error message appears if typed credentials are not correct or missing
+  * If correct login and password are given, user is logged in, redirected to the homepage (or a page they tried to access and required user to be authenticated), and a success messaged appears
+  * When 'Forgot password' link is clicked, a user is taken to the password reset page and asked for their email address
+
+
 ### Fixed Navbar
 
 

@@ -1,4 +1,4 @@
-[ColourPerfect](https://colourperfect.herokuapp.com/)
+# [ColourPerfect](https://colourperfect.herokuapp.com/)
 
 
 ColourPerfect is a unique online make-up shop that offers products that are just perfect for your beauty type! Take our test to find out which beauty type you are - spring, summer, autumn or maybe winter? Search for make-up product and we will tell you which shades are perfect match for you and make you look just fabulous! Then just pop them in your shopping cart and voila, you have your perfect makeup delivered to you in no time!
@@ -54,7 +54,7 @@ Wireframes for the homepage:
 ![tablet](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wireframes/tablet-home.png)
 ![desktop](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wireframes/desktop-home.png)
 
-All the wireframes can be found in the [wirefreames folder](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/wireframes).
+All the wireframes can be found in the [wireframes folder](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/wireframes).
 
 #### Differences between wireframes and the application
 
@@ -63,3 +63,34 @@ All the wireframes can be found in the [wirefreames folder](https://github.com/A
 * Navbar layout - in wireframes this is spanned across two rows in desktop view, however eventually I chose to have everything in one row as there was enough space to do this and there was no need to make the navbar take more space. In the mobile view, the basket is in the bottom row together with search field(this expands when clicked on), wishlist button and user account drop-down. Again, the space was enough so I decided this was a better user experience where all those actions are next to each other. 
 
 * Beauty test - all the questions are displayed at once, instead one by one, with next button, like in the wireframes. There are only 5 questions, and the top content is not as big as expected so it felt like a better user experience to display all the questions at once. 
+
+
+## Features
+
+All the features were added to enhance the UX and make the website easy to use and intuitive to move around. 
+
+### Existing Features
+
+* **Fixed navbar**
+
+  This element appears on all the pages. It contains a clickable logo that takes user to the homepage, and links to the remaining pages, as well as a search box, where user can search for products. The navbar is expanded on large devices and on smaller ones it is collapsed, however search box, account, basket and wishlist links are still visible. When the hamburger menu is clicked a the remaining navbar links appear. When a user clicks a link the navbar collapses back. 
+
+* **Footer**
+
+  Like navbar, this element also appears on all the pages. It contains a Delivery&Returns link, which takes user to the delivery section of the about page. Apart from that, there is a clickable customer service number, and social icon links (these only link to social media main pages, as the shop is no real and does not have any social pages). The footer stick to the bottom of the page regardless the size of the page and the size of the footer itself (which changes on different devices).
+
+#### Login&Authentication system
+
+  Django Allauth was used to provide login and authentication functionality to the project. 
+
+* **Registration**
+
+  - When 'Register' link is clicked on the navbar, a user is taken to the registration form page, where they can complete registration form, or click a link to the login page instead
+  - When the registration form is submitted and it's valid, a user receives an email with verification link, otherwise - an error message shows informing user why the form has not been submitted
+  - User is automatically logged in when registration is successful
+
+* **Registration**
+
+- When 'Login' link is clicked on the navbar, a user is taken to the login form page, where they can complete login form, or click a link to the registration page instead; they can also login with their Google account or request password reset
+- 
+
