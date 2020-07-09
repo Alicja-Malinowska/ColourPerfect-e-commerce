@@ -5,7 +5,7 @@ from profiles.models import Profile
 
 # Create your models here.
 class Order(models.Model):
-    order_number = models.CharField(max_length=240, null=False, editable=False)
+    order_number = models.CharField(max_length=32, null=False, editable=False)
     profile = models.ForeignKey(Profile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='orders')
@@ -23,7 +23,7 @@ class Order(models.Model):
 
     def _get_order_number(self):
         
-        return uuid.uuid1()
+        return uuid.uuid1().hex
 
     def save(self, *args, **kwargs):
         if not self.order_number:
