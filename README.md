@@ -222,5 +222,50 @@ I tried to depict relationships between the objects in the below graphic:
 * Category has many to many relationship to Product - many products can have the same categories, and one product can have many categories (although this is rare in the dataset)
 * Brand is a foreign key for Product - a product can have one brand
 
+For the detailed information about models and their fields please see models files:
 
+* [Basket and Basket Item Models](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/basket/models.py)
+* [Wishlist and Wishlist Item Models](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/wishlist/models.py)
+* [Profile Model](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/profiles/models.py)
+* [Order and Order Item Models](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/checkout/models.py)
+* [Product, Category, Brand and Colour Models](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/products/models.py)
+
+## Technologies Used
+
+### Languages
+
+  * [Python]https://www.python.org/
+  * HTML
+  * CSS
+  * JavaScript
+
+### Frameworks & Libraries
+
+  * [Django](hhttps://www.djangoproject.com/)
+  * [jQuery](https://jquery.com/)
+  * [Bootstrap](https://getbootstrap.com/)
+  * [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
+  * [Font Awesome](https://fontawesome.com/)
+  
+
+### Tools
+
+  * [Stripe](https://stripe.com/ie)
+  * [AWS S3 Buckets](https://aws.amazon.com/s3/)
+  * [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+  * [Gunicorn](https://gunicorn.org/)
+  * [Psycopg](https://pypi.org/project/psycopg2/)
+  * [Colour](https://pypi.org/project/colour/)
+  * [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+  * [Django mathfilters](https://pypi.org/project/django-mathfilters/)
+  * [Visual Studio Code](https://code.visualstudio.com/) 
+  * [Git](https://git-scm.com/)
+  * [Balsamiq](https://balsamiq.com/)
+  
+
+**Note to assessor**: This project used git branching for development. Although 'no fast forward' (--no-ff) merging was used to make this visible in the history, the branches are still visible on GitHub for easier access. It is best practice, however, to remove merged branches. 
+
+## Testing
+
+Please see the separate [testing.md document](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/blob/master/testing.md)
 
