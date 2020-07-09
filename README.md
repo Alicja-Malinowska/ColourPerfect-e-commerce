@@ -22,8 +22,8 @@ The majority of users are expected to be women who want to find and purchase mak
 * As a user I want to quickly find out what the beauty types are so that I can decide if this something I am interested in
 * As a user I want to quickly find out my beauty type so that I can see what shades are good for me
 * As a user I want to have a search bar so that I can search for products I am interested in
-* As a user I want to have a possbility to see products categories and filter by them, so that I can browse sections I am interested in
-* As a user I want to have a possbility to see products brands and filter by them, so that I can browse products I am interested in
+* As a user I want to have a possibility to see products categories and filter by them, so that I can browse sections I am interested in
+* As a user I want to have a possibility to see products brands and filter by them, so that I can browse products I am interested in
 * As a user I want to be able to add items to my cart so I can purchase them
 * As a user I want to be able to register and log in so that my shipping details are saved and I do not need to enter them every time I want to make a purchase
 * As a user I want to be able to login with my Google account
@@ -37,15 +37,15 @@ The majority of users are expected to be women who want to find and purchase mak
 
 The page navigation is designed to be intuitive and enable a user to perform required actions quickly and easily. The website offers many ways to view offered products, so that it is easy for user to find what they look for. There are also many suggestions, if the user does not exactly know what they look for. 
 
-The main focus and a quality that distinguishes ColourPerfect from other e-commerce make-up websites, are colours. Therefore logo was designed to be colourful and [Magonia Grove Color Palette](https://www.color-hex.com/color-palette/91838) was used. Also, the first colour from this palette (#fc4f6f) became a theme colour (buttons, footer, links etc are in this colour). The background colour is white so that all the colours are well presented and the main focus is on them. 
+The main focus and a quality that distinguishes ColourPerfect from other e-commerce make-up websites, are colours. Therefore logo was designed to be colourful and [Magonia Grove Color Palette](https://www.color-hex.com/color-palette/91838) was used. Also, the first colour from this palette (#fc4f6f) became a theme colour (buttons, footer, links etc. are in this colour). The background colour is white so that all the colours are well presented and the main focus is on them. 
 
 ### Colour matching
 
-The idea of colour matching to different beauty types comes from the four seasons analysis. According to this theory there are 4 main types of beauty: spring, summer, autumn and winter. Different colours match better with those beauty types. Generally more vivid, and light colours (juicy, fruity colours) are better for the spring type, vivid but dark colours are recommened for autumn types, calmer and dark colours are suggested for winter types, and finally - calmer and light colours (pastels) are good match for the summer type. This is of course very generalised. 
+The idea of colour matching to different beauty types comes from the four seasons analysis. According to this theory there are 4 main types of beauty: spring, summer, autumn and winter. Different colours match better with those beauty types. Generally more vivid, and light colours (juicy, fruity colours) are better for the spring type, vivid but dark colours are recommended for autumn types, calmer and dark colours are suggested for winter types, and finally - calmer and light colours (pastels) are good match for the summer type. This is of course very generalised. 
 
-Having this knowledge, I looked into different colour representations (e.g hex, rgb, hsl) to see which would be the best to use in an algorithm that can determine which beauty type is a match for given colour. In a simplified version warm colours are for warm types (spring and autumn) and blue colours are for cold types (winter and summer). However, this is a big simplification, since, for example, blue is considered a cold colour, however some shades can have warmer undertones and look much better on warm beauty types (e.g. marine blue is recommended for the autumn types). For this reason, dividing colours in a simple way, such that those that have bigger red value are warm and those with bigger blue value are cold, would not be sufficient and would return incorrect results, even additionally differentiate lighter colours from darker shades. Therefore, I looked into hsl values and how the colours change when one of the three values is changed. I used [the w3schools hsl page](https://www.w3schools.com/html/html_colors_hsl.asp#:~:text=HSL%20Color%20Values&text=Hue%20is%20a%20degree%20on,100%25%20is%20the%20full%20color.) for that. I noticed that hue value is not a criterion, for the similar reasons why division to cold and warm colours was not sufficient. However, saturation and lightness seemed to be the key values that could be used to determine which of the four categories a colour belongs to. After a bit of experimentation, I noticed that if saturation is very low, the colours are less vivid and would only match winter or summer, depending on their lightness. If the saturations is very high, still the darkest colours would be right for winter, and the lightest - for summer, but the majority of shades will be a match for autumn (darker) and spring (lighter). Based on these observation, I built a simple algorithm that assigns a given colour to one of the 4 seasons, based on its s and l values. 
+Having this knowledge, I looked into different colour representations (e.g. hex, rgb, hsl) to see which would be the best to use in an algorithm that can determine which beauty type is a match for given colour. In a simplified version warm colours are for warm types (spring and autumn) and blue colours are for cold types (winter and summer). However, this is a big simplification, since, for example, blue is considered a cold colour, however some shades can have warmer undertones and look much better on warm beauty types (e.g. marine blue is recommended for the autumn types). For this reason, dividing colours in a simple way, such that those that have bigger red value are warm and those with bigger blue value are cold, would not be sufficient and would return incorrect results, even additionally differentiate lighter colours from darker shades. Therefore, I looked into hsl values and how the colours change when one of the three values is changed. I used [the w3schools hsl page](https://www.w3schools.com/html/html_colors_hsl.asp#:~:text=HSL%20Color%20Values&text=Hue%20is%20a%20degree%20on,100%25%20is%20the%20full%20color.) for that. I noticed that hue value is not a criterion, for the similar reasons why division to cold and warm colours was not sufficient. However, saturation and lightness seemed to be the key values that could be used to determine which of the four categories a colour belongs to. After a bit of experimentation, I noticed that if saturation is very low, the colours are less vivid and would only match winter or summer, depending on their lightness. If the saturations is very high, still the darkest colours would be right for winter, and the lightest - for summer, but the majority of shades will be a match for autumn (darker) and spring (lighter). Based on these observation, I built a simple algorithm that assigns a given colour to one of the 4 seasons, based on its s and l values. 
 
-This is not based on any scientific research, and the colour matching is only a guidance. The treshold values were set by me, based on my experimentation and observations, not any existing formulas, as there aren't any - to the best of my knowledge. As the colour matching is only a suggestion, the algorithm seems to be good enough to suggest suitable colours, and should be sufficient for this project. 
+This is not based on any scientific research, and the colour matching is only a guidance. The threshold values were set by me, based on my experimentation and observations, not any existing formulas, as there aren't any - to the best of my knowledge. As the colour matching is only a suggestion, the algorithm seems to be good enough to suggest suitable colours, and should be sufficient for this project. 
 
 ### Wireframes
 
@@ -74,7 +74,7 @@ All the features were added to enhance the UX and make the website easy to use a
 
 * **Fixed navbar**
 
-  This element appears on all the pages. It contains a clickable logo that takes user to the homepage, and links to the remaining pages, as well as a search box, where user can search for products. The navbar is expanded on large devices and on smaller ones it is collapsed, however search box, account, basket and wishlist links are still visible. When the hamburger menu is clicked a the remaining navbar links appear. When a user clicks a link the navbar collapses back. If there are some items in the basket - a badge displaying basket total appears on the basket icon. 
+  This element appears on all the pages. It contains a clickable logo that takes user to the homepage, and links to the remaining pages, as well as a search box, where user can search for products. The navbar is expanded on large devices and on smaller ones it is collapsed, however search box, account, basket and wishlist links are still visible. When the hamburger menu is clicked the remaining navbar links appear. When a user clicks a link the navbar collapses back. If there are some items in the basket - a badge displaying basket total appears on the basket icon. 
 
 * **Footer**
 
@@ -105,10 +105,10 @@ User can also change their password and manage their emails from their profile v
 
 #### Home page
 
-* Right below the hero image there are 3 important features listed, tohether with the link to the beauty test so user can quickly understand the main focus on the colour matching
+* Right below the hero image there are 3 important features listed, together with the link to the beauty test so user can quickly understand the main focus on the colour matching
 * If user is logged in, a welcome message appears on the homepage, right below the hero image
 * There are 3 random products in matching colours for each season displayed
-* When a user hovers over a product image, the product name apparea, and if they hover over the colour dot - colour name is displayed
+* When a user hovers over a product image, the product name appears, and if they hover over the colour dot - colour name is displayed
 * If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
 * When suggested product card is clicked, user is taken to the product page
 * All categories and brands are displayed in alphabetical order for easy access - when clicked they take user to products filtered by the category or brand
@@ -120,12 +120,12 @@ User can also change their password and manage their emails from their profile v
 * If there are no matching colours for a season there is a message informing about that and encouraging user to choose a colour anyway.
 * If a product has no colours, or no description, an information is displayed
 * If a product is added to the basket, a pop up appears with an information what was added, and with 'mini basket' view from where user can go straight to checkout
-* Quantitty input is read only so that the user cannot type the number, can only use the buttons. The reason for this is defensive design, otherwise additional validators would be necessary, checking if the field was completed properly (only numbers, number within bounds etc.). Since this is not a wholesale and it is expected that the customer will buy one or only a few same items, this solution should be good from the UX point of view. 
+* Quantity input is read only so that the user cannot type the number, can only use the buttons. The reason for this is defensive design, otherwise additional validators would be necessary, checking if the field was completed properly (only numbers, number within bounds etc.). Since this is not a wholesale and it is expected that the customer will buy one or only a few same items, this solution should be good from the UX point of view. 
 
 
 #### Search page
 
-* This page can be accessed by clicking on a brand or category link, or searching for a phrase using th searchbox (or of course by typing a correct ULR)
+* This page can be accessed by clicking on a brand or category link, or searching for a phrase using the searchbox (or of course by typing a correct ULR)
 * The header informs what the results are for (brand, category or the searched term)
 * Products are displayed as cards and when clicked, take user to the product page
 * If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
@@ -139,8 +139,8 @@ User can also change their password and manage their emails from their profile v
 
 * **Result page**
 
-  - Matching season tohether with a picture is displayed
-  - Season description and radom 12 matching colours are displayed
+  - Matching season together with a picture is displayed
+  - Season description and random 12 matching colours are displayed
   - 3 random products in matching colours are displayed, when clicked, they take user to the product page
   - If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
 
@@ -162,13 +162,13 @@ User can also change their password and manage their emails from their profile v
 
 #### Basket
 
-* Basket page is availabe for both, authenticated and not authenticated users, as it is possible to checkout as a guest
-* For authenticated user, basket content is saved in the database, so that they can access it even after closing their browser or accessing the webiste from different device
+* Basket page is available for both, authenticated and not authenticated users, as it is possible to checkout as a guest
+* For authenticated user, basket content is saved in the database, so that they can access it even after closing their browser or accessing the website from different device
 * If a product has colours, a colour must be chosen before being added to the basket
 * One products but added in two different colours are two different basket items
 * On the top of the page basket total is displayed, right next to the checkout button. This is repeated also at the bottom for the ease of use
 * Each item image and name (which is also a link to the product page) are displayed, together with chosen colour (if product has colours)
-* User can update the quantit of each product, or delete it completely from the basket - total and subtotal is automatically updated if this happens
+* User can update the quantity of each product, or delete it completely from the basket - total and subtotal is automatically updated if this happens
 * Checkout button takes a user to the checkout page
 
 #### Checkout 
@@ -177,24 +177,24 @@ User can also change their password and manage their emails from their profile v
 * If user is logged in, there is a possibility to save their details
 * If user is not logged in - log in and register links are displayed
 * 'Payment' field has to be completed in order to process Stripe payment. Since the Stripe functionality is only for testing, only 4242 4242 4242 4242 card number works. 
-* From this page user can go back to their basket if they need to change somethin
+* From this page user can go back to their basket if they need to change something
 * User is informed how much their card will be charged
 * If a user clicks 'Confirm Order&Pay' button, the payment is done and user is redirected to the checkout success page, which displays order number and (for logged in user) order history link
 * On checkout success a success message is displayed and a confirmation email with order and delivery details is sent. 
 
 #### Wishlist
 
-* This page os only available to logged in users.
+* This page is only available to logged in users.
 * If user has not added anything to their wishlist yet, an information about it is displayed.
 * Regardless, if product has colours or not, it can be added without a colour - unlike a basket item. This is because a customer might want to save only the product to their wishlist, without choosing a colour at that point.
 * Similarly to the basket, one product with different colours, or one product with a chosen colour and without chosen colour, are two different wishlist items.
 * If an item was added with colour, the colour is displayed in the bottom right corner
-* If an item is clicked, user os taken to the product page
+* If an item is clicked, user is taken to the product page
 * Wishlist items can be deleted by clicking the x icon in the top right corner
 
 ### Features Left to Implement
 
-* Admin view that would allow to add products using the application frontend - right now objects can be added using Django admin view, but this is not non-technical user friendly. Also, in this case Colour model should have a method that would use the assingn_season function to find which season it belongs to, and then the season field value would be created automatically. 
+* Admin view that would allow to add products using the application frontend - right now objects can be added using Django admin view, but this is not non-technical user friendly. Also, in this case Colour model should have a method that would use the assign_season function to find which season it belongs to, and then the season field value would be created automatically. 
 
 * More ways to browse products - for example sorting options, searching only by name or description, price etc. 
 
@@ -302,7 +302,7 @@ To clone this project from GitHub:
 
 Next steps:
 
-1. Create a virtual environment so that installations are done only for the project rather than globally. This process will depend on IDE you use. For VS Code intructions can be found on this [Python Enviroments page](https://code.visualstudio.com/docs/python/environments).
+1. Create a virtual environment so that installations are done only for the project rather than globally. This process will depend on IDE you use. For VS Code intructions can be found on this [Python Environments page](https://code.visualstudio.com/docs/python/environments).
 
 2. Use requirements.txt file to install all dependencies.
 
@@ -322,7 +322,7 @@ Next steps:
 If you would like to share this app with the world, Heroku platform is one option to do it.
 
 1. Create an account on Heroku and next, create a new app.
-2. Go to 'Resouces' tab in Heroku and look for 'Heorku Postgres' in the 'Ad-ons' section, and add it to your project.
+2. Go to 'Resources' tab in Heroku and look for 'Heorku Postgres' in the 'Ad-ons' section, and add it to your project.
 3. Make sure you have dj-database-url installed (this helps with database connection), gunicorn (WSGI HTTP Server), and Psycopg, a PostgreSQL database adapter - this should come from requirements.txt file. 
 6. Change a default database in settings.py using your Postrgres database URL that can be found on Heroku in Settings/Config Vars. Note that this URL should not be exposed publicly, so make sure not to commit your changes to Git while the URL is in your settings.py file.
 7. You can now run migrations and get the data from the fixtures to the new database. Make sure to load makeup fixture last, as it depends on the other 3 fixtures.
@@ -346,7 +346,7 @@ heroku config:set DISABLE_COLLECTSTATIC=1 --app <app_name>
 13. Add your Heroku app address to ALLOWED_HOSTS in your settings.py file. 
 14. Set config vars in Settings on Heroku. You will need to add there your DJANGO_SECRET, STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY. 
 4. To see deployment options, go to 'Deploy' tab in your project on Heroku.
-5. One of the options is to use Heroku CLI, you can also connect to GitHub to automatically deploy everytime you push to GitHub.
+5. One of the options is to use Heroku CLI, you can also connect to GitHub to automatically deploy every time you push to GitHub.
 6. You will need to login into Heroku using terminal
 
 ```
@@ -361,10 +361,10 @@ git push heroku master
 
 ### Hosting static files with AWS
 
-1. In order to be able to use AWS stoarge, you need to have an AWS account, you can create on [their website](https://aws.amazon.com/). 
+1. In order to be able to use AWS storage, you need to have an AWS account, you can create on [their website](https://aws.amazon.com/). 
 2. Once you have logged in, go to the Management Console and look for S3, and create a bucket with public access. 
 3. In your bucket's properties click 'Static website hosting' and choose 'Use this bucket to host a website' option. 
-4. In permissions tab, add CORS conficuration, and generate bucket policy.
+4. In permissions tab, add CORS configuration, and generate bucket policy.
 5. In Access Control List click 'Everyone' in Public access section and check 'list objects', then save. 
 6. Go to another AWS service - IAM, and create a group, next create a policy and attach it to the group. 
 7. Create a user and add it to the group, next download the CVS file with user's credentials. In this file you will find Access key ID ad Secret access key - save these as config variables on Heroku. 
@@ -399,6 +399,7 @@ To send emails from the application, you need to connect it to your email accoun
 * [Eyeshadow photo](https://pixabay.com/photos/eyeshadow-makeup-beauty-palette-680002/)
 * [Lipstick photo](https://pixabay.com/photos/lipstick-cosmetics-lips-make-up-1367775/)
 * [Nail Polish photo](https://pixabay.com/photos/beauty-nail-polish-pink-2638343/)
+* Test result photos all come from [Pixabay](https://pixabay.com/)
 * [404 image](https://www.lifestyleasia.com/ind/beauty-grooming/makeup/things-to-do-in-lockdown-how-to-fix-broken-makeup/)
 * [500 image](http://home.bt.com/lifestyle/wellbeing/cervical-cancer-charity-urges-public-to-post-smeared-lipstick-selfies-11363957622755)
 

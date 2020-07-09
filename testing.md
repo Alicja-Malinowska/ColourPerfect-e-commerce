@@ -4,7 +4,7 @@ This document explains how the project was tested. Please see full [README.md fi
 
 ## Validators
 
-* [W3 HTML validator](https://validator.w3.org/) was used on all the html files. Since the templating language was used in the html files, and the W3 HTML validators does not recognise them, I used page source code instead. I made sure to get the source code in all the possible states of the webpage (e.g product with coulours vs without colours, message displayed, product on homepage marked to be on wishlist etc.). A few errors were caught this way: nested a tags, unclosed p elements and repeated id's. These mistakes were corrected and now the HTML code validates without errors. 
+* [W3 HTML validator](https://validator.w3.org/) was used on all the html files. Since the templating language was used in the html files, and the W3 HTML validators does not recognise them, I used page source code instead. I made sure to get the source code in all the possible states of the webpage (e.g. product with colours vs without colours, message displayed, product on homepage marked to be on wishlist etc.). A few errors were caught this way: nested a tags, unclosed p elements and repeated id's. These mistakes were corrected and now the HTML code validates without errors. 
 
 * [W3 CSS validator](https://jigsaw.w3.org/css-validator/) was used to check all the CSS files. No errors were found. 
 
@@ -29,7 +29,7 @@ Features tested:
 
 The coverage for the basket app is 96%. All the python files written by me within the basket app have 100% coverage except for the views.py file with 89% coverage.
 
-The code that is not covered is validation for colour and quantity. The not covered validation is only needed if the user interacts with the website skipping its frontend, for example puts invalid colour (not hex) in the post request. Hower, with frontend this is impossible because the user chooses from displayed colours and, since it's a POST request, this is not sent via URL. For these reasons I thought testing this part was redundant. 
+The code that is not covered is validation for colour and quantity. The not covered validation is only needed if the user interacts with the website skipping its frontend, for example puts invalid colour (not hex) in the post request. However, with frontend this is impossible because the user chooses from displayed colours and, since it's a POST request, this is not sent via URL. For these reasons I thought testing this part was redundant. 
 
 
 #### Models
@@ -139,10 +139,10 @@ Features tested:
 * product colours are correctly sorted according to the seasons they belong to
 * correct template is rendered for search view
 * correct product objects returned when searched by category or brand
-* mesage error displayed if category or does not exists (in case it was written in the URL instead of clicking a link)
+* message error displayed if category or does not exists (in case it was written in the URL instead of clicking a link)
 * correct products returned for searched phrase (searching in names and descriptions)
 * if search phrase is an empty string (or spaces) a message appears informing user they should type a search phrase first
-* products tuples in search results that contain item that is in th wishlist, contain True as the second value, and thos not on wishlist - False
+* products tuples in search results that contain item that is in the wishlist, contain True as the second value, and those not on wishlist - False
 
 
 
@@ -240,7 +240,7 @@ Django Allauth was used to implement login and authentication functionality. Uni
   * If correct login and password are given, user is logged in, redirected to the homepage (or a page they tried to access and required user to be authenticated), and a success messaged appears
   * When 'Forgot password' link is clicked, a user is taken to the password reset page and asked for their email address, next an email is sent with a link to reset password
   * After typing new password twice, the password is changed and user can login with new password
-  * If user is logged in in theor Google account and wants to sign in with Google, they are logged in as soon as they click the button, otherwise, they are taken to the Google login screen when they have to login and then they are redirected back to the ColourPerfect page
+  * If user is logged in their Google account and wants to sign in with Google, they are logged in as soon as they click the button, otherwise, they are taken to the Google login screen when they have to login and then they are redirected back to the ColourPerfect page
 
   * **Logout**
 
@@ -311,8 +311,8 @@ Django Allauth was used to implement login and authentication functionality. Uni
 * Suggested products are random and change after every refresh
 * If suggested product is on user's wishlist, a heart icon is displayed in the top right corner
 * All categories and brands are displayed in alphabetical order
-* When suggested product is clickes, user is taken to the product's page
-* When category name or brand name is clicked, user is taken to the sreach view with all the products in the category or by the brand are displayed
+* When suggested product is clicked, user is taken to the product's page
+* When category name or brand name is clicked, user is taken to the search view with all the products in the category or by the brand are displayed
 
 ### Products app
 
@@ -342,13 +342,13 @@ Django Allauth was used to implement login and authentication functionality. Uni
 ## Browser support
 
 * The website was tested and works properly on: Chrome v77, Chrome v77 on Android, Opera v63, Firefox and Edge
-* There are some issues on IE11. Homepage does not render properly. Some elements overlap and the footer is not at the bottom of the page. Cards height is longer than expected. Also, the questions on the beauty test page are squeezed to the middle. I tried to use autoprefixer on the css files, however it did not help and the issue persists. I tried to look for the root problem, however I could not find it. I suscpect that there might be some boostrap classes that do not work as expected with IE, however IE inspect functions do not allow for in-depth analysis (unlike Chrom Dev tools). For this reason, and also because IE is no longer recommended to use, I decided not to ivestigate further, as it would bring little value. 
+* There are some issues on IE11. Homepage does not render properly. Some elements overlap and the footer is not at the bottom of the page. Cards height is longer than expected. Also, the questions on the beauty test page are squeezed to the middle. I tried to use autoprefixer on the css files, however it did not help and the issue persists. I tried to look for the root problem, however I could not find it. I suspect that there might be some Bootstrap classes that do not work as expected with IE, however IE inspect functions do not allow for in-depth analysis (unlike Chrome Dev tools). For this reason, and also because IE is no longer recommended to use, I decided not to investigate further, as it would bring little value. 
 
 ## Responsive design
 
-* The website was tested using Google Chrome Developer Tools to check how it looks like in case of different width and height by choosing 'Responsive' option and resizing the window. Using Chrom Dev Tools, it was also tested how the website looks on: Galaxy S5, Pixel 2, Pixel 2XL, iPhone 5/6/7/8/X, iPad and iPad Pro. In all these views the website is responsive and shows content properly.
+* The website was tested using Google Chrome Developer Tools to check how it looks like in case of different width and height by choosing 'Responsive' option and resizing the window. Using Chrome Dev Tools, it was also tested how the website looks on: Galaxy S5, Pixel 2, Pixel 2XL, iPhone 5/6/7/8/X, iPad and iPad Pro. In all these views the website is responsive and shows content properly.
 * The website was also tested on the following devices: Samsung Galaxy A3, Asus laptop 15", Dell laptop 13.3", a 24" monitor. On all of this devices the website is responsive and shows content properly. 
-* On mobiles and tablets the navbar collapses into a 'hamburger menu' and can be expanded to reveal the items by clicking/touching it, on desktop it contains the visisble list of all the items
+* On mobiles and tablets the navbar collapses into a 'hamburger menu' and can be expanded to reveal the items by clicking/touching it, on desktop it contains the visible list of all the items
 * Items on all pages align in the way that use the optimal space and are big/small enough to create a good user experience, regardless a device used
 
 
