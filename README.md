@@ -73,7 +73,7 @@ All the features were added to enhance the UX and make the website easy to use a
 
 * **Fixed navbar**
 
-  This element appears on all the pages. It contains a clickable logo that takes user to the homepage, and links to the remaining pages, as well as a search box, where user can search for products. The navbar is expanded on large devices and on smaller ones it is collapsed, however search box, account, basket and wishlist links are still visible. When the hamburger menu is clicked a the remaining navbar links appear. When a user clicks a link the navbar collapses back. 
+  This element appears on all the pages. It contains a clickable logo that takes user to the homepage, and links to the remaining pages, as well as a search box, where user can search for products. The navbar is expanded on large devices and on smaller ones it is collapsed, however search box, account, basket and wishlist links are still visible. When the hamburger menu is clicked a the remaining navbar links appear. When a user clicks a link the navbar collapses back. If there are some items in the basket - a badge displaying basket total appears on the basket icon. 
 
 * **Footer**
 
@@ -101,3 +101,69 @@ All the features were added to enhance the UX and make the website easy to use a
 - When logout link is clicked, a modal appears informing about the email address the user is currently logged in and asking for confirmation to log out, if it is confirmed - the user is logged out
 
 User can also change their password and manage their emails from their profile view. 
+
+#### Home page
+
+* Right below the hero image there are 3 important features listed, tohether with the link to the beauty test so user can quickly understand the main focus on the colour matching
+* If user is logged in, a welcome message appears on the homepage, right below the hero image
+* There are 3 random products in matching colours for each season displayed
+* When a user hovers over a product image, the product name apparea, and if they hover over the colour dot - colour name is displayed
+* When suggested product card is clicked, user is taken to the product page
+* All categories and brands are displayed in alphabetical order for easy access - when clicked they take user to products filtered by the category or brand
+
+
+#### Search page
+
+* This page can be accessed by clicking on a brand or category link, or searching for a phrase using th searchbox (or of course by typing a correct ULR)
+* The header informs what the results are for (brand, category or the searched term)
+* Products are displayed as cards and when clicked, take user to the product page
+* If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
+* If product image link is broken, a replacement image is displayed instead
+* If there are no products found, there is an information about it displayed
+
+#### Beauty type test
+
+* The page describes shortly what beauty types are and offers 5 quiz questions
+* If all the questions are answered, and submit button clicked - user is taken to the result page
+
+* **Result page**
+
+  - Matching season tohether with a picture is displayed
+  - Season description and radom 12 matching colours are displayed
+  - 3 random products in matching colours are displayed, when clicked, they take user to the product page
+
+#### About page 
+
+* The page gives a quick information about the main focus of the website 
+* Categories and Brands links are available from here as well so that user can get to the products quickly
+* Beauty types are shortly described and user is encouraged to take the beauty test; there is a button that takes them directly to that page
+* Delivery, returns and contact information is displayed
+
+#### Profile/Your account
+
+* This page is only available to authenticated users
+* This page contains delivery details form - if the details were previously saved, they are displayed in the form
+* The details can be updated by completing/changing the form information and clicking 'Update' button
+* Additionally, 3 most recent (if there are any) orders are displayed, and when user clicks on them, they are expanded and show the order details
+* User can click 'Full order history' to see all the past orders - they are displayed in the same way as recent orders - as expandable rows
+* Finally, user account details are displayed together with 'Change password' and 'Manage your emails' buttons
+
+#### Basket
+
+* Basket page is availabe for both, authenticated and not authenticated users, as it is possible to checkout as a guest
+* For authenticated user, basket content is saved in the database, so that they can access it even after closing their browser or accessing the webiste from different device
+* On the top of the page basket total is displayed, right next to the checkout button. This is repeated also at the bottom for the ease of use
+* Each item image and name (which is also a link to the product page) are displayed, together with chosen colour (if product has colours)
+* User can update the quantit of each product, or delete it completely from the basket - total and subtotal is automatically updated if this happens
+* Checkout button takes a user to the checkout page
+
+#### Checkout 
+
+* This page contains checkout form, which is prefilled if the user saved this information before and is logged in, otherwise the form is empty
+* If user is logged in, there is a possibility to save their details
+* If user is not logged in - log in and register links are displayed
+* 'Payment' field has to be completed in order to process Stripe payment. Since the Stripe functionality is only for testing, only 4242 4242 4242 4242 card number works. 
+* From this page user can go back to their basket if they need to change somethin
+* User is informed how much their card will be charged
+* If a user clicks 'Confirm Order&Pay' button, the payment is done and user is redirected to the checkout success page 
+
