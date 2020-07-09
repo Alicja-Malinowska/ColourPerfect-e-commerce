@@ -108,6 +108,7 @@ User can also change their password and manage their emails from their profile v
 * If user is logged in, a welcome message appears on the homepage, right below the hero image
 * There are 3 random products in matching colours for each season displayed
 * When a user hovers over a product image, the product name apparea, and if they hover over the colour dot - colour name is displayed
+* If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
 * When suggested product card is clicked, user is taken to the product page
 * All categories and brands are displayed in alphabetical order for easy access - when clicked they take user to products filtered by the category or brand
 
@@ -131,6 +132,7 @@ User can also change their password and manage their emails from their profile v
   - Matching season tohether with a picture is displayed
   - Season description and radom 12 matching colours are displayed
   - 3 random products in matching colours are displayed, when clicked, they take user to the product page
+  - If user is logged in, products that are on their wishlist (regardless the colour) are marked with a little heart icon that takes user to their wishlist
 
 #### About page 
 
@@ -152,6 +154,8 @@ User can also change their password and manage their emails from their profile v
 
 * Basket page is availabe for both, authenticated and not authenticated users, as it is possible to checkout as a guest
 * For authenticated user, basket content is saved in the database, so that they can access it even after closing their browser or accessing the webiste from different device
+* If a product has colours, a colour must be chosen before being added to the basket
+* One products but added in two different colours are two different basket items
 * On the top of the page basket total is displayed, right next to the checkout button. This is repeated also at the bottom for the ease of use
 * Each item image and name (which is also a link to the product page) are displayed, together with chosen colour (if product has colours)
 * User can update the quantit of each product, or delete it completely from the basket - total and subtotal is automatically updated if this happens
@@ -165,5 +169,17 @@ User can also change their password and manage their emails from their profile v
 * 'Payment' field has to be completed in order to process Stripe payment. Since the Stripe functionality is only for testing, only 4242 4242 4242 4242 card number works. 
 * From this page user can go back to their basket if they need to change somethin
 * User is informed how much their card will be charged
-* If a user clicks 'Confirm Order&Pay' button, the payment is done and user is redirected to the checkout success page 
+* If a user clicks 'Confirm Order&Pay' button, the payment is done and user is redirected to the checkout success page, which displays order number and (for logged in user) order history link
+* On checkout success a success message is displayed and a confirmation email with order and delivery details is sent. 
+
+#### Wishlist
+
+* This page os only available to logged in users.
+* If user has not added anything to their wishlist yet, an information about it is displayed.
+* Regardless, if product has colours or not, it can be added without a colour - unlike a basket item. This is because a customer might want to save only the product to their wishlist, without choosing a colour at that point.
+* Similarly to the basket, one product with different colours, or one product with a chosen colour and without chosen colour, are two different wishlist items.
+* If an item was added with colour, the colour is displayed in the bottom right corner
+* If an item is clicked, user os taken to the product page
+* Wishlist items can be deleted by clicking the x icon in the top right corner
+
 
