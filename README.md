@@ -89,8 +89,15 @@ All the features were added to enhance the UX and make the website easy to use a
   - When the registration form is submitted and it's valid, a user receives an email with verification link, otherwise - an error message shows informing user why the form has not been submitted
   - User is automatically logged in when registration is successful
 
-* **Registration**
+* **Login**
 
 - When 'Login' link is clicked on the navbar, a user is taken to the login form page, where they can complete login form, or click a link to the registration page instead; they can also login with their Google account or request password reset
-- 
+- If login details are correct, a user is logged in, otherwise error message appears
+- User can reset their password clicking 'Forgot password' button
+- 'Sign in with Google' buttons allows to sign in with Google account, without creating an account in the application
 
+* **Logout**
+
+- When logout link is clicked, a modal appears informing about the email address the user is currently logged in and asking for confirmation to log out, if it is confirmed - the user is logged out
+
+User can also change their password and manage their emails from their profile view. 

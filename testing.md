@@ -232,12 +232,25 @@ Django Allauth was used to implement login and authentication functionality. Uni
   * Try to login with empty form
   * Try to login with correct login and password
   * Click 'Forgot password' link
+  * Sign in with Google
 
   **Results*
 
   * An error message appears if typed credentials are not correct or missing
   * If correct login and password are given, user is logged in, redirected to the homepage (or a page they tried to access and required user to be authenticated), and a success messaged appears
-  * When 'Forgot password' link is clicked, a user is taken to the password reset page and asked for their email address
+  * When 'Forgot password' link is clicked, a user is taken to the password reset page and asked for their email address, next an email is sent with a link to reset password
+  * After typing new password twice, the password is changed and user can login with new password
+  * If user is logged in in theor Google account and wants to sign in with Google, they are logged in as soon as they click the button, otherwise, they are taken to the Google login screen when they have to login and then they are redirected back to the ColourPerfect page
+
+  * **Logout**
+
+  **Tests*
+
+  * Click logout link
+
+  **Results*
+
+  * When logout link is clicked, a modal appears informing about the email address the user is currently logged in and asking for confirmation to log out, if it is confirmed - the user is logged out
 
 
 ### Fixed Navbar
