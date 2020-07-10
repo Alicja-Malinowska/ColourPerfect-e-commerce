@@ -202,7 +202,7 @@ User can also change their password and manage their emails from their profile v
 
 ### Data
 
-The dataset comes from https://makeup-api.herokuapp.com/ and the json file was taken from [Kaggle](https://www.kaggle.com/oftomorrow/herokuapp-makeup-products). The data needed to be changed before being added to the database - the colours needed to be sorted into 4 seasons. I wrote scripts that take care of assigning different colours to different season based on their HSL values, and then sort existing colours in the json file. Next, the data was added to the database using chunks of data from the json file, in a way that categories and colours are foreign keys in the products objects. These scripts can be found in the [data](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/data) folder. Then, fixtures were created.
+The dataset comes from [Makeup API](https://makeup-api.herokuapp.com/) and the json file was taken from [Kaggle](https://www.kaggle.com/oftomorrow/herokuapp-makeup-products). The data needed to be changed before being added to the database - the colours needed to be sorted into 4 seasons. I wrote scripts that take care of assigning different colours to different season based on their HSL values, and then sort existing colours in the json file. Next, the data was added to the database using chunks of data from the json file, in a way that categories and colours are foreign keys in the products objects. These scripts can be found in the [data](https://github.com/Alicja-Malinowska/ColourPerfect-e-commerce/tree/master/data) folder. Then, fixtures were created.
 
 ### Database 
 
@@ -213,16 +213,16 @@ I tried to depict relationships between the objects in the below graphic:
 ![information-structure](https://i.imgur.com/ZPqtfXg.jpg) 
 
 
-* Although not authenticated user can use the core functionality of the website, many models depend on User model (this is a Django model not created by me).
-* User can have one Basket, one Wishlist and one Profile (User is a foreign key in Basket, Wishlist and Profile)
-* Basket can have many Basket Items (Basket is a foreign key in a Basket Item)
-* Wishlist can have many Wishlist Items (Wishlist is a foreign key in a Wishlist Item)
-* Profile can have many Orders (Profile is a foreign key in Order if it is created for an authenticated user)
-* Order can have many Order Items (Order is a foreign key in Order Item)
-* Product is independent from User, however Basket, Wishlist and Order Item have Product as a foreign key
-* Colour is a foreign key for Basket, Wishlist and Order Item, and has many to many relationship to Product (product can have many colours and many products can have the same colour)
-* Category has many to many relationship to Product - many products can have the same categories, and one product can have many categories (although this is rare in the dataset)
-* Brand is a foreign key for Product - a product can have one brand
+* Although not authenticated user can use the core functionality of the website, many models depend on **User** model (this is a Django model not created by me).
+* **User** can have one **Basket**, one **Wishlist** and one **Profile** (**User** is a foreign key in **Basket**, **Wishlist** and **Profile**)
+* **Basket** can have many **Basket Items** (**Basket** is a foreign key in a **Basket Item**)
+* **Wishlist** can have many **Wishlist Items** (**Wishlist** is a foreign key in a **Wishlist Item**)
+* **Profile** can have many **Orders** (**Profile** is a foreign key in **Order** if it is created for an authenticated user)
+* **Order** can have many **Order Items** (**Order** is a foreign key in **Order Item**)
+* **Product** is independent from **User**, however **Basket**, **Wishlist** and **Order Item** have **Product** as a foreign key
+* **Colour** is a foreign key for **Basket**, **Wishlist** and **Order Item**, and has many to many relationship to **Product** (product can have many colours and many products can have the same colour)
+* **Category** has many to many relationship to **Product** - many products can have the same categories, and one product can have many categories (although this is rare in the dataset)
+* **Brand** is a foreign key for **Product** - a product can have one brand
 
 For the detailed information about models and their fields please see models files:
 
@@ -236,30 +236,30 @@ For the detailed information about models and their fields please see models fil
 
 ### Languages
 
-  * [Python]https://www.python.org/
+  * [Python](https://www.python.org/)
   * HTML
   * CSS
   * JavaScript
 
 ### Frameworks & Libraries
 
-  * [Django](hhttps://www.djangoproject.com/)
+  * [Django](https://www.djangoproject.com/)
   * [jQuery](https://jquery.com/)
   * [Bootstrap](https://getbootstrap.com/)
   * [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
   * [Font Awesome](https://fontawesome.com/)
-  
-
-### Tools
-
-  * [Stripe](https://stripe.com/ie)
-  * [AWS S3 Buckets](https://aws.amazon.com/s3/)
   * [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
   * [Gunicorn](https://gunicorn.org/)
   * [Psycopg](https://pypi.org/project/psycopg2/)
   * [Colour](https://pypi.org/project/colour/)
   * [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
   * [Django mathfilters](https://pypi.org/project/django-mathfilters/)
+  
+
+### Tools
+
+  * [Stripe](https://stripe.com/ie)
+  * [AWS S3 Buckets](https://aws.amazon.com/s3/)
   * [Visual Studio Code](https://code.visualstudio.com/) 
   * [Git](https://git-scm.com/)
   * [Balsamiq](https://balsamiq.com/)
@@ -301,6 +301,8 @@ To clone this project from GitHub:
    More about cloning can be found on this [GitHub Help page](https://help.github.com/en/articles/cloning-a-repository).
 
 Next steps:
+
+*Note*: The project was developed in Windows environment. The below steps might be slightly different for a different OS. 
 
 1. Create a virtual environment so that installations are done only for the project rather than globally. This process will depend on IDE you use. For VS Code intructions can be found on this [Python Environments page](https://code.visualstudio.com/docs/python/environments).
 
